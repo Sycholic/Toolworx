@@ -3,9 +3,15 @@
 
 	<property name="binDir" value="bin" />
 	<property name="jarDir" value="jar" />
+<<<<<<< HEAD
+	<property name="VERSION" value="4.1.14" />
+	
+	<target name="all" depends="copyResources, makeJar" description="Create a plugin jar for the project">
+=======
 	<property name="VERSION" value="5.0.0" />
 
 	<target name="all" depends="copyResources, customActions, makeJar" description="Create a plugin jar for the project">
+>>>>>>> origin/master
 	</target>
 
 	<target name="copyResources" description="Copies needed files to the build location">

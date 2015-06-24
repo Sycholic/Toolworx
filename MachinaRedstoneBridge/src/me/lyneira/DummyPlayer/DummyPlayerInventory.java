@@ -70,12 +70,6 @@ public class DummyPlayerInventory extends DummyInventory implements PlayerInvent
     }
 
     @Override
-    public ItemStack[] getContents() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
     public int getSize() {
         return 36;
     }
@@ -83,5 +77,14 @@ public class DummyPlayerInventory extends DummyInventory implements PlayerInvent
     @Override
     public InventoryType getType() {
         return InventoryType.PLAYER;
+    }
+
+    @Override
+    public int clear(int id, int data) {
+        return 0;
+    }
+
+    @Override
+    public void setHeldItemSlot(int arg0) {
     }
 }

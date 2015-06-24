@@ -20,7 +20,9 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Note;
 import org.bukkit.Server;
+import org.bukkit.Sound;
 import org.bukkit.Statistic;
+import org.bukkit.WeatherType;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.conversations.Conversation;
@@ -36,6 +38,7 @@ import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.CraftingInventory;
+import org.bukkit.inventory.EntityEquipment;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.InventoryView.Property;
@@ -47,6 +50,7 @@ import org.bukkit.permissions.PermissibleBase;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.util.Vector;
 
 public class DummyPlayer extends PermissibleBase implements Player {
@@ -167,11 +171,9 @@ public class DummyPlayer extends PermissibleBase implements Player {
         return false;
     }
 
-    @Override
     public void damage(int amount) {
     }
 
-    @Override
     public void damage(int amount, Entity source) {
     }
 
@@ -198,7 +200,7 @@ public class DummyPlayer extends PermissibleBase implements Player {
     }
 
     @Override
-    public int getHealth() {
+    public double getHealth() {
         return getMaxHealth();
     }
 
@@ -208,7 +210,7 @@ public class DummyPlayer extends PermissibleBase implements Player {
     }
 
     @Override
-    public int getLastDamage() {
+    public double getLastDamage() {
         return 0;
     }
 
@@ -223,7 +225,7 @@ public class DummyPlayer extends PermissibleBase implements Player {
     }
 
     @Override
-    public int getMaxHealth() {
+    public double getMaxHealth() {
         return 20;
     }
 
@@ -266,11 +268,9 @@ public class DummyPlayer extends PermissibleBase implements Player {
     public void removePotionEffect(PotionEffectType type) {
     }
 
-    @Override
     public void setHealth(int health) {
     }
 
-    @Override
     public void setLastDamage(int damage) {
     }
 
@@ -861,5 +861,243 @@ public class DummyPlayer extends PermissibleBase implements Player {
     @Override
     public void setWalkSpeed(float arg0) throws IllegalArgumentException {
     }
+
+    @Override
+    public Inventory getEnderChest() {
+        return new DummyEnderChestInventory(this);
+    }
+
+    @Override
+    public void playSound(Location arg0, Sound arg1, float arg2, float arg3) {
+    }
+
+    @Override
+    public void giveExpLevels(int arg0) {
+    }
+
+    @Override
+    public void setBedSpawnLocation(Location arg0, boolean arg1) {
+    }
+
+    @Override
+    public boolean getCanPickupItems() {
+        return false;
+    }
+
+    @Override
+    public EntityEquipment getEquipment() {
+        return new DummyEntityEquipment(this);
+    }
+
+    @Override
+    public boolean getRemoveWhenFarAway() {
+        return false;
+    }
+
+    @Override
+    public void setCanPickupItems(boolean arg0) {
+    }
+
+    @Override
+    public void setRemoveWhenFarAway(boolean arg0) {
+    }
+
+    @Override
+    public Location getLocation(Location arg0) {
+        return arg0;
+    }
+
+    @Override
+    public void setTexturePack(String arg0) {
+    }
+
+    @Override
+    public void resetMaxHealth() {
+    }
+
+    public void setMaxHealth(int arg0) {
+    }
+
+    @Override
+    public String getCustomName() {
+        return "Redstone-Bridge";
+    }
+
+    @Override
+    public boolean isCustomNameVisible() {
+        return false;
+    }
+
+    @Override
+    public void setCustomName(String arg0) {
+    }
+
+    @Override
+    public void setCustomNameVisible(boolean arg0) {
+    }
+
+    @Override
+    @Deprecated
+    public boolean isOnGround() {
+        return false;
+    }
+
+    @Override
+    public WeatherType getPlayerWeather() {
+        return WeatherType.CLEAR;
+    }
+
+    @Override
+    public void resetPlayerWeather() {
+    }
+
+    @Override
+    public void setPlayerWeather(WeatherType arg0) {
+    }
+
+	@Override
+	public int _INVALID_getLastDamage() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void _INVALID_setLastDamage(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Entity getLeashHolder() throws IllegalStateException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isLeashed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setLastDamage(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean setLeashHolder(Entity arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void _INVALID_damage(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void _INVALID_damage(int arg0, Entity arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int _INVALID_getHealth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int _INVALID_getMaxHealth() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void _INVALID_setHealth(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void _INVALID_setMaxHealth(int arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void damage(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void damage(double arg0, Entity arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHealth(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setMaxHealth(double arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getHealthScale() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Scoreboard getScoreboard() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isHealthScaled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void playSound(Location arg0, String arg1, float arg2, float arg3) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHealthScale(double arg0) throws IllegalArgumentException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setHealthScaled(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setResourcePack(String arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setScoreboard(Scoreboard arg0) throws IllegalArgumentException,
+			IllegalStateException {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

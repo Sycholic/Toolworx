@@ -53,7 +53,12 @@ public final class BlockData {
      * @return The item stack resulting from the block break, or null if there
      *         is no drop
      */
+<<<<<<< HEAD
+    public static final Collection<ItemStack> breakBlock(final BlockLocation location) {
+        Block block = location.getBlock();
+=======
     public static final Collection<ItemStack> breakBlock(final Block block) {
+>>>>>>> origin/master
         BlockData data;
         int blockType = block.getTypeId();
         if (blockType >= blockId.length || blockType < 0) {
@@ -68,7 +73,7 @@ public final class BlockData {
         }
 
         int item;
-        byte dataValue;
+        short damageValue;
         if (data.drop == 0) {
             return null;
         } else {
@@ -77,9 +82,9 @@ public final class BlockData {
         // Determine if we should use the Block's data value or the predefined
         // one
         if (data.data < 0) {
-            dataValue = block.getData();
+            damageValue = block.getData();
         } else {
-            dataValue = (byte) data.data;
+            damageValue = (byte) data.data;
         }
         // Determine drop amount
         int amount;
@@ -90,7 +95,11 @@ public final class BlockData {
         }
         if (amount > 0) {
             List<ItemStack> drop = new ArrayList<ItemStack>(1);
+<<<<<<< HEAD
+            drop.add(new ItemStack(item, amount, damageValue));
+=======
             drop.add(new ItemStack(item, amount, (short) 0, Byte.valueOf(dataValue)));
+>>>>>>> origin/master
             return drop;
         } else {
             return new ArrayList<ItemStack>(1);
@@ -124,7 +133,7 @@ public final class BlockData {
      * Metadata of the item to be dropped. A negative value means the broken
      * block's data will be used. Only used if drop is non-negative.
      */
-    private int data = -1;
+    private short data = -1;
 
     /**
      * The minimum amount that will be dropped. If 0 or negative, relies on
@@ -193,9 +202,17 @@ public final class BlockData {
 
         set(Material.NOTE_BLOCK.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
+<<<<<<< HEAD
+        set(Material.BED_BLOCK.getId()).copyData(true);
+
+        set(Material.POWERED_RAIL.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeMedium);
+
+        set(Material.DETECTOR_RAIL.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeMedium);
+=======
         set(Material.POWERED_RAIL.getId()).drillable(true).attached(true);
 
         set(Material.DETECTOR_RAIL.getId()).drillable(true).attached(true);
+>>>>>>> origin/master
 
         set(Material.PISTON_STICKY_BASE.getId()).solid(true);
 
@@ -245,7 +262,11 @@ public final class BlockData {
 
         set(Material.WOOD_STAIRS.getId()).drillable(true).solid(true).drillTime(breakTimeMedium);
 
+<<<<<<< HEAD
+        set(Material.CHEST.getId()).copyData(true).inventory(true);
+=======
         set(Material.CHEST.getId()).solid(true).inventory(true);
+>>>>>>> origin/master
 
         set(Material.REDSTONE_WIRE.getId()).drillable(true).attached(true);
 
@@ -326,7 +347,7 @@ public final class BlockData {
 
         set(Material.DIODE_BLOCK_ON.getId()).drillable(true).attached(true);
 
-        set(Material.LOCKED_CHEST.getId()).solid(true);
+        set(Material.LOCKED_CHEST.getId());
 
         set(Material.TRAP_DOOR.getId()).drillable(true).attached(true).drillTime(breakTimeFast);
 
@@ -380,6 +401,15 @@ public final class BlockData {
 
         set(Material.REDSTONE_LAMP_ON.getId()).solid(true).drillable(true).drillTime(breakTimeFast);
 
+<<<<<<< HEAD
+        set(Material.WOOD_DOUBLE_STEP.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+
+        set(Material.WOOD_STEP.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+
+        set(Material.COCOA.getId()).solid(true).drillable(true).drillTime(breakTimeFast);
+
+        set(Material.SANDSTONE_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+=======
         set(Material.WOOD_DOUBLE_STEP.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
         set(Material.WOOD_STEP.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
@@ -387,11 +417,62 @@ public final class BlockData {
         set(Material.COCOA.getId()).solid(true).drillable(true).drillTime(breakTimeFast);
 
         set(Material.SANDSTONE_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
+>>>>>>> origin/master
 
         set(Material.EMERALD_ORE.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
         set(Material.EMERALD_BLOCK.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
+<<<<<<< HEAD
+        set(Material.SPRUCE_WOOD_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+
+        set(Material.BIRCH_WOOD_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+
+        set(Material.JUNGLE_WOOD_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+
+        set(Material.COBBLE_WALL.getId()).drillable(true).copyData(true).drillTime(breakTimeMedium);
+
+        set(Material.FLOWER_POT.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeFast);
+
+        set(Material.CARROT.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeFast);
+
+        set(Material.POTATO.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeFast);
+
+        set(Material.WOOD_BUTTON.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeFast);
+
+        set(Material.ANVIL.getId()).copyData(true);
+
+        set(Material.TRAPPED_CHEST.getId()).copyData(true).inventory(true);
+
+        set(Material.GOLD_PLATE.getId()).drillable(true).attached(true).drillTime(breakTimeMedium);
+
+        set(Material.IRON_PLATE.getId()).drillable(true).attached(true).drillTime(breakTimeMedium);
+        
+        set(Material.REDSTONE_COMPARATOR_OFF.getId()).drillable(true).copyData(true).attached(true);
+
+        set(Material.REDSTONE_COMPARATOR_ON.getId()).drillable(true).copyData(true).attached(true);
+        
+        set(Material.DAYLIGHT_DETECTOR.getId()).drillable(true).drillTime(breakTimeFast);
+        
+        set(Material.REDSTONE_BLOCK.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
+        
+        set(Material.QUARTZ_ORE.getId()).solid(true).drillable(true).drillTime(breakTimeSlow);
+
+        set(Material.DROPPER.getId()).solid(true).inventory(true);
+        
+        set(Material.QUARTZ_BLOCK.getId()).copyData(true).solid(true).drillable(true).drillTime(breakTimeSlow);
+        
+        set(Material.QUARTZ_STAIRS.getId()).copyData(true).solid(true).drillable(true).drillTime(breakTimeSlow);
+        
+        set(Material.ACTIVATOR_RAIL.getId()).copyData(true).attached(true).drillable(true).drillTime(breakTimeMedium);
+        
+        set(Material.DROPPER.getId()).copyData(true).solid(true).inventory(true);
+        
+        set(Material.LOG.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+        set(Material.LOG_2.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
+        set(Material.LEAVES_2.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeFast);
+        
+=======
         set(Material.SPRUCE_WOOD_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
         set(Material.BIRCH_WOOD_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
@@ -409,6 +490,7 @@ public final class BlockData {
         set(Material.WOOD_BUTTON.getId()).drillable(true).attached(true).drillTime(breakTimeFast);
 
         set(Material.ANVIL.getId()).drillable(true).drillTime(breakTimeTough);
+>>>>>>> origin/master
     }
 
     // Private setters to make the initialization look better.
@@ -432,7 +514,7 @@ public final class BlockData {
         return this;
     }
 
-    private final BlockData data(final int data) {
+    private final BlockData data(final short data) {
         this.data = data;
         return this;
     }
@@ -534,6 +616,10 @@ public final class BlockData {
                     data.drillTime(new BreakTime(Math.max(blockSection.getInt("drillTime", 1), 1)));
                 }
             }
+<<<<<<< HEAD
+            data.drop(blockSection.getInt("drop", data.drop));
+            data.data((short) blockSection.getInt("data", data.data));
+=======
             String dropMaterial = blockSection.getString("drop");
             if (dropMaterial != null) {
                 int i = MPConfig.parseTypeId(dropMaterial, -2);
@@ -545,6 +631,7 @@ public final class BlockData {
             }
 
             data.data(blockSection.getInt("data", data.data));
+>>>>>>> origin/master
             data.dropMin(blockSection.getInt("dropMin", data.dropMin));
             data.dropRandom(blockSection.getInt("dropRandom", data.dropRandom));
             data.inventory(blockSection.getBoolean("hasInventory", data.hasInventory));

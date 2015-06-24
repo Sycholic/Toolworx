@@ -98,7 +98,9 @@ public abstract class DummyInventory implements Inventory {
     }
 
     @Override
-    public abstract ItemStack[] getContents();
+    public ItemStack[] getContents() {
+        return new ItemStack[getSize()];
+    }
 
     @Override
     public HumanEntity getHolder() {
@@ -176,5 +178,9 @@ public abstract class DummyInventory implements Inventory {
     @Override
     public void setMaxStackSize(int size) {
     }
-
+    
+    @Override
+    public boolean containsAtLeast(ItemStack item, int amount) {
+        return false;
+    }
 }

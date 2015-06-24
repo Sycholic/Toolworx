@@ -1,5 +1,36 @@
 package me.lyneira.MachinaDrill;
 
+<<<<<<< HEAD
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import me.lyneira.MachinaCore.BlockData;
+import me.lyneira.MachinaCore.BlockLocation;
+import me.lyneira.MachinaCore.BlockRotation;
+import me.lyneira.MachinaCore.BlockVector;
+import me.lyneira.MachinaCore.BlueprintBlock;
+import me.lyneira.MachinaCore.EventSimulator;
+import me.lyneira.MachinaCore.Fuel;
+import me.lyneira.MachinaCore.HeartBeatEvent;
+import me.lyneira.MachinaCore.Movable;
+import me.lyneira.MachinaCore.Tool;
+import me.lyneira.util.InventoryManager;
+import me.lyneira.util.InventoryTransaction;
+
+import org.bukkit.Material;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.Furnace;
+import org.bukkit.block.Sign;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.InventoryHolder;
+import org.bukkit.inventory.ItemStack;
+
+import com.google.common.base.Predicate;
+=======
 import me.lyneira.MachinaCore.block.BlockRotation;
 import me.lyneira.MachinaCore.event.CreationEvent;
 import me.lyneira.MachinaCore.event.EventHandler;
@@ -9,6 +40,7 @@ import me.lyneira.MachinaCore.event.StatusEvent;
 import me.lyneira.MachinaCore.event.VerifyEvent;
 import me.lyneira.MachinaCore.machina.Machina;
 import me.lyneira.MachinaCore.machina.MachinaController;
+>>>>>>> origin/master
 
 /**
  * A Machina that moves forward, drilling up blocks in its path.
@@ -25,9 +57,47 @@ class Drill implements MachinaController {
         this.yaw = yaw;
     }
 
+<<<<<<< HEAD
+    /**
+     * Attempts to drill the next block in the drill pattern, and drop the
+     * resulting item.
+     * 
+     * @param anchor
+     *            The anchor of the machina
+     * @return False if there is no energy/fuel left to complete the drill. True
+     *         if the drill was successful or there was nothing to drill.
+     */
+    private boolean doDrill(final BlockLocation anchor) {
+        if (BlockData.isDrillable(nextTypeId)) {
+            Block chestBlock = anchor.getRelative(chest.vector(yaw)).getBlock();
+
+            Collection<ItemStack> results = BlockData.breakBlock(queuedTarget);
+
+            if (!useEnergy(anchor, queuedDrillTime))
+                return false;
+            
+            if (!useTool(anchor))
+                return false;
+
+            if (!EventSimulator.blockBreak(queuedTarget, player))
+                return false;
+            
+            // Initiate the transaction after useTool since the inventory may change because of it.
+            InventoryTransaction transaction = new InventoryTransaction(InventoryManager.getSafeInventory(chestBlock));
+            transaction.add(results);
+
+            // Put results in the container
+            if (!transaction.execute())
+                return false;
+
+            queuedTarget.setEmpty();
+        }
+        return true;
+=======
     @Override
     public void initialize(Machina machina) {
         this.machina = machina;
+>>>>>>> origin/master
     }
     
     @EventHandler
