@@ -4,11 +4,10 @@ import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
 import me.lyneira.MachinaCore.BlockLocation;
-import me.lyneira.MachinaCore.BlockRotation;
 import me.lyneira.MachinaCore.Fuel;
 import me.lyneira.MachinaCore.HeartBeatEvent;
-import me.lyneira.MachinaCore.Machina;
 import me.lyneira.MachinaCore.Tool;
+<<<<<<< HEAD
 import me.lyneira.MachinaPlanter.crop.CropCarrot;
 import me.lyneira.MachinaPlanter.crop.CropCocoa;
 import me.lyneira.MachinaPlanter.crop.CropHandler;
@@ -17,6 +16,10 @@ import me.lyneira.MachinaPlanter.crop.CropNetherWart;
 import me.lyneira.MachinaPlanter.crop.CropPotato;
 import me.lyneira.MachinaPlanter.crop.CropPumpkin;
 import me.lyneira.MachinaPlanter.crop.CropWheat;
+=======
+import me.lyneira.MachinaCore.block.BlockRotation;
+import me.lyneira.MachinaCore.machina.Machina;
+>>>>>>> origin/master
 import me.lyneira.util.InventoryManager;
 import me.lyneira.util.InventoryTransaction;
 

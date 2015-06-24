@@ -1,148 +1,179 @@
 package me.lyneira.MachinaCore;
 
-import java.util.Iterator;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.logging.Logger;
+import java.util.List;
 
-import org.bukkit.block.BlockFace;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.plugin.PluginDescriptionFile;
-import org.bukkit.plugin.PluginManager;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.event.HandlerList;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
+
+import me.lyneira.MachinaCore.block.BlockVector;
+import me.lyneira.MachinaCore.event.StatusEvent;
+import me.lyneira.MachinaCore.machina.Machina;
+import me.lyneira.MachinaCore.machina.MachinaBlueprint;
+import me.lyneira.MachinaCore.machina.MachinaDetector;
+import me.lyneira.MachinaCore.machina.Universe;
+import me.lyneira.MachinaCore.plugin.MachinaCraftPlugin;
+import me.lyneira.MachinaCore.plugin.MachinaPlugin;
+import me.lyneira.MachinaCore.tool.ToolInteractResult;
 
 /**
  * Main Plugin.
  * 
  * @author Lyneira
  */
-public final class MachinaCore extends JavaPlugin {
-    final static Logger log = Logger.getLogger("Minecraft");
-    static MachinaCore plugin;
-    static PluginManager pluginManager;
-    /**
-     * This is a hashmap of the blueprint's class name to its blueprint. This
-     * prevents accidental double insertions by buggy code.
-     */
-    private final Map<Class<?>, MachinaBlueprint> blueprints = new LinkedHashMap<Class<?>, MachinaBlueprint>();
+public final class MachinaCore extends MachinaCraftPlugin {
+    private static MachinaCore plugin;
+    private static BukkitScheduler scheduler;
+    // private static PluginManager pluginManager;
 
-    public final void onEnable() {
+    private final BlueprintStore blueprints = new BlueprintStore();
+    final Multiverse multiverse = new Multiverse();
+    
+
+    @Override
+    public void onEnable() {
+        super.onEnable();
+        // Call super.onEnable first.
+
         plugin = this;
-        PluginDescriptionFile pdf = getDescription();
-        log.info(pdf.getName() + " version " + pdf.getVersion() + " is now enabled.");
+        scheduler = getServer().getScheduler();
 
         // Set listener
-        pluginManager = this.getServer().getPluginManager();
-        pluginManager.registerEvents(new MachinaCoreListener(this), this);
+        getServer().getPluginManager().registerEvents(new MachinaCoreListener(this), this);
 
-        ConfigurationManager config = new ConfigurationManager(this);
-        Fuel.loadConfiguration(config.getSection("fuels"));
-        BlockData.loadBlockConfiguration(config.getSection("blocks"));
-        BlockData.loadBreakTimeConfiguration(config.getSection("break-times"));
-    }
-
-    public final void onDisable() {
-        PluginDescriptionFile pdf = getDescription();
-        log.info(pdf.getName() + " is now disabled.");
-        MachinaRunner.deActivateAll();
-    }
-
-    /**
-     * Detects whether a machina is present using the given BlockLocation as the
-     * anchor, and starts it if found. This function assumes the existence of a
-     * lever has already been checked at leverFace.
-     * 
-     * @param player
-     *            The player activating this machina
-     * @param location
-     *            The location to check at
-     * @param leverFace
-     *            The face to which the lever is attached
-     * @param item
-     *            The item in the player's hand
-     */
-    public final void onLever(Player player, final BlockLocation location, final BlockFace leverFace, ItemStack item) {
-        if (MachinaRunner.exists(location)) {
-            // Machina exists, run onLever.
-            MachinaRunner.onLever(location, player, item);
-        } else {
-            for (MachinaBlueprint i : blueprints.values()) {
-                Machina machina = i.detect(player, location, leverFace, item);
-                if (machina != null) {
-                    new MachinaRunner(this, machina, location, leverFace);
-                    break;
-                }
-            }
+        // Initialize the currently loaded worlds
+        for (World world : getServer().getWorlds()) {
+            multiverse.load(world);
         }
     }
 
+    @Override
+    public void onDisable() {
+        blueprints.clear();
+        HandlerList.unregisterAll(this);
+
+        // Call super.onDisable last.
+        super.onDisable();
+    }
+
     /**
-     * Detects whether a machina is present in the given location. If not,
-     * iterates over the given iterator and attempts to detect and activate one.
-     * Null is returned if a machina could not be detected.
+     * Initiates actions for when the wrench is used: machina detection, status
+     * info, removal.
      * 
-     * @param blueprint
-     *            An iterator to blueprints to detect for
      * @param player
-     *            The player to activate the machina for
-     * @param location
-     *            The location to check at
-     * @return The machina detected, or null if none was found.
+     *            The player who activated the wrench
+     * @param block
+     *            The block the wrench was used on
+     * @return DAMAGE if the wrench should be damaged
      */
-    public Machina detectMachina(Iterator<MachinaBlueprint> blueprint, Player player, BlockLocation location) {
-        if (MachinaRunner.exists(location)) {
-            return MachinaRunner.getMachina(location);
-        } else {
-            while (blueprint.hasNext()) {
-                Machina machina = blueprint.next().detect(player, location, null, null);
-                if (machina != null) {
-                    new MachinaRunner(this, machina, location, null);
-                    return machina;
+    public ToolInteractResult wrenchClick(Player player, Block block, boolean rightClick) {
+        final BlockVector location = new BlockVector(block);
+        final Universe universe = multiverse.get(block.getWorld());
+        Machina machina = universe.get(location);
+        if (rightClick) {
+            if (machina != null) {
+                machina.callEvent(new StatusEvent(player));
+            } else {
+                for (MachinaBlueprint blueprint : blueprints.blueprints()) {
+
+                    switch (blueprint.detect(universe, block, player)) {
+                    case SUCCESS:
+                        return ToolInteractResult.SUCCESS_DAMAGE;
+                    case COLLISION:
+                        return ToolInteractResult.SUCCESS_NODAMAGE;
+                    case FAILURE:
+                    }
                 }
             }
+        } else {
+            if (machina != null) {
+                // TODO Make it a destroy event rather than instant removal
+                universe.remove(machina);
+                return ToolInteractResult.SUCCESS_NODAMAGE;
+            }
         }
-        return null;
+        return ToolInteractResult.FAILURE;
+    }
+
+    public void registerDetectors(MachinaPlugin plugin, List<MachinaDetector> detectorList) {
+        MachinaBlueprint[] blueprintArray = new MachinaBlueprint[detectorList.size()];
+        int i = 0;
+        for (MachinaDetector detector : detectorList) {
+            final MachinaBlueprint blueprint = detector.getBlueprint();
+            if (blueprint == null) {
+                logSevere("Detector registration for " + plugin.getName() + " encountered a null blueprint, not continuing!");
+                return;
+            }
+            MachinaBlueprint.machinaCoreFriend.setDetector(blueprint, detector);
+            blueprintArray[i++] = blueprint;
+        }
+        blueprints.put(plugin, blueprintArray);
+    }
+
+    public void unregisterDetectors(MachinaPlugin plugin) {
+        blueprints.remove(plugin);
+    }
+
+    /* **************
+     * Static methods
+     */
+    
+    /**
+     * Schedules a runnable task to occur after the specified number of server ticks
+     * @param task 
+     * @param delay
+     * @return A BukkitTask with the task id
+     */
+    public final static BukkitTask runTask(Runnable task, long delay) {
+        return scheduler.runTaskLater(plugin, task, delay);
     }
 
     /**
-     * Returns the machina present at this location, or null if none exists.
+     * Send an informational message to the server log.
      * 
-     * @param location
-     * @return A machina, or null if none could be found
+     * @param message
+     *            Message to send
      */
-    public Machina getMachina(BlockLocation location) {
-        return MachinaRunner.getMachina(location);
+    public final static void info(String message) {
+        plugin.logInfo(message);
     }
 
     /**
-     * Returns true if a machina exists at this location
+     * Send a warning message to the server log.
      * 
-     * @param location
-     * @return True if a machina exists here.
+     * @param message
+     *            Message to send
      */
-    public boolean exists(BlockLocation location) {
-        return MachinaRunner.exists(location);
+    public final static void warning(String message) {
+        plugin.logWarning(message);
     }
 
     /**
-     * Registers a blueprint with MachinaCore. When a lever is rightclicked by a
-     * player, this blueprint's detect function will be run.
+     * Send a severe message to the server log.
      * 
-     * @param blueprint
-     *            The blueprint to register
+     * @param message
+     *            Message to send
      */
-    public final void registerBlueprint(MachinaBlueprint blueprint) {
-        blueprints.put(blueprint.getClass(), blueprint);
+    public final static void severe(String message) {
+        plugin.logSevere(message);
     }
 
     /**
-     * Unregisters a blueprint with MachinaCore.
+     * Send a severe message and an exception to the server log.
      * 
-     * @param blueprint
-     *            The blueprint to unregister
+     * @param message
+     *            Message to send
+     * @param ex
+     *            Exception to send
      */
-    public final void unRegisterBlueprint(MachinaBlueprint blueprint) {
-        blueprints.remove((blueprint.getClass()));
+    public final static void exception(String message, Throwable ex) {
+        plugin.logException(message, ex);
+    }
+
+    public static abstract class MachinaBlueprintFriend {
+        protected abstract void setDetector(MachinaBlueprint blueprint, MachinaDetector detector);
     }
 }
