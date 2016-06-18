@@ -14,7 +14,7 @@ import me.lyneira.util.InventoryTransaction;
 
 /**
  * Built-in endpoint for chests and dispensers.
- * 
+ *
  * @author Lyneira
  */
 public class ContainerEndpoint implements PipelineEndpoint {
@@ -51,11 +51,11 @@ public class ContainerEndpoint implements PipelineEndpoint {
 
     private boolean verifyContainer(BlockLocation location) {
         switch (location.getType()) {
-        case CHEST:
-        case DISPENSER:
-            return true;
-        default:
-            return false;
+            case CHEST:
+            case DISPENSER:
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -76,7 +76,7 @@ public class ContainerEndpoint implements PipelineEndpoint {
     /**
      * Stores a single item stack in the container at the given location. Does
      * not check whether the location has a valid container.
-     * 
+     *
      * @param location
      * @param item
      * @return True if there was room for the item stack.

@@ -955,149 +955,149 @@ public class DummyPlayer extends PermissibleBase implements Player {
     public void setPlayerWeather(WeatherType arg0) {
     }
 
-	@Override
-	public int _INVALID_getLastDamage() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public int _INVALID_getLastDamage() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	@Override
-	public void _INVALID_setLastDamage(int arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void _INVALID_setLastDamage(int arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public Entity getLeashHolder() throws IllegalStateException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	@Override
-	public boolean isLeashed() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public Entity getLeashHolder() throws IllegalStateException {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public void setLastDamage(double arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public boolean isLeashed() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	@Override
-	public boolean setLeashHolder(Entity arg0) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public void setLastDamage(double arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void _INVALID_damage(int arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void _INVALID_damage(int arg0, Entity arg1) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public boolean setLeashHolder(Entity arg0) {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
-	@Override
-	public int _INVALID_getHealth() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public void _INVALID_damage(int arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public int _INVALID_getMaxHealth() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    }
 
-	@Override
-	public void _INVALID_setHealth(int arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void _INVALID_damage(int arg0, Entity arg1) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void _INVALID_setMaxHealth(int arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void damage(double arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public int _INVALID_getHealth() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	@Override
-	public void damage(double arg0, Entity arg1) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public int _INVALID_getMaxHealth() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
 
-	@Override
-	public void setHealth(double arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void _INVALID_setHealth(int arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void setMaxHealth(double arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public double getHealthScale() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+    @Override
+    public void _INVALID_setMaxHealth(int arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public Scoreboard getScoreboard() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    }
 
-	@Override
-	public boolean isHealthScaled() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public void damage(double arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void playSound(Location arg0, String arg1, float arg2, float arg3) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void setHealthScale(double arg0) throws IllegalArgumentException {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void damage(double arg0, Entity arg1) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void setHealthScaled(boolean arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    }
 
-	@Override
-	public void setResourcePack(String arg0) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void setHealth(double arg0) {
+        // TODO Auto-generated method stub
 
-	@Override
-	public void setScoreboard(Scoreboard arg0) throws IllegalArgumentException,
-			IllegalStateException {
-		// TODO Auto-generated method stub
-		
-	}
+    }
+
+    @Override
+    public void setMaxHealth(double arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public double getHealthScale() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public Scoreboard getScoreboard() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public boolean isHealthScaled() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void playSound(Location arg0, String arg1, float arg2, float arg3) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void setHealthScale(double arg0) throws IllegalArgumentException {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void setHealthScaled(boolean arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void setResourcePack(String arg0) {
+        // TODO Auto-generated method stub
+
+    }
+
+    @Override
+    public void setScoreboard(Scoreboard arg0) throws IllegalArgumentException,
+            IllegalStateException {
+        // TODO Auto-generated method stub
+
+    }
 
 }

@@ -26,7 +26,7 @@ import me.lyneira.machinacore.machina.Machina;
 
 /**
  * A machina that drains or fills an area with water.
- * 
+ *
  * @author Lyneira
  */
 final class Pump implements Machina {
@@ -148,11 +148,9 @@ final class Pump implements Machina {
 
     /**
      * Sets the furnace to the given state and set correct direction.
-     * 
-     * @param anchor
-     *            The anchor
-     * @param burning
-     *            Whether the furnace should be burning.
+     *
+     * @param anchor  The anchor
+     * @param burning Whether the furnace should be burning.
      */
     void setFurnace(BlockLocation anchor, boolean burning) {
         Block furnace = anchor.getRelative(backward).getBlock();
@@ -161,7 +159,7 @@ final class Pump implements Machina {
 
     /**
      * Sets the state of the cauldron.
-     * 
+     *
      * @param data
      */
     void setCauldron(byte data) {
@@ -173,7 +171,7 @@ final class Pump implements Machina {
 
     /**
      * Sets the state of the cauldron.
-     * 
+     *
      * @param progress
      * @param total
      */
@@ -188,10 +186,10 @@ final class Pump implements Machina {
     /**
      * Adds a drain block to the furnace's smelt slot for the deconstruction of
      * a drain.
-     * 
+     *
      * @param data The data value of the tube material to check.
      * @return True if a drain block item could be added to the furnace smelt
-     *         slot.
+     * slot.
      */
     boolean putDrainItem(byte data) {
         FurnaceInventory inventory = ((Furnace) anchor.getRelative(backward).getBlock().getState()).getInventory();
@@ -328,7 +326,7 @@ final class Pump implements Machina {
 
         /**
          * Applies the process operation on a target.
-         * 
+         *
          * @param target
          */
         abstract void apply(BlockLocation target);
@@ -336,7 +334,7 @@ final class Pump implements Machina {
         /**
          * Scans for and returns a list of targets to be processed when progress
          * reaches total.
-         * 
+         *
          * @return A list of target {@link BlockLocation}s.
          */
         abstract List<BlockLocation> scan();
@@ -429,7 +427,7 @@ final class Pump implements Machina {
             visible.addAll(topLevel);
             List<BlockLocation> newTargets = new ArrayList<BlockLocation>(topLevelSize);
             for (int i = 0; i < depthLimit; i++) {
-                for (Iterator<BlockLocation> it = visible.iterator(); it.hasNext();) {
+                for (Iterator<BlockLocation> it = visible.iterator(); it.hasNext(); ) {
                     BlockLocation target = it.next().getRelative(down, i);
                     Block targetBlock = target.getBlock();
                     Material type = targetBlock.getType();
@@ -476,10 +474,11 @@ final class Pump implements Machina {
     }
 
     // **** Static stuff ****
+
     /**
      * Returns true if the current limit allows activating another pump for this
      * player.
-     * 
+     *
      * @param player
      * @return True if the player can activate another drill.
      */
@@ -495,7 +494,7 @@ final class Pump implements Machina {
 
     /**
      * Loads the given configuration.
-     * 
+     *
      * @param configuration
      */
     static void loadConfiguration(ConfigurationSection configuration) {

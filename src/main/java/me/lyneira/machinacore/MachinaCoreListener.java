@@ -16,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Listener for Bukkit events.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaCoreListener implements Listener {
@@ -53,21 +53,21 @@ public class MachinaCoreListener implements Listener {
         }
 
         switch (result) {
-        case SUCCESS_DAMAGE:
-            // The tool was used for something, decrease durability.
-            short maxDurability = item.getType().getMaxDurability();
-            if (maxDurability == 0)
-                return;
-            short newDurability = (short) (item.getDurability() + 1);
-            if (newDurability >= maxDurability) {
-                event.getPlayer().setItemInHand(null);
-            } else {
-                item.setDurability(newDurability);
-            }
-        case SUCCESS_NODAMAGE:
-            event.setCancelled(true);
-            break;
-        case FAILURE:
+            case SUCCESS_DAMAGE:
+                // The tool was used for something, decrease durability.
+                short maxDurability = item.getType().getMaxDurability();
+                if (maxDurability == 0)
+                    return;
+                short newDurability = (short) (item.getDurability() + 1);
+                if (newDurability >= maxDurability) {
+                    event.getPlayer().setItemInHand(null);
+                } else {
+                    item.setDurability(newDurability);
+                }
+            case SUCCESS_NODAMAGE:
+                event.setCancelled(true);
+                break;
+            case FAILURE:
         }
     }
 

@@ -2,7 +2,7 @@ package me.lyneira.machinafactory;
 
 /**
  * Thrown when detection of a component fails.
- * 
+ *
  * @author Lyneira
  */
 public class ComponentDetectException extends Exception {

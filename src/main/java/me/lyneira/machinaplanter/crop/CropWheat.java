@@ -2,6 +2,7 @@ package me.lyneira.machinaplanter.crop;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import me.lyneira.machinacore.BlockLocation;
 
 import org.bukkit.Material;
@@ -10,7 +11,7 @@ import org.bukkit.material.MaterialData;
 
 /**
  * Handles wheat for the planter.
- * 
+ *
  * @author Lyneira
  */
 public class CropWheat implements CropHandler {
@@ -32,7 +33,7 @@ public class CropWheat implements CropHandler {
     public Material getPlantableItem() {
         return Material.SEEDS;
     }
-    
+
     @Override
     public boolean checkPlantableItemData(MaterialData data) {
         return true;

@@ -6,22 +6,22 @@ import org.bukkit.block.BlockFace;
 
 /**
  * An enum of counter-clockwise rotations around 90-degree intervals.
- * 
+ * <p>
  * When used for specifying yaw, they represent rotations to the following
  * BlockFace compass directions:<br>
  * ROTATE_0: EAST<br>
  * ROTATE_90: NORTH<br>
  * ROTATE_180: WEST<br>
  * ROTATE_270: SOUTH<br>
- * 
+ *
  * @author Lyneira
  */
 public enum BlockRotation {
     ROTATE_0, ROTATE_90, ROTATE_180, ROTATE_270;
 
-    private final static BlockFace[] yawFace = { BlockFace.EAST, BlockFace.NORTH, BlockFace.WEST, BlockFace.SOUTH };
-    private final static BlockVector[] yawVector = { new BlockVector(yawFace[0]), new BlockVector(yawFace[1]), new BlockVector(yawFace[2]), new BlockVector(yawFace[3]) };
-    private final static byte[] yawData = { 0x5, 0x2, 0x4, 0x3 };
+    private final static BlockFace[] yawFace = {BlockFace.EAST, BlockFace.NORTH, BlockFace.WEST, BlockFace.SOUTH};
+    private final static BlockVector[] yawVector = {new BlockVector(yawFace[0]), new BlockVector(yawFace[1]), new BlockVector(yawFace[2]), new BlockVector(yawFace[3])};
+    private final static byte[] yawData = {0x5, 0x2, 0x4, 0x3};
     private final static BlockRotation[] byOrdinal = BlockRotation.values();
 
     /**
@@ -47,9 +47,8 @@ public enum BlockRotation {
 
     /**
      * Adds the given {@link BlockRotation} to this one and returns the result.
-     * 
-     * @param other
-     *            The rotation to add.
+     *
+     * @param other The rotation to add.
      * @return The new rotation
      */
     public final BlockRotation add(final BlockRotation other) {
@@ -59,9 +58,8 @@ public enum BlockRotation {
     /**
      * Subtracts the given {@link BlockRotation} from this one and returns the
      * result.
-     * 
-     * @param other
-     *            The rotation to add.
+     *
+     * @param other The rotation to add.
      * @return The new rotation
      */
     public final BlockRotation subtract(final BlockRotation other) {
@@ -70,7 +68,7 @@ public enum BlockRotation {
 
     /**
      * Converts a BlockRotation into a BlockFace in the XZ plane.
-     * 
+     *
      * @return The BlockFace corresponding to this rotation.
      */
     public final BlockFace getYawFace() {
@@ -79,7 +77,7 @@ public enum BlockRotation {
 
     /**
      * Converts a BlockRotation into a BlockVector in the XZ plane.
-     * 
+     *
      * @return The BlockVector corresponding to this rotation.
      */
     public final BlockVector getYawVector() {
@@ -89,7 +87,7 @@ public enum BlockRotation {
     /**
      * Returns the proper data value to set the direction of a Wall Sign,
      * Furnace, Dispenser or Chest.
-     * 
+     *
      * @return
      */
     public final byte getYawData() {
@@ -98,8 +96,7 @@ public enum BlockRotation {
 
     /**
      * Converts the yaw from a float-based {@link Location} to a BlockRotation
-     * 
-     * 
+     *
      * @param location
      * @return
      */
@@ -132,16 +129,16 @@ public enum BlockRotation {
 
     public static final BlockRotation yawFromBlockFace(BlockFace face) throws Exception {
         switch (face) {
-        case EAST:
-            return ROTATE_0;
-        case NORTH:
-            return ROTATE_90;
-        case WEST:
-            return ROTATE_180;
-        case SOUTH:
-            return ROTATE_270;
-        default:
-            throw new Exception("Invalid BlockFace given to yawFromBlockFace, must be one of: EAST, NORTH, WEST, SOUTH");
+            case EAST:
+                return ROTATE_0;
+            case NORTH:
+                return ROTATE_90;
+            case WEST:
+                return ROTATE_180;
+            case SOUTH:
+                return ROTATE_270;
+            default:
+                throw new Exception("Invalid BlockFace given to yawFromBlockFace, must be one of: EAST, NORTH, WEST, SOUTH");
         }
     }
 }

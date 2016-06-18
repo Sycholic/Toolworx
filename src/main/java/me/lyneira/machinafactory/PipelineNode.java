@@ -12,7 +12,7 @@ import me.lyneira.machinacore.block.BlockRotation;
 
 /**
  * A node in a {@link Pipeline}.
- * 
+ *
  * @author Lyneira
  */
 class PipelineNode {
@@ -26,7 +26,7 @@ class PipelineNode {
 
     /**
      * Constructs a new root PipelineNode from the given location.
-     * 
+     *
      * @param location
      */
     PipelineNode(BlockLocation location) {
@@ -38,6 +38,7 @@ class PipelineNode {
 
     /**
      * Constructs a new PipelineNode for the given location, with the given previous node.
+     *
      * @param previous
      * @param location
      * @param type
@@ -51,6 +52,7 @@ class PipelineNode {
 
     /**
      * Returns a list of neighbors for this node.
+     *
      * @param material
      * @return
      */
@@ -66,6 +68,7 @@ class PipelineNode {
 
     /**
      * Adds a PipelineNode for the given location and material to the given neighbor list, with this node as the previous.
+     *
      * @param neighbors
      * @param location
      * @param material
@@ -84,14 +87,16 @@ class PipelineNode {
 
     /**
      * Returns a {@link PipelineEndpoint} for this node.
+     *
      * @return A PipelineEndpoint, or null if this is not a valid endpoint.
      */
     PipelineEndpoint target(BlockLocation anchor, Player player) {
         return null;
     }
-    
+
     /**
      * Verifies this node.
+     *
      * @return True if successful, otherwise false.
      */
     boolean verify() {

@@ -19,7 +19,7 @@ import me.lyneira.machinacore.machina.Machina;
 
 /**
  * MachinaBlueprint representing a HoverPad blueprint
- * 
+ *
  * @author Lyneira
  * @author Nividica
  */
@@ -74,6 +74,7 @@ class Blueprint extends MovableBlueprint {
 
     /**
      * Static blueprint constructor so that we have a {@link BlueprintFactory} to give to super()
+     *
      * @return A new Blueprint
      */
     static Blueprint blueprint() {

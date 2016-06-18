@@ -21,7 +21,7 @@ package gnu.trove.procedure;
 
 /**
  * Interface for procedures with one Object parameter.
- *
+ * <p>
  * Created: Mon Nov  5 21:45:49 2001
  *
  * @author Eric D. Friedman

@@ -37,7 +37,7 @@ public interface TObjectObjectProcedure<K, V> {
      * @param a an <code>Object</code> value
      * @param b an <code>Object</code> value
      * @return true if additional invocations of the procedure are
-     *         allowed.
+     * allowed.
      */
-    public boolean execute( K a, V b );
+    public boolean execute(K a, V b);
 }// TObjectObjectProcedure

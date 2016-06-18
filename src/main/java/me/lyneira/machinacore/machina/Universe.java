@@ -23,7 +23,7 @@ import me.lyneira.machinacore.block.MachinaBlock;
  * themselves. It also prevents machinae from intersecting each other and
  * provides fast testing whether any block in the world is part of a
  * {@link Machina}.
- * 
+ *
  * @author Lyneira
  */
 public class Universe {
@@ -38,9 +38,8 @@ public class Universe {
     /**
      * Returns the machina that owns the block at this location. If no machina
      * owns this block, returns null.
-     * 
-     * @param location
-     *            The location to get the machina for.
+     *
+     * @param location The location to get the machina for.
      * @return The machina owning this location, or null.
      */
     public Machina get(BlockVector location) {
@@ -49,11 +48,10 @@ public class Universe {
 
     /**
      * Adds a machina to the universe.
-     * 
-     * @param machina
-     *            The machina to add
+     *
+     * @param machina The machina to add
      * @return True if the machina was successfully added, false if if there was
-     *         a collision or it is already in the universe.
+     * a collision or it is already in the universe.
      */
     boolean add(Machina machina) {
         if (machinae.contains(machina))
@@ -79,11 +77,10 @@ public class Universe {
 
     /**
      * Updates a machina in the universe.
-     * 
-     * @param machina
-     *            The machina to update
+     *
+     * @param machina The machina to update
      * @return True if the machina was successfully updated, false if there was
-     *         a collision or it was not in this universe.
+     * a collision or it was not in this universe.
      */
     boolean update(Machina machina) {
         if (!machinae.contains(machina))
@@ -179,9 +176,8 @@ public class Universe {
 
     /**
      * Removes a machina from the universe.
-     * 
-     * @param machina
-     *            The machina to remove
+     *
+     * @param machina The machina to remove
      */
     public void remove(Machina machina) {
         if (!machinae.contains(machina))

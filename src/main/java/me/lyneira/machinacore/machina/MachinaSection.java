@@ -1,8 +1,8 @@
 package me.lyneira.machinacore.machina;
 
 /**
- * Represents a  
- * 
+ * Represents a
+ *
  * @author Lyneira
  */
 public class MachinaSection {

@@ -11,7 +11,7 @@ import me.lyneira.machinacore.block.BlockVector;
 
 /**
  * Represents the moving rail of the planter.
- * 
+ *
  * @author Lyneira
  */
 class MovingRail {
@@ -59,9 +59,9 @@ class MovingRail {
 
     /**
      * Returns the current tile for planting below the head.
-     * 
+     *
      * @return The block two spaces below the head. If the head was not active
-     *         this will return null.
+     * this will return null.
      */
     final BlockLocation currentTile() {
         return head.tile();
@@ -69,7 +69,7 @@ class MovingRail {
 
     /**
      * Attempts to move the head to the next tile for planting.
-     * 
+     *
      * @return
      */
     final HeadNextResult nextTile() {
@@ -89,7 +89,7 @@ class MovingRail {
 
     /**
      * Attempts to move the entire moving rail.
-     * 
+     *
      * @return True if successful, false if there was a collision.
      */
     boolean move(BlockFace direction) {
@@ -161,7 +161,7 @@ class MovingRail {
         final boolean verify() {
             return (top.checkType(Blueprint.planterMovingRailMaterial) //
                     && middle.checkType(Blueprint.planterHeadBlockMaterial) //
-            && bottom.checkType(Blueprint.planterHeadMaterial));
+                    && bottom.checkType(Blueprint.planterHeadMaterial));
         }
 
         final void put(byte data) {
@@ -172,7 +172,7 @@ class MovingRail {
 
         /**
          * Activates the head by moving it down.
-         * 
+         *
          * @return True if the head was moved, false if there was a collision.
          */
         boolean activate() {
@@ -196,7 +196,7 @@ class MovingRail {
 
         /**
          * Deactivates the head by moving it up.
-         * 
+         *
          * @return True if the head was moved, false if there was a collision.
          */
         boolean deactivate() {
@@ -220,7 +220,7 @@ class MovingRail {
 
         /**
          * Attempts to move the head to the next tile for planting.
-         * 
+         *
          * @return The result of the move.
          */
         HeadNextResult next() {
@@ -312,7 +312,7 @@ class MovingRail {
         /**
          * Checks if the head is at the rail's end and switches the direction if
          * true.
-         * 
+         *
          * @return True if the head was at the rail's end.
          */
         boolean isAtRailEnd() {

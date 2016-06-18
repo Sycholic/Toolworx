@@ -178,7 +178,7 @@ public abstract class DummyInventory implements Inventory {
     @Override
     public void setMaxStackSize(int size) {
     }
-    
+
     @Override
     public boolean containsAtLeast(ItemStack item, int amount) {
         return false;

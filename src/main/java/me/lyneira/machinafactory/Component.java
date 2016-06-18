@@ -14,7 +14,7 @@ import me.lyneira.machinacore.machina.Machina;
 /**
  * Base class representing any factory component. Inside the heartBeat function,
  * the Component is guaranteed to be in the active state.
- * 
+ *
  * @author Lyneira
  */
 public abstract class Component implements Machina, EndpointVerify {
@@ -26,14 +26,12 @@ public abstract class Component implements Machina, EndpointVerify {
      * Constructs a new Component from the ComponentBlueprint and activates it.
      * The constructor takes care of detecting the non-key blocks of the
      * blueprint and throws an exception if it failed to detect them.
-     * 
+     *
      * @param blueprint
      * @param anchor
      * @param yaw
-     * @throws ComponentActivateException
-     *             The component could not activate due to a collision.
-     * @throws ComponentDetectException
-     *             The component could not be detected.
+     * @throws ComponentActivateException The component could not activate due to a collision.
+     * @throws ComponentDetectException   The component could not be detected.
      */
     protected Component(ComponentBlueprint blueprint, BlockLocation anchor, BlockRotation yaw) throws ComponentActivateException, ComponentDetectException {
         this.anchor = anchor;
@@ -55,7 +53,7 @@ public abstract class Component implements Machina, EndpointVerify {
         }
 
         // Clear the negative difference in reverse order.
-        for (ListIterator<BlueprintBlock> it = blueprint.activateDiffMinus.listIterator(blueprint.activateDiffMinus.size()); it.hasPrevious();) {
+        for (ListIterator<BlueprintBlock> it = blueprint.activateDiffMinus.listIterator(blueprint.activateDiffMinus.size()); it.hasPrevious(); ) {
             anchor.getRelative(it.previous().vector(yaw)).setEmpty();
         }
 
@@ -84,7 +82,7 @@ public abstract class Component implements Machina, EndpointVerify {
 
     /**
      * Verifies the given blueprintblock list.
-     * 
+     *
      * @param blueprint
      * @return True if successful.
      */
@@ -119,7 +117,7 @@ public abstract class Component implements Machina, EndpointVerify {
         }
 
         // Clear the negative difference in reverse order.
-        for (ListIterator<BlueprintBlock> it = blueprint.deactivateDiffMinus.listIterator(blueprint.deactivateDiffMinus.size()); it.hasPrevious();) {
+        for (ListIterator<BlueprintBlock> it = blueprint.deactivateDiffMinus.listIterator(blueprint.deactivateDiffMinus.size()); it.hasPrevious(); ) {
             this.anchor.getRelative(it.previous().vector(yaw)).setEmpty();
         }
 
@@ -138,7 +136,7 @@ public abstract class Component implements Machina, EndpointVerify {
 
     /**
      * Returns true if a collision would happen with the given diffPlus set.
-     * 
+     *
      * @param anchor
      * @param diffPlus
      * @return True if a collision was detected

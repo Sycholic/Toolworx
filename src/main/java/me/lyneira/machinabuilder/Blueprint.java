@@ -20,7 +20,7 @@ import me.lyneira.machinacore.machina.Machina;
 
 /**
  * MachinaBlueprint representing a Builder blueprint
- * 
+ *
  * @author Lyneira
  */
 public class Blueprint {
@@ -76,7 +76,7 @@ public class Blueprint {
     /**
      * Static blueprint constructor so that we have a {@link BlueprintFactory}
      * to give to super()
-     * 
+     *
      * @return A new Blueprint
      */
     Blueprint() {
@@ -220,6 +220,7 @@ public class Blueprint {
 
         /**
          * Searches for a furnace around the anchor.
+         *
          * @param player
          * @param anchor
          * @param yaw
@@ -267,7 +268,7 @@ public class Blueprint {
             /**
              * Returns true if an inventory in this type of builder is
              * protected.
-             * 
+             *
              * @param yaw
              * @return
              */
@@ -275,14 +276,14 @@ public class Blueprint {
 
             /**
              * Detects any optional modules.
-             * 
+             *
              * @param yaw
              */
             abstract void detectOptionalModules();
 
             /**
              * Creates an instance of the new builder.
-             * 
+             *
              * @param yaw
              * @return
              */

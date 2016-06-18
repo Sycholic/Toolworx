@@ -15,7 +15,7 @@ import me.lyneira.machinacore.event.HeartBeatEvent;
 /**
  * Wrapper class for a Machina. Keeps track of all active Machinae, initiates
  * verification checks and heartbeats, handles deactivation and scheduling.
- * 
+ *
  * @author Lyneira
  */
 class MachinaRunner implements Runnable {
@@ -34,9 +34,8 @@ class MachinaRunner implements Runnable {
     /**
      * Constructs a MachinaRunner which will immediately schedule the given
      * Machina for activation.
-     * 
-     * @param plugin
-     *            The MachinaCore plugin
+     *
+     * @param plugin    The MachinaCore plugin
      * @param machina
      * @param anchor
      * @param leverFace
@@ -75,9 +74,8 @@ class MachinaRunner implements Runnable {
     /**
      * Returns whether a machina anchor exists for the given
      * {@link BlockLocation}
-     * 
-     * @param location
-     *            The location to check for
+     *
+     * @param location The location to check for
      * @return True if a machina anchor exists at this location
      */
     static final boolean exists(final BlockLocation location) {
@@ -86,9 +84,8 @@ class MachinaRunner implements Runnable {
 
     /**
      * Returns the machina that exists at the given {@link BlockLocation}
-     * 
-     * @param location
-     *            The location to check for
+     *
+     * @param location The location to check for
      * @return A machina, or null if none exists.
      */
     static final Machina getMachina(final BlockLocation location) {
@@ -98,11 +95,9 @@ class MachinaRunner implements Runnable {
     /**
      * Runs the machina's onLever function, and deactivates it if it returns
      * false.
-     * 
-     * @param location
-     *            The location of the machina anchor
-     * @param player
-     *            The player attempting to deactivate the machina
+     *
+     * @param location The location of the machina anchor
+     * @param player   The player attempting to deactivate the machina
      */
     static void onLever(final BlockLocation location, Player player, ItemStack item) {
 
@@ -118,9 +113,8 @@ class MachinaRunner implements Runnable {
     /**
      * Deactivates any MachinaRunner that may be present at the given
      * BlockLocation
-     * 
-     * @param location
-     *            The location to deactivate
+     *
+     * @param location The location to deactivate
      */
     static final void deActivate(final BlockLocation location) {
         MachinaRunner machinaRunner = machinae.get(location);
@@ -133,7 +127,7 @@ class MachinaRunner implements Runnable {
      * Deactivates all MachinaRunners
      */
     static final void deActivateAll() {
-        for (Iterator<MachinaRunner>it = machinae.values().iterator(); it.hasNext();) {
+        for (Iterator<MachinaRunner> it = machinae.values().iterator(); it.hasNext(); ) {
             it.next().deActivateSafely();
             it.remove();
         }
@@ -165,15 +159,14 @@ class MachinaRunner implements Runnable {
 
     /**
      * Deactivates all machina in or near an unloaded chunk.
-     * 
-     * @param chunk
-     *            The chunk that is being unloaded
+     *
+     * @param chunk The chunk that is being unloaded
      */
     static final void notifyChunkUnload(Chunk chunk) {
         int x = chunk.getX();
         int z = chunk.getZ();
 
-        for (Iterator<MachinaRunner> it = machinae.values().iterator(); it.hasNext();) {
+        for (Iterator<MachinaRunner> it = machinae.values().iterator(); it.hasNext(); ) {
             MachinaRunner machinaRunner = it.next();
             Chunk machinaChunk = machinaRunner.anchor.getBlock().getChunk();
 

@@ -26,7 +26,7 @@ public class CropNetherWart implements CropHandler {
     public Material getPlantableItem() {
         return Material.NETHER_STALK;
     }
-    
+
     @Override
     public boolean checkPlantableItemData(MaterialData data) {
         return true;

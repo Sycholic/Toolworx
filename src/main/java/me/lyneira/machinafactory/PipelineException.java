@@ -4,7 +4,7 @@ import me.lyneira.machinacore.BlockLocation;
 
 /**
  * Thrown when a pipeline failed to find an endpoint, or fails to verify.
- * 
+ *
  * @author Lyneira
  */
 public class PipelineException extends Exception {
@@ -15,17 +15,17 @@ public class PipelineException extends Exception {
     PipelineException(BlockLocation location) {
         this.location = location;
     }
-    
+
     PipelineException(BlockLocation location, String message) {
         super(message);
         this.location = location;
     }
-    
+
     PipelineException(BlockLocation location, Throwable cause) {
         super(cause);
         this.location = location;
     }
-    
+
     PipelineException(BlockLocation location, String message, Throwable cause) {
         super(message, cause);
         this.location = location;

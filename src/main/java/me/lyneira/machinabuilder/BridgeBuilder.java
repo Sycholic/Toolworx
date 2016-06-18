@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Builder with a movable head piece that can build bridges.
- * 
+ *
  * @author Lyneira
  */
 public class BridgeBuilder extends Builder {
@@ -104,10 +104,9 @@ public class BridgeBuilder extends Builder {
 
     /**
      * Attempts to move the head of the bridge builder up or down.
-     * 
+     *
      * @param anchor
-     * @param up
-     *            The head will move up if this is true, down otherwise.
+     * @param up     The head will move up if this is true, down otherwise.
      * @return True if the head moved, false if there was a collision
      */
     private boolean moveHead(BlockLocation anchor, boolean up) {

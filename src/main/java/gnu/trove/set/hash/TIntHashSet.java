@@ -48,7 +48,7 @@ import java.util.Collection;
  */
 
 public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
-	static final long serialVersionUID = 1L;
+    static final long serialVersionUID = 1L;
 
 
     /**
@@ -67,8 +67,8 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
      *
      * @param initialCapacity an <code>int</code> value
      */
-    public TIntHashSet( int initialCapacity ) {
-        super( initialCapacity );
+    public TIntHashSet(int initialCapacity) {
+        super(initialCapacity);
     }
 
 
@@ -77,11 +77,11 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
      * value at or near the specified capacity and load factor.
      *
      * @param initialCapacity used to find a prime capacity for the table.
-     * @param load_factor used to calculate the threshold over which
-     * rehashing takes place.
+     * @param load_factor     used to calculate the threshold over which
+     *                        rehashing takes place.
      */
-    public TIntHashSet( int initialCapacity, float load_factor ) {
-        super( initialCapacity, load_factor );
+    public TIntHashSet(int initialCapacity, float load_factor) {
+        super(initialCapacity, load_factor);
     }
 
 
@@ -91,29 +91,29 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
      * with the specified load factor.
      *
      * @param initial_capacity an <code>int</code> value
-     * @param load_factor a <code>float</code> value
-     * @param no_entry_value a <code>int</code> value that represents null.
+     * @param load_factor      a <code>float</code> value
+     * @param no_entry_value   a <code>int</code> value that represents null.
      */
-    public TIntHashSet( int initial_capacity, float load_factor,
-            int no_entry_value ) {
-        super( initial_capacity, load_factor, no_entry_value );
+    public TIntHashSet(int initial_capacity, float load_factor,
+                       int no_entry_value) {
+        super(initial_capacity, load_factor, no_entry_value);
         //noinspection RedundantCast
-        if ( no_entry_value != ( int ) 0 ) {
-            Arrays.fill( _set, no_entry_value );
+        if (no_entry_value != (int) 0) {
+            Arrays.fill(_set, no_entry_value);
         }
     }
 
 
     /**
-      * Creates a new <code>TIntHashSet</code> instance that is a copy
-      * of the existing Collection.
-      *
-      * @param collection a <tt>Collection</tt> that will be duplicated.
-      */
-     public TIntHashSet( Collection<? extends Integer> collection ) {
-        this( Math.max( collection.size(), DEFAULT_CAPACITY ) );
-        addAll( collection );
-     }
+     * Creates a new <code>TIntHashSet</code> instance that is a copy
+     * of the existing Collection.
+     *
+     * @param collection a <tt>Collection</tt> that will be duplicated.
+     */
+    public TIntHashSet(Collection<? extends Integer> collection) {
+        this(Math.max(collection.size(), DEFAULT_CAPACITY));
+        addAll(collection);
+    }
 
 
     /**
@@ -122,19 +122,19 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
      *
      * @param collection a <tt>TIntSet</tt> that will be duplicated.
      */
-    public TIntHashSet( TIntCollection collection ) {
-        this( Math.max( collection.size(), DEFAULT_CAPACITY ) );
-        if ( collection instanceof TIntHashSet ) {
-            TIntHashSet hashset = ( TIntHashSet ) collection;
+    public TIntHashSet(TIntCollection collection) {
+        this(Math.max(collection.size(), DEFAULT_CAPACITY));
+        if (collection instanceof TIntHashSet) {
+            TIntHashSet hashset = (TIntHashSet) collection;
             this._loadFactor = hashset._loadFactor;
             this.no_entry_value = hashset.no_entry_value;
             //noinspection RedundantCast
-            if ( this.no_entry_value != ( int ) 0 ) {
-                Arrays.fill( _set, this.no_entry_value );
+            if (this.no_entry_value != (int) 0) {
+                Arrays.fill(_set, this.no_entry_value);
             }
-            setUp( (int) Math.ceil( DEFAULT_CAPACITY / _loadFactor ) );
+            setUp((int) Math.ceil(DEFAULT_CAPACITY / _loadFactor));
         }
-        addAll( collection );
+        addAll(collection);
     }
 
 
@@ -144,26 +144,30 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
      *
      * @param array an array of <code>int</code> primitives
      */
-    public TIntHashSet( int[] array ) {
-        this( Math.max( array.length, DEFAULT_CAPACITY ) );
-        addAll( array );
+    public TIntHashSet(int[] array) {
+        this(Math.max(array.length, DEFAULT_CAPACITY));
+        addAll(array);
     }
 
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public TIntIterator iterator() {
-        return new TIntHashIterator( this );
+        return new TIntHashIterator(this);
     }
 
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public int[] toArray() {
-        int[] result = new int[ size() ];
+        int[] result = new int[size()];
         int[] set = _set;
         byte[] states = _states;
 
-        for ( int i = states.length, j = 0; i-- > 0; ) {
-            if ( states[i] == FULL ) {
+        for (int i = states.length, j = 0; i-- > 0; ) {
+            if (states[i] == FULL) {
                 result[j++] = set[i];
             }
         }
@@ -171,55 +175,63 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public int[] toArray( int[] dest ) {
+    /**
+     * {@inheritDoc}
+     */
+    public int[] toArray(int[] dest) {
         int[] set = _set;
         byte[] states = _states;
 
-        for ( int i = states.length, j = 0; i-- > 0; ) {
-            if ( states[i] == FULL ) {
+        for (int i = states.length, j = 0; i-- > 0; ) {
+            if (states[i] == FULL) {
                 dest[j++] = set[i];
             }
         }
 
-        if ( dest.length > _size ) {
+        if (dest.length > _size) {
             dest[_size] = no_entry_value;
         }
         return dest;
     }
 
 
-    /** {@inheritDoc} */
-    public boolean add( int val ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean add(int val) {
         int index = insertKey(val);
 
-        if ( index < 0 ) {
+        if (index < 0) {
             return false;       // already present in set, nothing to add
         }
 
-        postInsertHook( consumeFreeSlot );
+        postInsertHook(consumeFreeSlot);
 
         return true;            // yes, we added something
     }
 
 
-    /** {@inheritDoc} */
-    public boolean remove( int val ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean remove(int val) {
         int index = index(val);
-        if ( index >= 0 ) {
-            removeAt( index );
+        if (index >= 0) {
+            removeAt(index);
             return true;
         }
         return false;
     }
 
 
-    /** {@inheritDoc} */
-    public boolean containsAll( Collection<?> collection ) {
-        for ( Object element : collection ) {
-            if ( element instanceof Integer ) {
-                int c = ( ( Integer ) element ).intValue();
-                if ( ! contains( c ) ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean containsAll(Collection<?> collection) {
+        for (Object element : collection) {
+            if (element instanceof Integer) {
+                int c = ((Integer) element).intValue();
+                if (!contains(c)) {
                     return false;
                 }
             } else {
@@ -231,12 +243,14 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean containsAll( TIntCollection collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean containsAll(TIntCollection collection) {
         TIntIterator iter = collection.iterator();
-        while ( iter.hasNext() ) {
+        while (iter.hasNext()) {
             int element = iter.next();
-            if ( ! contains( element ) ) {
+            if (!contains(element)) {
                 return false;
             }
         }
@@ -244,10 +258,12 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean containsAll( int[] array ) {
-        for ( int i = array.length; i-- > 0; ) {
-            if ( ! contains( array[i] ) ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean containsAll(int[] array) {
+        for (int i = array.length; i-- > 0; ) {
+            if (!contains(array[i])) {
                 return false;
             }
         }
@@ -255,12 +271,14 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean addAll( Collection<? extends Integer> collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean addAll(Collection<? extends Integer> collection) {
         boolean changed = false;
-        for ( Integer element : collection ) {
+        for (Integer element : collection) {
             int e = element.intValue();
-            if ( add( e ) ) {
+            if (add(e)) {
                 changed = true;
             }
         }
@@ -268,13 +286,15 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean addAll( TIntCollection collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean addAll(TIntCollection collection) {
         boolean changed = false;
         TIntIterator iter = collection.iterator();
-        while ( iter.hasNext() ) {
+        while (iter.hasNext()) {
             int element = iter.next();
-            if ( add( element ) ) {
+            if (add(element)) {
                 changed = true;
             }
         }
@@ -282,11 +302,13 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean addAll( int[] array ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean addAll(int[] array) {
         boolean changed = false;
-        for ( int i = array.length; i-- > 0; ) {
-            if ( add( array[i] ) ) {
+        for (int i = array.length; i-- > 0; ) {
+            if (add(array[i])) {
                 changed = true;
             }
         }
@@ -294,48 +316,54 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean retainAll( Collection<?> collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean retainAll(Collection<?> collection) {
         boolean modified = false;
-	    TIntIterator iter = iterator();
-	    while ( iter.hasNext() ) {
-	        if ( ! collection.contains( Integer.valueOf ( iter.next() ) ) ) {
-		        iter.remove();
-		        modified = true;
-	        }
-	    }
-	    return modified;
+        TIntIterator iter = iterator();
+        while (iter.hasNext()) {
+            if (!collection.contains(Integer.valueOf(iter.next()))) {
+                iter.remove();
+                modified = true;
+            }
+        }
+        return modified;
     }
 
 
-    /** {@inheritDoc} */
-    public boolean retainAll( TIntCollection collection ) {
-        if ( this == collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean retainAll(TIntCollection collection) {
+        if (this == collection) {
             return false;
         }
         boolean modified = false;
-	    TIntIterator iter = iterator();
-	    while ( iter.hasNext() ) {
-	        if ( ! collection.contains( iter.next() ) ) {
-		        iter.remove();
-		        modified = true;
-	        }
-	    }
-	    return modified;
+        TIntIterator iter = iterator();
+        while (iter.hasNext()) {
+            if (!collection.contains(iter.next())) {
+                iter.remove();
+                modified = true;
+            }
+        }
+        return modified;
     }
 
 
-    /** {@inheritDoc} */
-    public boolean retainAll( int[] array ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean retainAll(int[] array) {
         boolean changed = false;
-        Arrays.sort( array );
+        Arrays.sort(array);
         int[] set = _set;
         byte[] states = _states;
 
         _autoCompactTemporaryDisable = true;
-        for ( int i = set.length; i-- > 0; ) {
-            if ( states[i] == FULL && ( Arrays.binarySearch( array, set[i] ) < 0) ) {
-                removeAt( i );
+        for (int i = set.length; i-- > 0; ) {
+            if (states[i] == FULL && (Arrays.binarySearch(array, set[i]) < 0)) {
+                removeAt(i);
                 changed = true;
             }
         }
@@ -345,13 +373,15 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean removeAll( Collection<?> collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean removeAll(Collection<?> collection) {
         boolean changed = false;
-        for ( Object element : collection ) {
-            if ( element instanceof Integer ) {
-                int c = ( ( Integer ) element ).intValue();
-                if ( remove( c ) ) {
+        for (Object element : collection) {
+            if (element instanceof Integer) {
+                int c = ((Integer) element).intValue();
+                if (remove(c)) {
                     changed = true;
                 }
             }
@@ -360,13 +390,15 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean removeAll( TIntCollection collection ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean removeAll(TIntCollection collection) {
         boolean changed = false;
         TIntIterator iter = collection.iterator();
-        while ( iter.hasNext() ) {
+        while (iter.hasNext()) {
             int element = iter.next();
-            if ( remove( element ) ) {
+            if (remove(element)) {
                 changed = true;
             }
         }
@@ -374,11 +406,13 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean removeAll( int[] array ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean removeAll(int[] array) {
         boolean changed = false;
-        for ( int i = array.length; i-- > 0; ) {
-            if ( remove(array[i]) ) {
+        for (int i = array.length; i-- > 0; ) {
+            if (remove(array[i])) {
                 changed = true;
             }
         }
@@ -386,31 +420,35 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public void clear() {
         super.clear();
         int[] set = _set;
         byte[] states = _states;
 
-        for ( int i = set.length; i-- > 0; ) {
+        for (int i = set.length; i-- > 0; ) {
             set[i] = no_entry_value;
             states[i] = FREE;
         }
     }
 
 
-    /** {@inheritDoc} */
-    protected void rehash( int newCapacity ) {
+    /**
+     * {@inheritDoc}
+     */
+    protected void rehash(int newCapacity) {
         int oldCapacity = _set.length;
-        
+
         int oldSet[] = _set;
         byte oldStates[] = _states;
 
         _set = new int[newCapacity];
         _states = new byte[newCapacity];
 
-        for ( int i = oldCapacity; i-- > 0; ) {
-            if( oldStates[i] == FULL ) {
+        for (int i = oldCapacity; i-- > 0; ) {
+            if (oldStates[i] == FULL) {
                 int o = oldSet[i];
                 insertKey(o);
             }
@@ -418,18 +456,20 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public boolean equals( Object other ) {
-        if ( ! ( other instanceof TIntSet ) ) {
+    /**
+     * {@inheritDoc}
+     */
+    public boolean equals(Object other) {
+        if (!(other instanceof TIntSet)) {
             return false;
         }
-        TIntSet that = ( TIntSet ) other;
-        if ( that.size() != this.size() ) {
+        TIntSet that = (TIntSet) other;
+        if (that.size() != this.size()) {
             return false;
         }
-        for ( int i = _states.length; i-- > 0; ) {
-            if ( _states[i] == FULL ) {
-                if ( ! that.contains( _set[i] ) ) {
+        for (int i = _states.length; i-- > 0; ) {
+            if (_states[i] == FULL) {
+                if (!that.contains(_set[i])) {
                     return false;
                 }
             }
@@ -438,27 +478,31 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public int hashCode() {
         int hashcode = 0;
-        for ( int i = _states.length; i-- > 0; ) {
-            if ( _states[i] == FULL ) {
-                hashcode += HashFunctions.hash( _set[i] );
+        for (int i = _states.length; i-- > 0; ) {
+            if (_states[i] == FULL) {
+                hashcode += HashFunctions.hash(_set[i]);
             }
         }
         return hashcode;
     }
 
 
-    /** {@inheritDoc} */
+    /**
+     * {@inheritDoc}
+     */
     public String toString() {
-        StringBuilder buffy = new StringBuilder( _size * 2 + 2 );
+        StringBuilder buffy = new StringBuilder(_size * 2 + 2);
         buffy.append("{");
-        for ( int i = _states.length, j = 1; i-- > 0; ) {
-            if ( _states[i] == FULL ) {
-                buffy.append( _set[i] );
-                if ( j++ < _size ) {
-                    buffy.append( "," );
+        for (int i = _states.length, j = 1; i-- > 0; ) {
+            if (_states[i] == FULL) {
+                buffy.append(_set[i]);
+                if (j++ < _size) {
+                    buffy.append(",");
                 }
             }
         }
@@ -469,16 +513,22 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
 
     class TIntHashIterator extends THashPrimitiveIterator implements TIntIterator {
 
-        /** the collection on which the iterator operates */
+        /**
+         * the collection on which the iterator operates
+         */
         private final TIntHash _hash;
 
-        /** {@inheritDoc} */
-        public TIntHashIterator( TIntHash hash ) {
-            super( hash );
+        /**
+         * {@inheritDoc}
+         */
+        public TIntHashIterator(TIntHash hash) {
+            super(hash);
             this._hash = hash;
         }
 
-        /** {@inheritDoc} */
+        /**
+         * {@inheritDoc}
+         */
         public int next() {
             moveToNextIndex();
             return _hash._set[_index];
@@ -486,63 +536,67 @@ public class TIntHashSet extends TIntHash implements TIntSet, Externalizable {
     }
 
 
-    /** {@inheritDoc} */
-    public void writeExternal( ObjectOutput out ) throws IOException {
+    /**
+     * {@inheritDoc}
+     */
+    public void writeExternal(ObjectOutput out) throws IOException {
 
-    	// VERSION
-    	out.writeByte( 1 );
+        // VERSION
+        out.writeByte(1);
 
-    	// SUPER
-    	super.writeExternal( out );
+        // SUPER
+        super.writeExternal(out);
 
-    	// NUMBER OF ENTRIES
-    	out.writeInt( _size );
+        // NUMBER OF ENTRIES
+        out.writeInt(_size);
 
         // LOAD FACTOR -- Added version 1
-        out.writeFloat( _loadFactor );
+        out.writeFloat(_loadFactor);
 
         // NO ENTRY VALUE -- Added version 1
-        out.writeInt( no_entry_value );
+        out.writeInt(no_entry_value);
 
-    	// ENTRIES
-        for ( int i = _states.length; i-- > 0; ) {
-            if ( _states[i] == FULL ) {
-                out.writeInt( _set[i] );
+        // ENTRIES
+        for (int i = _states.length; i-- > 0; ) {
+            if (_states[i] == FULL) {
+                out.writeInt(_set[i]);
             }
         }
     }
 
 
-    /** {@inheritDoc} */
-    public void readExternal( ObjectInput in )
-    	throws IOException, ClassNotFoundException {
+    /**
+     * {@inheritDoc}
+     */
+    public void readExternal(ObjectInput in)
+            throws IOException, ClassNotFoundException {
 
-    	// VERSION
-    	int version = in.readByte();
+        // VERSION
+        int version = in.readByte();
 
         // SUPER
-    	super.readExternal( in );
+        super.readExternal(in);
 
-    	// NUMBER OF ENTRIES
+        // NUMBER OF ENTRIES
         int size = in.readInt();
 
-        if ( version >= 1 ) {
+        if (version >= 1) {
             // LOAD FACTOR
             _loadFactor = in.readFloat();
 
             // NO ENTRY VALUE
             no_entry_value = in.readInt();
             //noinspection RedundantCast
-            if ( no_entry_value != ( int ) 0 ) {
-                Arrays.fill( _set, no_entry_value );
+            if (no_entry_value != (int) 0) {
+                Arrays.fill(_set, no_entry_value);
             }
         }
 
-    	// ENTRIES
-        setUp( size );
-        while ( size-- > 0 ) {
+        // ENTRIES
+        setUp(size);
+        while (size-- > 0) {
             int val = in.readInt();
-            add( val );
+            add(val);
         }
     }
 } // TIntHashSet

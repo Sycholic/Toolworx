@@ -10,9 +10,8 @@ import me.lyneira.MachinaCore.BlockLocation;
 
 /**
  * Represents the rail that the planter moves along.
- * 
+ *
  * @author Lyneira
- * 
  */
 class Rail {
     private final BlockFace direction;
@@ -44,16 +43,17 @@ class Rail {
 
     /**
      * Returns the current tile for planting below the head.
-     * 
+     *
      * @return The block two spaces below the head. If the head was not active
-     *         this will return null.
+     * this will return null.
      */
     final BlockLocation currentTile() {
         return movingRail.currentTile();
     }
-    
+
     /**
      * Attempts to retract the head back toward parking position.
+     *
      * @return True if the head moved, false if there was a collision or.
      */
     final HeadNextResult retractHead() {
@@ -63,32 +63,32 @@ class Rail {
     /**
      * Attempts to move the head to the next tile for planting. If the head has
      * reached the end of the moving rail, the moving rail will advance.
-     * 
+     *
      * @return True if the head reached the next tile for planting, false if
-     *         there was a collision or the rail could not be extended further.
+     * there was a collision or the rail could not be extended further.
      */
     boolean nextTile() {
         if (getRowType() == RailType.SKIP)
             return extend();
         switch (movingRail.nextTile()) {
-        case OK:
-            return true;
-        case RAIL_END:
-            return extend();
-        default:
-            return false;
+            case OK:
+                return true;
+            case RAIL_END:
+                return extend();
+            default:
+                return false;
         }
     }
-    
+
     boolean isHeadMovingBackward() {
         return movingRail.isHeadMovingBackward();
     }
 
     /**
      * Attempts to extend the rail and advance the moving rail.
-     * 
+     *
      * @return True if successful, false if the rail could not be extended or
-     *         there was a collision while moving.
+     * there was a collision while moving.
      */
     private boolean extend() {
         if (rail.size() >= Planter.maxLength)
@@ -106,9 +106,9 @@ class Rail {
 
     /**
      * Attempts to retract the moving rail.
-     * 
+     *
      * @return True if successful, false if there was a collision or the rail
-     *         has reached its base point.
+     * has reached its base point.
      */
     boolean retract() {
         if (rail.size() == 1)
@@ -140,7 +140,7 @@ class Rail {
             }
         }
     }
-    
+
     /**
      * @return True if the rail is currently at a planting row.
      */
@@ -163,7 +163,7 @@ class Rail {
     /**
      * Attempts to detect a planter rail from the given anchor and yaw. If a
      * valid rail could not be detected, returns null.
-     * 
+     *
      * @param anchor
      * @param direction
      * @return The newly detected rail, or null if there is no valid rail.

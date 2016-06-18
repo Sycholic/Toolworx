@@ -11,7 +11,7 @@ import me.lyneira.machinacore.block.BlockVector;
 
 /**
  * Int-based implementation of a Location class.
- * 
+ *
  * @author Lyneira
  */
 public final class BlockLocation {
@@ -22,15 +22,11 @@ public final class BlockLocation {
 
     /**
      * Constructs a new {@link BlockLocation} with the given coordinates
-     * 
-     * @param world
-     *            The world in which this location resides
-     * @param x
-     *            The x-coordinate of this new location
-     * @param y
-     *            The y-coordinate of this new location
-     * @param z
-     *            The z-coordinate of this new location
+     *
+     * @param world The world in which this location resides
+     * @param x     The x-coordinate of this new location
+     * @param y     The y-coordinate of this new location
+     * @param z     The z-coordinate of this new location
      */
     public BlockLocation(final World world, final int x, final int y, final int z) {
         this.world = world;
@@ -42,9 +38,8 @@ public final class BlockLocation {
     /**
      * Constructs a new {@link BlockLocation} with the location of the given
      * {@link Block}
-     * 
-     * @param block
-     *            The {@link Block} to use for the new location
+     *
+     * @param block The {@link Block} to use for the new location
      */
     public BlockLocation(final Block block) {
         world = block.getWorld();
@@ -55,7 +50,7 @@ public final class BlockLocation {
 
     /**
      * Returns the {@link Block} corresponding to this {@link BlockLocation}
-     * 
+     *
      * @return Block
      */
     public final Block getBlock() {
@@ -64,7 +59,7 @@ public final class BlockLocation {
 
     /**
      * Returns the World corresponding to this {@link BlockLocation}
-     * 
+     *
      * @return World
      */
     public final World getWorld() {
@@ -74,7 +69,7 @@ public final class BlockLocation {
     /**
      * Returns true if the block type at this location matches the given
      * Material.
-     * 
+     *
      * @return True if this location's type matches the given material
      */
     public final boolean checkType(final Material material) {
@@ -84,7 +79,7 @@ public final class BlockLocation {
     /**
      * Returns true if the block type at this location matches any of the given
      * Materials.
-     * 
+     *
      * @return True if this location's type matches one the given materials
      */
     public final boolean checkTypes(final Material... materials) {
@@ -102,18 +97,18 @@ public final class BlockLocation {
      */
     public final boolean isEmptyForCollision() {
         switch (world.getBlockAt(x, y, z).getType()) {
-        case AIR:
-        case SNOW:
-        case LONG_GRASS:
-            return true;
-        default:
-            return false;
+            case AIR:
+            case SNOW:
+            case LONG_GRASS:
+                return true;
+            default:
+                return false;
         }
     }
 
     /**
      * Returns the {@link Material} at this {@link BlockLocation}
-     * 
+     *
      * @return The {@link Material} at this location
      */
     public final Material getType() {
@@ -122,7 +117,7 @@ public final class BlockLocation {
 
     /**
      * Returns the Type Id at this {@link BlockLocation}
-     * 
+     *
      * @return The Type Id at this location
      */
     public final int getTypeId() {
@@ -131,9 +126,8 @@ public final class BlockLocation {
 
     /**
      * Sets the Material at this {@link BlockLocation}.
-     * 
-     * @param type
-     *            The Material to set to
+     *
+     * @param type The Material to set to
      */
     public final void setType(final Material type) {
         world.getBlockAt(x, y, z).setType(type);
@@ -141,9 +135,8 @@ public final class BlockLocation {
 
     /**
      * Sets the Material at this {@link BlockLocation}.
-     * 
-     * @param typeId
-     *            The type id to set
+     *
+     * @param typeId The type id to set
      */
     public final void setTypeId(final int typeId) {
         world.getBlockAt(x, y, z).setTypeId(typeId);
@@ -151,9 +144,8 @@ public final class BlockLocation {
 
     /**
      * Sets the data at this {@link BlockLocation}.
-     * 
-     * @param data
-     *            The data to set
+     *
+     * @param data The data to set
      */
     public final void setData(final byte data) {
         world.getBlockAt(x, y, z).setData(data);
@@ -161,11 +153,9 @@ public final class BlockLocation {
 
     /**
      * Sets the type id and data at this {@link BlockLocation}.
-     * 
-     * @param typeId
-     *            The type id to set
-     * @param data
-     *            The data to set
+     *
+     * @param typeId The type id to set
+     * @param data   The data to set
      */
     public final void setTypeIdAndData(final int typeId, final byte data, boolean applyPhysics) {
         world.getBlockAt(x, y, z).setTypeIdAndData(typeId, data, applyPhysics);
@@ -173,7 +163,7 @@ public final class BlockLocation {
 
     /**
      * Returns true if this {@link BlockLocation} contains air.
-     * 
+     *
      * @return True if the {@link BlockLocation} contains air.
      */
     public final boolean isEmpty() {
@@ -190,9 +180,8 @@ public final class BlockLocation {
     /**
      * Gets the {@link BlockLocation} at the given face. This method is equal to
      * getRelative(face, 1)
-     * 
-     * @param face
-     *            Face of this {@link BlockLocation} to return
+     *
+     * @param face Face of this {@link BlockLocation} to return
      * @return New location at the given face
      */
     public final BlockLocation getRelative(final BlockFace face) {
@@ -201,11 +190,9 @@ public final class BlockLocation {
 
     /**
      * Gets the {@link BlockLocation} at the given face
-     * 
-     * @param face
-     *            Face of this {@link BlockLocation} to return
-     * @param distance
-     *            Distance to get the block at
+     *
+     * @param face     Face of this {@link BlockLocation} to return
+     * @param distance Distance to get the block at
      * @return New location at the given face
      */
     public final BlockLocation getRelative(final BlockFace face, final int distance) {
@@ -214,9 +201,8 @@ public final class BlockLocation {
 
     /**
      * Gets the {@link BlockLocation} at the given {@link BlockVector}.
-     * 
-     * @param blockVector
-     *            Face of this {@link BlockLocation} to return
+     *
+     * @param blockVector Face of this {@link BlockLocation} to return
      * @return New location at the given vector
      */
     public final BlockLocation getRelative(final BlockVector blockVector) {
@@ -226,11 +212,9 @@ public final class BlockLocation {
     /**
      * Gets the {@link BlockLocation} at the given {@link BlockVector} at the
      * given distance.
-     * 
-     * @param blockVector
-     *            Face of this {@link BlockLocation} to return
-     * @param distance
-     *            Number of times to apply this vector
+     *
+     * @param blockVector Face of this {@link BlockLocation} to return
+     * @param distance    Number of times to apply this vector
      * @return New location at the given vector
      */
     public final BlockLocation getRelative(final BlockVector blockVector, final int distance) {
@@ -240,9 +224,8 @@ public final class BlockLocation {
     /**
      * Substract the given {@link BlockLocation} from this one. This returns a
      * vector pointing from 'other' to this BlockLocation.
-     * 
-     * @param other
-     *            The {@link BlockLocation} to subtract
+     *
+     * @param other The {@link BlockLocation} to subtract
      * @return A new {@link BlockVector} pointing from 'other' to this location.
      */
     public final BlockVector subtract(final BlockLocation other) {
@@ -251,9 +234,8 @@ public final class BlockLocation {
 
     /**
      * Drops the given {@link ItemStack} at this location
-     * 
-     * @param item
-     *            The item stack to drop
+     *
+     * @param item The item stack to drop
      */
     public final void dropItem(final ItemStack item) {
         world.dropItem(new Location(world, x + 0.5, y + 0.5, z + 0.5), item);

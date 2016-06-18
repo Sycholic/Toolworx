@@ -23,7 +23,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Component that will send items from its container through a pipeline.
- * 
+ *
  * @author Lyneira
  */
 public abstract class ItemRelay extends Component implements PipelineEndpoint {
@@ -89,7 +89,7 @@ public abstract class ItemRelay extends Component implements PipelineEndpoint {
     protected interface State {
         /**
          * Runs this state and returns the next state.
-         * 
+         *
          * @return The new state, or null if it should end.
          */
         State run(ItemRelay relay);

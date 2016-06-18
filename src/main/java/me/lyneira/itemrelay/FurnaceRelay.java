@@ -46,11 +46,11 @@ public class FurnaceRelay extends ItemRelay {
 
     private boolean isFurnace(BlockLocation location) {
         switch (location.getType()) {
-        case FURNACE:
-        case BURNING_FURNACE:
-            return true;
-        default:
-            return false;
+            case FURNACE:
+            case BURNING_FURNACE:
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -116,13 +116,13 @@ public class FurnaceRelay extends ItemRelay {
     }
 
     protected boolean handle(Inventory inventory) {
-        FurnaceEndpoint[] sorted = furnaces.toArray(new FurnaceEndpoint [0]);
+        FurnaceEndpoint[] sorted = furnaces.toArray(new FurnaceEndpoint[0]);
         Arrays.sort(sorted);
         for (FurnaceEndpoint i : sorted) {
             if (i.handle(inventory)) {
                 age = 0;
                 return true;
-            }    
+            }
         }
         return false;
     }

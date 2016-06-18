@@ -10,10 +10,10 @@ import org.bukkit.plugin.java.JavaPlugin;
  * Template class for quick development of any plugin that interacts with
  * MachinaCraft. Provides logging functionality and a config retrieval method
  * that takes care of saving the default config if not already there.
- * 
+ * <p>
  * If you extend this class instead of MachinaPlugin, you are expected to call
  * super.onEnable() and super.onDisable() if you override them.
- * 
+ *
  * @author Lyneira
  */
 public abstract class MachinaCraftPlugin extends JavaPlugin {
@@ -54,7 +54,7 @@ public abstract class MachinaCraftPlugin extends JavaPlugin {
     public void logSevere(String message) {
         log.severe(message);
     }
-    
+
     public void logException(String message, Throwable ex) {
         log.log(Level.SEVERE, message, ex);
     }

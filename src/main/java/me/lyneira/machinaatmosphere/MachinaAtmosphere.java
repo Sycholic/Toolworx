@@ -16,9 +16,9 @@ public class MachinaAtmosphere extends JavaPlugin {
     public void onEnable() {
         PluginDescriptionFile pdf = getDescription();
         log.info(pdf.getName() + " version " + pdf.getVersion() + " is now enabled.");
-        
+
         blueprint = new Blueprint();
-        
+
         machinaCore = (MachinaCore) getServer().getPluginManager().getPlugin("MachinaCore");
         machinaCore.registerBlueprint(blueprint);
     }
@@ -30,7 +30,7 @@ public class MachinaAtmosphere extends JavaPlugin {
 
     /**
      * Sends an informational message to the server log.
-     * 
+     *
      * @param message
      */
     public static void log(String message) {

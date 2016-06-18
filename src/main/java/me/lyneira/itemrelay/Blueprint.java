@@ -18,7 +18,7 @@ import me.lyneira.machinafactory.ComponentDetectException;
 
 /**
  * Blueprint for the {@link ItemRelay}.
- * 
+ *
  * @author Lyneira
  */
 public class Blueprint implements MachinaBlueprint {
@@ -39,24 +39,24 @@ public class Blueprint implements MachinaBlueprint {
      */
     public Blueprint() {
         anchorMaterial = ComponentBlueprint.coreMaterial();
-        BlueprintBlock[] blueprintBaseChest = { new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
+        BlueprintBlock[] blueprintBaseChest = {new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
                 chest = new BlueprintBlock(new BlockVector(-1, 0, 0), Material.CHEST, true), //
         };
-        BlueprintBlock[] blueprintBaseDispenser = { new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
+        BlueprintBlock[] blueprintBaseDispenser = {new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
                 dispenser = new BlueprintBlock(new BlockVector(-1, 0, 0), Material.DISPENSER, true), //
         };
-        BlueprintBlock[] blueprintBaseFurnace = { new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
-        // We leave out the furnace from the blueprint and verify it manually.
+        BlueprintBlock[] blueprintBaseFurnace = {new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
+                // We leave out the furnace from the blueprint and verify it manually.
         };
-        BlueprintBlock[] blueprintBaseBrewing = { new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
+        BlueprintBlock[] blueprintBaseBrewing = {new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
                 new BlueprintBlock(new BlockVector(-1, 0, 0), ComponentBlueprint.pipelineMaterial(), true), //
                 brewingStand = new BlueprintBlock(new BlockVector(-1, 1, 0), Material.BREWING_STAND, true), //
         };
-        BlueprintBlock[] blueprintInactive = { new BlueprintBlock(new BlockVector(1, 1, 0), Material.IRON_FENCE, false), //
+        BlueprintBlock[] blueprintInactive = {new BlueprintBlock(new BlockVector(1, 1, 0), Material.IRON_FENCE, false), //
                 new BlueprintBlock(new BlockVector(1, 0, 0), ComponentBlueprint.pipelineMaterial(), false), //
         };
 
-        BlueprintBlock[] blueprintActive = { new BlueprintBlock(new BlockVector(1, 0, 0), Material.IRON_FENCE, false), //
+        BlueprintBlock[] blueprintActive = {new BlueprintBlock(new BlockVector(1, 0, 0), Material.IRON_FENCE, false), //
                 sender = new BlueprintBlock(new BlockVector(2, 0, 0), ComponentBlueprint.pipelineMaterial(), false), //
         };
         blueprintChest = new ComponentBlueprint(blueprintBaseChest, blueprintInactive, blueprintActive);
@@ -74,19 +74,20 @@ public class Blueprint implements MachinaBlueprint {
 
         BlockLocation container = null;
         Material containerMaterial = null;
-        ROTATIONS: for (BlockRotation i : BlockRotation.values()) {
+        ROTATIONS:
+        for (BlockRotation i : BlockRotation.values()) {
             container = anchor.getRelative(i.getYawFace());
 
             containerMaterial = container.getType();
             switch (containerMaterial) {
-            case CHEST:
-            case DISPENSER:
-            case FURNACE:
-            case BURNING_FURNACE:
-                yaw = i.getOpposite();
-                break ROTATIONS;
-            default:
-                break;
+                case CHEST:
+                case DISPENSER:
+                case FURNACE:
+                case BURNING_FURNACE:
+                    yaw = i.getOpposite();
+                    break ROTATIONS;
+                default:
+                    break;
             }
             // Brewing stand breaks the mold so detect it here and set the
             // container material properly.
@@ -111,17 +112,17 @@ public class Blueprint implements MachinaBlueprint {
 
         try {
             switch (containerMaterial) {
-            case CHEST:
-                return new ChestRelay(this, anchor, yaw, player);
-            case DISPENSER:
-                return new DispenserRelay(this, anchor, yaw, player);
-            case FURNACE:
-            case BURNING_FURNACE:
-                return new FurnaceRelay(this, anchor, yaw, player);
-            case BREWING_STAND:
-                return new BrewingRelay(this, anchor, yaw, player);
-            default:
-                break;
+                case CHEST:
+                    return new ChestRelay(this, anchor, yaw, player);
+                case DISPENSER:
+                    return new DispenserRelay(this, anchor, yaw, player);
+                case FURNACE:
+                case BURNING_FURNACE:
+                    return new FurnaceRelay(this, anchor, yaw, player);
+                case BREWING_STAND:
+                    return new BrewingRelay(this, anchor, yaw, player);
+                default:
+                    break;
             }
         } catch (ComponentDetectException e) {
         } catch (ComponentActivateException e) {

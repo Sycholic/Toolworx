@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Value object representing a transaction for executing a recipe.
- * 
+ *
  * @author Lyneira
  */
 class Transaction {

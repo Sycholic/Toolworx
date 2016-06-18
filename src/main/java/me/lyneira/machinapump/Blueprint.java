@@ -13,7 +13,7 @@ import me.lyneira.machinacore.machina.MachinaBlueprint;
 
 /**
  * MachinaBlueprint representing a Pump blueprint
- * 
+ *
  * @author Lyneira
  */
 final class Blueprint implements MachinaBlueprint {

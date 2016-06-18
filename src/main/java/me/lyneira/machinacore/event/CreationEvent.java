@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 /**
  * Called when a machina is first created by a player.
- * 
+ *
  * @author Lyneira
  */
 public class CreationEvent extends Event {
@@ -18,7 +18,7 @@ public class CreationEvent extends Event {
     /**
      * Returns the player that created the machina. May be null if it was
      * created by another plugin.
-     * 
+     *
      * @return The player that created the machina, or null if none
      */
     public Player getPlayer() {

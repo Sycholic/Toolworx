@@ -17,7 +17,7 @@ i
 
 /**
  * Represents blueprint data of a single module in a {@link Movable} machina.
- * 
+ *
  * @author Lyneira
  */
 class BlueprintModule {
@@ -29,9 +29,8 @@ class BlueprintModule {
 
     /**
      * Constructs a {@link BlueprintModule} from the given Blueprint
-     * 
-     * @param blueprintEast
-     *            The blueprint to use
+     *
+     * @param blueprintEast The blueprint to use
      */
     BlueprintModule(final ModuleFactory blueprintEast) {
         List<BlueprintBlock> blueprintFinal = blueprintEast.getBlueprintFinal();
@@ -53,9 +52,8 @@ class BlueprintModule {
 
     /**
      * Detects whether all non-key blocks are present in relation to the anchor.
-     * 
-     * @param anchor
-     *            {@link BlockLocation} to detect at
+     *
+     * @param anchor {@link BlockLocation} to detect at
      * @return True if the non-key blocks are present.
      */
     boolean detectOther(final BlockLocation anchor, final BlockRotation yaw) {
@@ -72,9 +70,8 @@ class BlueprintModule {
 
     /**
      * Returns an array of bytes containing the block data for this blueprint.
-     * 
-     * @param anchor
-     *            The anchor for which to grab data from the blocks
+     *
+     * @param anchor The anchor for which to grab data from the blocks
      * @return An array of bytes of block data
      */
     byte[] getBlockData(final BlockLocation anchor, final BlockRotation yaw) {
@@ -90,11 +87,9 @@ class BlueprintModule {
     /**
      * Sets the data for the blocks around anchor using the given data byte
      * array.
-     * 
-     * @param anchor
-     *            The anchor for which to set data
-     * @param data
-     *            The byte array to use
+     *
+     * @param anchor The anchor for which to set data
+     * @param data   The byte array to use
      */
     void setBlockData(final BlockLocation anchor, final byte[] data, final BlockRotation yaw) {
         BlockVector[] vectors = blueprintVectors.get(yaw);
@@ -108,9 +103,8 @@ class BlueprintModule {
      * Returns a {@link List} of {@link ItemStack} arrays grabbed from the
      * inventories in this blueprint. The inventories are cleared in the
      * process.
-     * 
-     * @param anchor
-     *            The anchor for which to grab inventory from the blocks
+     *
+     * @param anchor The anchor for which to grab inventory from the blocks
      * @return A {@link List} of {@link ItemStack} arrays
      */
     ItemStack[][] getBlockInventories(final BlockLocation anchor, final BlockRotation yaw) {
@@ -128,11 +122,9 @@ class BlueprintModule {
     /**
      * Sets the inventory for the blocks around the anchor using the given array
      * of inventories
-     * 
-     * @param anchor
-     *            The anchor for which to set inventory
-     * @param inventories
-     *            The inventory array to use
+     *
+     * @param anchor      The anchor for which to set inventory
+     * @param inventories The inventory array to use
      */
     void setBlockInventories(final BlockLocation anchor, final ItemStack[][] inventories, final BlockRotation yaw) {
         BlockVector[] vectors = blueprintVectors.get(yaw);
@@ -146,7 +138,7 @@ class BlueprintModule {
     /**
      * Returns an array of indices whose blocks need their data copied during a
      * move.
-     * 
+     *
      * @return An array of indices for data blocks
      */
     private int[] calculateDataIndices() {
@@ -174,7 +166,7 @@ class BlueprintModule {
     /**
      * Returns an array of indices whose blocks need their inventory copied
      * during a move.
-     * 
+     *
      * @return An array of indices for inventory blocks
      */
     private int[] calculateInventoryIndices() {

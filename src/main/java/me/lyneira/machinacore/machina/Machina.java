@@ -13,24 +13,23 @@ import me.lyneira.machinacore.event.VerifyEvent;
 import me.lyneira.machinacore.machina.model.MachinaModel;
 
 /**
- * 
  * Class representing any machina. A Machina is a collection of blocks that
  * constitutes a machine in the game world. This machine can move, change shape
  * or take other actions controlled by its plugin.
  * <p/>
- * 
+ * <p>
  * A Machina consists of a model with a tree structure. The model represents the
  * machina as it exists in the game world right now and cannot be modified
  * directly. Modifications will be held in a shadow copy of the relevant portion
  * of the model which the controller can edit. The modified model can be
  * manifested by updating the machina.
  * <p/>
- * 
+ * <p>
  * A machina keeps track of the blocks that it is made up of in two ways: The
  * machina-centric model and the world-centric instance. The model can be
  * modified by the plugin controlling this machina, while the instance is
  * managed by the machina's universe.
- * 
+ *
  * @author Lyneira
  */
 public final class Machina {
@@ -53,9 +52,9 @@ public final class Machina {
      * and return true if successful. If successful, the modifications to the
      * model will write through to both the world and the current model.
      * Otherwise, the modifications will be cancelled.
-     * 
+     *
      * @return True if the update was successfully applied, false if there was a
-     *         collision.
+     * collision.
      */
     public boolean update() {
         if (universe.update(this)) {
@@ -71,9 +70,8 @@ public final class Machina {
      * Causes a {@link HeartBeatEvent} to occur after the given delay in server
      * ticks. If a delay < 1 is specified, no event will occur and if an event
      * was scheduled earlier, it will be cancelled.
-     * 
-     * @param delay
-     *            The delay for the next heartbeat
+     *
+     * @param delay The delay for the next heartbeat
      */
     public void setHeartBeat(long delay) {
         if (heartBeat != null) {
@@ -98,9 +96,8 @@ public final class Machina {
      * Calls the given event on this machina's controller. If the controller has
      * an {@link EventHandler} set up for the event, it will be able to react to
      * it.
-     * 
-     * @param event
-     *            The event to call
+     *
+     * @param event The event to call
      */
     public void callEvent(Event event) {
         if (verify()) {
@@ -111,11 +108,9 @@ public final class Machina {
     /**
      * Schedules an event to be called on this machina's controller after a
      * delay. The minimum delay is always 1 server tick.
-     * 
-     * @param event
-     *            The event to call
-     * @param delay
-     *            The number of server ticks to wait
+     *
+     * @param event The event to call
+     * @param delay The number of server ticks to wait
      * @return Bukkit task representing the scheduled event
      */
     public BukkitTask scheduleEvent(final Event event, long delay) {
@@ -168,7 +163,7 @@ public final class Machina {
     /**
      * Returns the array containing all the machina's blocks in absolute
      * positions. The array has no null elements.
-     * 
+     *
      * @return Array of the machina's blocks
      */
     MachinaBlock[] instance() {

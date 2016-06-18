@@ -163,7 +163,7 @@ public class THashSet<E> extends TObjectHash<E>
         _set = new Object[newCapacity];
         Arrays.fill(_set, FREE);
 
-        for (int i = oldCapacity; i-- > 0;) {
+        for (int i = oldCapacity; i-- > 0; ) {
             E o = (E) oldSet[i];
             if (o != FREE && o != REMOVED) {
                 int index = insertKey(o);
@@ -266,7 +266,7 @@ public class THashSet<E> extends TObjectHash<E>
      */
     @SuppressWarnings("rawtypes")
     public boolean containsAll(Collection<?> collection) {
-        for (Iterator i = collection.iterator(); i.hasNext();) {
+        for (Iterator i = collection.iterator(); i.hasNext(); ) {
             if (!contains(i.next())) {
                 return false;
             }
@@ -376,7 +376,7 @@ public class THashSet<E> extends TObjectHash<E>
     }
 
     protected void writeEntries(ObjectOutput out) throws IOException {
-        for (int i = _set.length; i-- > 0;) {
+        for (int i = _set.length; i-- > 0; ) {
             if (_set[i] != REMOVED && _set[i] != FREE) {
                 out.writeObject(_set[i]);
             }

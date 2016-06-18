@@ -17,16 +17,16 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Abstract builder that drops blocks under its heads.
- *  
+ *
  * @author Lyneira
  */
 public abstract class BlockDropperBuilder extends Builder {
-    
+
     /**
      * All the heads in this builder.
      */
     protected final List<BlueprintBlock> heads = new ArrayList<BlueprintBlock>(3);
-    
+
     /**
      * The maximum depth to which the Builder will drop blocks.
      */

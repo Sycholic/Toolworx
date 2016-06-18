@@ -3,6 +3,7 @@ package me.lyneira.machinaplanter;
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
+
 import me.lyneira.machinacore.BlockLocation;
 import me.lyneira.machinacore.Fuel;
 import me.lyneira.machinacore.HeartBeatEvent;
@@ -70,7 +71,7 @@ public class Planter implements Machina {
                 && lever.checkType(Material.LEVER) //
                 && base.checkType(Blueprint.baseMaterial) //
                 && chest.checkType(Material.CHEST) //
-        && furnace.checkTypes(Material.BURNING_FURNACE)))
+                && furnace.checkTypes(Material.BURNING_FURNACE)))
             return false;
 
         return rail.verify();
@@ -100,7 +101,7 @@ public class Planter implements Machina {
 
     /**
      * Runs all the necessary planter actions for the current tile.
-     * 
+     *
      * @throws NoEnergyException
      */
     private void operateOnTile() throws NoEnergyException {
@@ -120,40 +121,39 @@ public class Planter implements Machina {
 
     /**
      * Attempts to till the current tile if appropriate.
-     * 
+     *
      * @param tile
      * @param crop
      * @throws NoEnergyException
      */
     private void till(BlockLocation tile, BlockLocation crop) throws NoEnergyException {
         switch (tile.getType()) {
-        case DIRT:
-        case GRASS:
-            switch (crop.getType()) {
-            case SNOW:
-            case LONG_GRASS:
-                crop.setEmpty();
-            case AIR:
-                useEnergy(plantingCost);
-                try {
-                    useTool();
-                    tile.setType(Material.SOIL);
-                } catch (NoToolException e) {
+            case DIRT:
+            case GRASS:
+                switch (crop.getType()) {
+                    case SNOW:
+                    case LONG_GRASS:
+                        crop.setEmpty();
+                    case AIR:
+                        useEnergy(plantingCost);
+                        try {
+                            useTool();
+                            tile.setType(Material.SOIL);
+                        } catch (NoToolException e) {
+                        }
+                    default:
+                        break;
                 }
+                break;
             default:
                 break;
-            }
-            break;
-        default:
-            break;
         }
     }
 
     /**
      * Attempts to harvest the current crop block.
-     * 
-     * @param crop
-     *            The block being harvested
+     *
+     * @param crop The block being harvested
      * @throws NoEnergyException
      */
     private void harvest(BlockLocation crop) throws NoEnergyException {
@@ -170,7 +170,7 @@ public class Planter implements Machina {
                  */
                 InventoryManager manager = new InventoryManager(chestInventory());
                 if (manager.findItemTypeAndData(Material.INK_SACK.getId(), (byte) 15)
-                // Attempt to use bonemeal if found
+                        // Attempt to use bonemeal if found
                         && handler.useBonemeal(crop)) {
                     manager.decrement();
                     canHarvest = handler.isRipe(crop);
@@ -202,11 +202,9 @@ public class Planter implements Machina {
 
     /**
      * Attempts to plant a crop on the current block.
-     * 
-     * @param tile
-     *            The ground tile being planted in
-     * @param crop
-     *            The block above the tile
+     *
+     * @param tile The ground tile being planted in
+     * @param crop The block above the tile
      * @throws NoEnergyException
      */
     private void plant(BlockLocation tile, BlockLocation crop) throws NoEnergyException {
@@ -252,9 +250,8 @@ public class Planter implements Machina {
 
     /**
      * Uses the given amount of energy and returns true if successful.
-     * 
-     * @param energy
-     *            The amount of energy needed for the next action
+     *
+     * @param energy The amount of energy needed for the next action
      * @return True if enough energy could be used up
      */
     protected void useEnergy(final int energy) throws NoEnergyException {
@@ -346,12 +343,12 @@ public class Planter implements Machina {
         @Override
         public State run() {
             switch (rail.retractHead()) {
-            case OK:
-                return this;
-            case RAIL_END:
-                return parkMovingRail.run();
-            default:
-                return null;
+                case OK:
+                    return this;
+                case RAIL_END:
+                    return parkMovingRail.run();
+                default:
+                    return null;
             }
         }
     };
@@ -375,7 +372,7 @@ public class Planter implements Machina {
 
     /**
      * Allows for adding crop types for the planter to handle.
-     * 
+     *
      * @param handler
      */
     public static void addCrop(CropHandler handler) {
@@ -407,21 +404,21 @@ public class Planter implements Machina {
             if (item == null)
                 return false;
             switch (item.getType()) {
-            case DIAMOND_HOE:
-            case GOLD_HOE:
-            case IRON_HOE:
-            case STONE_HOE:
-            case WOOD_HOE:
-                return true;
-            default:
-                return false;
+                case DIAMOND_HOE:
+                case GOLD_HOE:
+                case IRON_HOE:
+                case STONE_HOE:
+                case WOOD_HOE:
+                    return true;
+                default:
+                    return false;
             }
         }
     };
 
     /**
      * Loads the given configuration.
-     * 
+     *
      * @param configuration
      */
     static void loadConfiguration(ConfigurationSection configuration) {

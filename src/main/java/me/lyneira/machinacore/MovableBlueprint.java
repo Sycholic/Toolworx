@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Abstract class for the blueprint of a {@link Movable} machina.
- * 
+ *
  * @author Lyneira
  */
 public abstract class MovableBlueprint implements MachinaBlueprint {
@@ -16,7 +16,7 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
     /**
      * Constructs a new MovableBlueprint using the given
      * {@link ModuleFactory} List.
-     * 
+     *
      * @param blueprint
      */
     protected MovableBlueprint(final BlueprintFactory blueprint) {
@@ -30,13 +30,10 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
     /**
      * Detects whether all non-key blocks for the given rotation are present in
      * relation to the anchor.
-     * 
-     * @param anchor
-     *            {@link BlockLocation} to detect at
-     * @param yaw
-     *            {@link BlockRotation} of the blueprint to detect for.
-     * @param module
-     *            The module to detect.
+     *
+     * @param anchor {@link BlockLocation} to detect at
+     * @param yaw    {@link BlockRotation} of the blueprint to detect for.
+     * @param module The module to detect.
      * @return True if the non-key blocks are present.
      */
     public boolean detectOther(final BlockLocation anchor, final BlockRotation yaw, final int module) {
@@ -45,13 +42,10 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
 
     /**
      * Returns an array of bytes containing the block data for this blueprint.
-     * 
-     * @param anchor
-     *            The anchor for which to grab data from the blocks
-     * @param yaw
-     *            {@link BlockRotation} of the blueprint
-     * @param module
-     *            The module to get data from.
+     *
+     * @param anchor The anchor for which to grab data from the blocks
+     * @param yaw    {@link BlockRotation} of the blueprint
+     * @param module The module to get data from.
      * @return An array of bytes of block data
      */
     public byte[] getBlockData(final BlockLocation anchor, final BlockRotation yaw, final int module) {
@@ -61,15 +55,11 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
     /**
      * Sets the data for the blocks around anchor using the given data byte
      * array.
-     * 
-     * @param anchor
-     *            The anchor for which to set data
-     * @param data
-     *            The byte array to use
-     * @param yaw
-     *            {@link BlockRotation} of the blueprint
-     * @param module
-     *            The module to set data for.
+     *
+     * @param anchor The anchor for which to set data
+     * @param data   The byte array to use
+     * @param yaw    {@link BlockRotation} of the blueprint
+     * @param module The module to set data for.
      */
     public void setBlockData(final BlockLocation anchor, final byte[] data, final BlockRotation yaw, final int module) {
         modules.get(module).setBlockData(anchor, data, yaw);
@@ -79,13 +69,10 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
      * Returns a {@link List} of {@link ItemStack} arrays grabbed from the
      * inventories in this blueprint. The inventories are cleared in the
      * process.
-     * 
-     * @param anchor
-     *            The anchor for which to grab inventory from the blocks
-     * @param yaw
-     *            {@link BlockRotation} of the blueprint
-     * @param module
-     *            The module to grab inventory for.
+     *
+     * @param anchor The anchor for which to grab inventory from the blocks
+     * @param yaw    {@link BlockRotation} of the blueprint
+     * @param module The module to grab inventory for.
      * @return A {@link List} of {@link ItemStack} arrays
      */
     public ItemStack[][] getBlockInventories(final BlockLocation anchor, final BlockRotation yaw, final int module) {
@@ -95,15 +82,11 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
     /**
      * Sets the inventory for the blocks around the anchor using the given array
      * of inventories
-     * 
-     * @param anchor
-     *            The anchor for which to set inventory
-     * @param inventories
-     *            The inventory array to use
-     * @param yaw
-     *            {@link BlockRotation} of the blueprint
-     * @param module
-     *            The module to set inventory for.
+     *
+     * @param anchor      The anchor for which to set inventory
+     * @param inventories The inventory array to use
+     * @param yaw         {@link BlockRotation} of the blueprint
+     * @param module      The module to set inventory for.
      */
     protected void setBlockInventories(final BlockLocation anchor, final ItemStack[][] inventories, final BlockRotation yaw, final int module) {
         modules.get(module).setBlockInventories(anchor, inventories, yaw);
@@ -112,9 +95,8 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
     /**
      * Unifies the {@link BlueprintBlock}s for the given moduleIndices into a
      * new array and returns it.
-     * 
-     * @param moduleIndices
-     *            The indices of the modules to unify
+     *
+     * @param moduleIndices The indices of the modules to unify
      * @return A new array of {@link BlueprintBlock}s
      */
     final BlueprintBlock[] unifyBlueprint(final List<Integer> moduleIndices) {
@@ -137,13 +119,10 @@ public abstract class MovableBlueprint implements MachinaBlueprint {
     /**
      * Unifies the {@link BlockVector}s for the given yaw and moduleIndices and
      * assigns it to the given {@link BlockVector} array
-     * 
-     * @param moduleIndices
-     *            The indices of the modules to unify.
-     * @param yaw
-     *            The yaw of the vectors to unify
-     * @param vectors
-     *            The array to place the vectors in
+     *
+     * @param moduleIndices The indices of the modules to unify.
+     * @param yaw           The yaw of the vectors to unify
+     * @param vectors       The array to place the vectors in
      * @return A new array of {@link BlockVector}s
      */
     final void unifyVectors(final List<Integer> moduleIndices, final BlockRotation yaw, BlockVector[] vectors) {

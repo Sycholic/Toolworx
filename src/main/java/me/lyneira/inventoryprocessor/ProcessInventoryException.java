@@ -1,10 +1,9 @@
 package me.lyneira.inventoryprocessor;
 
 
-
 /**
  * Thrown when the {@link InventoryProcessor} cannot continue.
- * 
+ *
  * @author Lyneira
  */
 public class ProcessInventoryException extends Exception {

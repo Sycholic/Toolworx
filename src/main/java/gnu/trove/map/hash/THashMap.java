@@ -138,7 +138,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
      * @param key   an <code>Object</code> value
      * @param value an <code>Object</code> value
      * @return the previous value associated with <tt>key</tt>,
-     *         or {@code null} if none was found.
+     * or {@code null} if none was found.
      */
     public V put(K key, V value) {
         // insertKey() inserts the key if a slot if found and returns the index
@@ -154,7 +154,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
      * @param key   an <code>Object</code> value
      * @param value an <code>Object</code> value
      * @return the previous value associated with <tt>key</tt>,
-     *         or {@code null} if none was found.
+     * or {@code null} if none was found.
      */
     public V putIfAbsent(K key, V value) {
         // insertKey() inserts the key if a slot if found and returns the index
@@ -276,7 +276,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
      *
      * @param procedure a <code>TObjectProcedure</code> value
      * @return false if the loop over the keys terminated because
-     *         the procedure returned false for some key.
+     * the procedure returned false for some key.
      */
     public boolean forEachKey(TObjectProcedure<? super K> procedure) {
         return forEach(procedure);
@@ -288,12 +288,12 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
      *
      * @param procedure a <code>TObjectProcedure</code> value
      * @return false if the loop over the values terminated because
-     *         the procedure returned false for some value.
+     * the procedure returned false for some value.
      */
     public boolean forEachValue(TObjectProcedure<? super V> procedure) {
         V[] values = _values;
         Object[] set = _set;
-        for (int i = values.length; i-- > 0;) {
+        for (int i = values.length; i-- > 0; ) {
             if (set[i] != FREE
                     && set[i] != REMOVED
                     && !procedure.execute(values[i])) {
@@ -310,13 +310,13 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
      *
      * @param procedure a <code>TObjectObjectProcedure</code> value
      * @return false if the loop over the entries terminated because
-     *         the procedure returned false for some entry.
+     * the procedure returned false for some entry.
      */
     @SuppressWarnings({"unchecked"})
     public boolean forEachEntry(TObjectObjectProcedure<? super K, ? super V> procedure) {
         Object[] keys = _set;
         V[] values = _values;
-        for (int i = keys.length; i-- > 0;) {
+        for (int i = keys.length; i-- > 0; ) {
             if (keys[i] != FREE
                     && keys[i] != REMOVED
                     && !procedure.execute((K) keys[i], values[i])) {
@@ -343,7 +343,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
         // Temporarily disable compaction. This is a fix for bug #1738760
         tempDisableAutoCompaction();
         try {
-            for (int i = keys.length; i-- > 0;) {
+            for (int i = keys.length; i-- > 0; ) {
                 if (keys[i] != FREE
                         && keys[i] != REMOVED
                         && !procedure.execute((K) keys[i], values[i])) {
@@ -367,7 +367,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
     public void transformValues(TObjectFunction<V, V> function) {
         V[] values = _values;
         Object[] set = _set;
-        for (int i = values.length; i-- > 0;) {
+        for (int i = values.length; i-- > 0; ) {
             if (set[i] != FREE && set[i] != REMOVED) {
                 values[i] = function.execute(values[i]);
             }
@@ -391,7 +391,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
         Arrays.fill(_set, FREE);
         _values = (V[]) new Object[newCapacity];
 
-        for (int i = oldCapacity; i-- > 0;) {
+        for (int i = oldCapacity; i-- > 0; ) {
             Object o = oldKeys[i];
 
             if (o == FREE || o == REMOVED) continue;
@@ -506,14 +506,14 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
         // special case null values so that we don't have to
         // perform null checks before every call to equals()
         if (null == val) {
-            for (int i = vals.length; i-- > 0;) {
+            for (int i = vals.length; i-- > 0; ) {
                 if ((set[i] != FREE && set[i] != REMOVED) &&
                         val == vals[i]) {
                     return true;
                 }
             }
         } else {
-            for (int i = vals.length; i-- > 0;) {
+            for (int i = vals.length; i-- > 0; ) {
                 if ((set[i] != FREE && set[i] != REMOVED) &&
                         (val == vals[i] || equals(val, vals[i]))) {
                     return true;
@@ -574,7 +574,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
             Object[] values = _values;
             Object[] set = _set;
 
-            for (int i = values.length; i-- > 0;) {
+            for (int i = values.length; i-- > 0; ) {
                 if ((set[i] != FREE && set[i] != REMOVED) &&
                         value == values[i] ||
                         (null != values[i] && THashMap.this.equals(values[i], value))) {
@@ -774,7 +774,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
 
             StringBuilder sb = new StringBuilder();
             sb.append('{');
-            for (; ;) {
+            for (; ; ) {
                 E e = i.next();
                 sb.append(e == this ? "(this Collection)" : e);
                 if (!i.hasNext()) return sb.append('}').toString();
@@ -875,7 +875,7 @@ public class THashMap<K, V> extends TObjectHash<K> implements TMap<K, V>, Extern
         out.writeInt(_size);
 
         // ENTRIES
-        for (int i = _set.length; i-- > 0;) {
+        for (int i = _set.length; i-- > 0; ) {
             if (_set[i] != REMOVED && _set[i] != FREE) {
                 out.writeObject(_set[i]);
                 out.writeObject(_values[i]);

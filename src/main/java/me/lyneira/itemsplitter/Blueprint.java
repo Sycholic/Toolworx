@@ -26,18 +26,18 @@ public class Blueprint implements MachinaBlueprint {
 
     public Blueprint() {
         anchorMaterial = ComponentBlueprint.coreMaterial();
-        BlueprintBlock[] blueprintBase = { new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
+        BlueprintBlock[] blueprintBase = {new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
                 filterRight = new BlueprintBlock(new BlockVector(1, 0, 1), splitterMaterial, false), //
                 new BlueprintBlock(new BlockVector(1, 0, 0), splitterMaterial, true), //
                 filterLeft = new BlueprintBlock(new BlockVector(1, 0, -1), splitterMaterial, false), //
         };
-        BlueprintBlock[] blueprintInactive = { new BlueprintBlock(new BlockVector(2, 1, 1), Material.IRON_FENCE, false), //
+        BlueprintBlock[] blueprintInactive = {new BlueprintBlock(new BlockVector(2, 1, 1), Material.IRON_FENCE, false), //
                 new BlueprintBlock(new BlockVector(2, 0, 1), ComponentBlueprint.pipelineMaterial(), false), //
                 new BlueprintBlock(new BlockVector(2, 1, -1), Material.IRON_FENCE, false), //
                 new BlueprintBlock(new BlockVector(2, 0, -1), ComponentBlueprint.pipelineMaterial(), false), //
         };
 
-        BlueprintBlock[] blueprintActive = { new BlueprintBlock(new BlockVector(2, 0, 1), Material.IRON_FENCE, false), //
+        BlueprintBlock[] blueprintActive = {new BlueprintBlock(new BlockVector(2, 0, 1), Material.IRON_FENCE, false), //
                 senderRight = new BlueprintBlock(new BlockVector(3, 0, 1), ComponentBlueprint.pipelineMaterial(), false), //
                 new BlueprintBlock(new BlockVector(2, 0, -1), Material.IRON_FENCE, false), //
                 senderLeft = new BlueprintBlock(new BlockVector(3, 0, -1), ComponentBlueprint.pipelineMaterial(), false), //

@@ -2,13 +2,13 @@ package me.lyneira.MachinaDrill;
 
 /**
  * MachinaBlueprint representing a Drill blueprint
- * 
+ *
  * @author Lyneira
  * @author 5phinX
  */
 final class Blueprint {
     // Obsolete now.
-    
+
     // static int activationDepthLimit = 0;
     //
     // final static int mainModule;

@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 /**
  * Annotation to mark methods as event handler methods for a machina
- * 
+ *
  * @author Lyneira
  */
 @Target(ElementType.METHOD)

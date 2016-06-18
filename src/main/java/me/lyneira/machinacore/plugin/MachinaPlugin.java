@@ -13,7 +13,7 @@ import me.lyneira.machinacore.machina.MachinaDetector;
  * Template class for quick development of a machina plugin. In addition to the
  * functionality provided by MachinaCraftPlugin, manages registration of machina
  * blueprints.
- * 
+ *
  * @author Lyneira
  */
 public abstract class MachinaPlugin extends MachinaCraftPlugin {
@@ -44,9 +44,8 @@ public abstract class MachinaPlugin extends MachinaCraftPlugin {
     /**
      * Call this method during mpEnable() to add your detectors for
      * registration.
-     * 
-     * @param detector
-     *            A detector to add for this plugin.
+     *
+     * @param detector A detector to add for this plugin.
      */
     protected void addDetector(MachinaDetector detector) {
         if (detector == null) {
@@ -83,9 +82,8 @@ public abstract class MachinaPlugin extends MachinaCraftPlugin {
     /**
      * Removes the given blueprint for this plugin. You should not normally need
      * to call this method.
-     * 
-     * @param blueprint
-     *            A blueprint to remove from this plugin.
+     *
+     * @param blueprint A blueprint to remove from this plugin.
      */
     protected void removeDetector(MachinaBlueprint blueprint) {
         if (detectors != null) {

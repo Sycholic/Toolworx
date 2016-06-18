@@ -7,7 +7,7 @@ import org.bukkit.block.BlockFace;
 /**
  * Class for storing immutable block-based vectors. Usable as both a vector and
  * coordinates. Used as the key for CoordinateMap3D.
- * 
+ *
  * @author Lyneira
  */
 public class BlockVector {
@@ -17,13 +17,10 @@ public class BlockVector {
 
     /**
      * Constructs a BlockVector from the given x, y and z values.
-     * 
-     * @param x
-     *            The length in the x direction
-     * @param y
-     *            The length in the y direction
-     * @param z
-     *            The length in the z direction
+     *
+     * @param x The length in the x direction
+     * @param y The length in the y direction
+     * @param z The length in the z direction
      */
     public BlockVector(int x, int y, int z) {
         this.x = x;
@@ -33,9 +30,8 @@ public class BlockVector {
 
     /**
      * Constructs a new BlockVector identical to the given vector.
-     * 
-     * @param vector
-     *            The vector to copy
+     *
+     * @param vector The vector to copy
      */
     public BlockVector(BlockVector vector) {
         this.x = vector.x;
@@ -45,9 +41,8 @@ public class BlockVector {
 
     /**
      * Constructs a BlockVector from the given BlockFace
-     * 
-     * @param face
-     *            The BlockFace to copy
+     *
+     * @param face The BlockFace to copy
      */
     public BlockVector(BlockFace face) {
         x = face.getModX();
@@ -57,9 +52,8 @@ public class BlockVector {
 
     /**
      * Constructs a BlockVector from the given Block
-     * 
-     * @param block
-     *            The BlockFace to copy
+     *
+     * @param block The BlockFace to copy
      */
     public BlockVector(Block block) {
         x = block.getX();
@@ -70,9 +64,8 @@ public class BlockVector {
     /**
      * Returns the {@link Block} that this BlockVector represents in the given
      * World.
-     * 
-     * @param world
-     *            The world to get the block in
+     *
+     * @param world The world to get the block in
      * @return The block equivalent to this BlockVector.
      */
     public final Block getBlock(World world) {
@@ -82,15 +75,11 @@ public class BlockVector {
     /**
      * Returns the {@link Block} that this BlockVector represents in the given
      * World.
-     * 
-     * @param world
-     *            The world to get the block in
-     * @param originX
-     *            The X origin this block is relative to
-     * @param originY
-     *            The Y origin this block is relative to
-     * @param originZ
-     *            The Z origin this block is relative to
+     *
+     * @param world   The world to get the block in
+     * @param originX The X origin this block is relative to
+     * @param originY The Y origin this block is relative to
+     * @param originZ The Z origin this block is relative to
      * @return The block corresponding to this BlockVector and the given origin.
      */
     public final Block getBlock(World world, int originX, int originY, int originZ) {
@@ -99,9 +88,8 @@ public class BlockVector {
 
     /**
      * Adds the given BlockFace to this BlockVector
-     * 
-     * @param face
-     *            The BlockFace to add
+     *
+     * @param face The BlockFace to add
      * @return A new BlockVector with the BlockFace added
      */
     public BlockVector add(BlockFace face) {
@@ -110,11 +98,9 @@ public class BlockVector {
 
     /**
      * Adds the given BlockFace n times to this BlockVector
-     * 
-     * @param face
-     *            The BlockFace to add
-     * @param n
-     *            The number of times to apply this blockface.
+     *
+     * @param face The BlockFace to add
+     * @param n    The number of times to apply this blockface.
      * @return A new BlockVector with the BlockFace added
      */
     public BlockVector add(BlockFace face, int n) {
@@ -123,9 +109,8 @@ public class BlockVector {
 
     /**
      * Adds the given {@link BlockVector} to this {@link BlockVector}
-     * 
-     * @param vector
-     *            The vector to add
+     *
+     * @param vector The vector to add
      * @return A new {@link BlockVector} with the given vector added
      */
     public BlockVector add(BlockVector vector) {
@@ -134,11 +119,9 @@ public class BlockVector {
 
     /**
      * Adds the given {@link BlockVector} n times to this {@link BlockVector}
-     * 
-     * @param vector
-     *            The vector to add
-     * @param n
-     *            The number of times to apply this vector.
+     *
+     * @param vector The vector to add
+     * @param n      The number of times to apply this vector.
      * @return A new {@link BlockVector} with the given vector added
      */
     public BlockVector add(BlockVector vector, int n) {
@@ -147,13 +130,10 @@ public class BlockVector {
 
     /**
      * Adds the given coordinates x, y, z to this {@link BlockVector}
-     * 
-     * @param x
-     *            The x coordinate
-     * @param y
-     *            The y coordinate
-     * @param z
-     *            The z coordinate
+     *
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @param z The z coordinate
      * @return A new {@link BlockVector} with the given coordinates added
      */
     public BlockVector add(int x, int y, int z) {
@@ -164,9 +144,8 @@ public class BlockVector {
      * Substract the given {@link BlockVector} from this one. If this vector and
      * 'other' are locations, substract() returns a vector pointing from 'other'
      * to this BlockLocation.
-     * 
-     * @param other
-     *            The {@link BlockVector} to subtract
+     *
+     * @param other The {@link BlockVector} to subtract
      * @return A new {@link BlockVector} with the given vector subtracted
      */
     public BlockVector subtract(BlockVector other) {
@@ -175,7 +154,7 @@ public class BlockVector {
 
     /**
      * Faster equality test for BlockVectors than equals()
-     * 
+     *
      * @param other
      * @return True if the vectors are equal.
      */
@@ -188,7 +167,7 @@ public class BlockVector {
     /**
      * Fastest equality test for BlockVectors, use only if the parameter is
      * known to be non-null.
-     * 
+     *
      * @param other
      * @return True if the vectors are equal.
      */
@@ -199,22 +178,21 @@ public class BlockVector {
     /**
      * Returns a BlockVector rotated by the given BlockRotation around the Y
      * axis.
-     * 
-     * @param rotate
-     *            The amount to rotate by
+     *
+     * @param rotate The amount to rotate by
      * @return A new rotated BlockVector
      */
     public BlockVector rotateYaw(BlockRotation rotate) {
         switch (rotate) {
-        case ROTATE_0:
-            return this;
-        case ROTATE_90:
-            return new BlockVector(z, y, -x);
-        case ROTATE_180:
-            return new BlockVector(-x, y, -z);
-        case ROTATE_270:
-        default:
-            return new BlockVector(-z, y, x);
+            case ROTATE_0:
+                return this;
+            case ROTATE_90:
+                return new BlockVector(z, y, -x);
+            case ROTATE_180:
+                return new BlockVector(-x, y, -z);
+            case ROTATE_270:
+            default:
+                return new BlockVector(-z, y, x);
         }
     }
 
@@ -263,18 +241,18 @@ public class BlockVector {
     /*
      * Static stuff
      */
-    
+
     public static BlockVector fromBlockFace(BlockFace face) {
         return faceVectors[face.ordinal()];
     }
-    
+
     private final static BlockVector[] faceVectors;
-    
+
     static {
         BlockFace[] faces = BlockFace.values();
         faceVectors = new BlockVector[faces.length];
         for (int i = 0; i < faces.length; i++) {
             faceVectors[i] = new BlockVector(faces[i]);
         }
-    }  
+    }
 }

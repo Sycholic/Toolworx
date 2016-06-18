@@ -21,7 +21,7 @@ import me.lyneira.machinacore.tool.ToolInteractResult;
 
 /**
  * Main Plugin.
- * 
+ *
  * @author Lyneira
  */
 public final class MachinaCore extends MachinaCraftPlugin {
@@ -31,7 +31,7 @@ public final class MachinaCore extends MachinaCraftPlugin {
 
     private final BlueprintStore blueprints = new BlueprintStore();
     final Multiverse multiverse = new Multiverse();
-    
+
 
     @Override
     public void onEnable() {
@@ -62,11 +62,9 @@ public final class MachinaCore extends MachinaCraftPlugin {
     /**
      * Initiates actions for when the wrench is used: machina detection, status
      * info, removal.
-     * 
-     * @param player
-     *            The player who activated the wrench
-     * @param block
-     *            The block the wrench was used on
+     *
+     * @param player The player who activated the wrench
+     * @param block  The block the wrench was used on
      * @return DAMAGE if the wrench should be damaged
      */
     public ToolInteractResult wrenchClick(Player player, Block block, boolean rightClick) {
@@ -80,11 +78,11 @@ public final class MachinaCore extends MachinaCraftPlugin {
                 for (MachinaBlueprint blueprint : blueprints.blueprints()) {
 
                     switch (blueprint.detect(universe, block, player)) {
-                    case SUCCESS:
-                        return ToolInteractResult.SUCCESS_DAMAGE;
-                    case COLLISION:
-                        return ToolInteractResult.SUCCESS_NODAMAGE;
-                    case FAILURE:
+                        case SUCCESS:
+                            return ToolInteractResult.SUCCESS_DAMAGE;
+                        case COLLISION:
+                            return ToolInteractResult.SUCCESS_NODAMAGE;
+                        case FAILURE:
                     }
                 }
             }
@@ -120,10 +118,11 @@ public final class MachinaCore extends MachinaCraftPlugin {
     /* **************
      * Static methods
      */
-    
+
     /**
      * Schedules a runnable task to occur after the specified number of server ticks
-     * @param task 
+     *
+     * @param task
      * @param delay
      * @return A BukkitTask with the task id
      */
@@ -133,9 +132,8 @@ public final class MachinaCore extends MachinaCraftPlugin {
 
     /**
      * Send an informational message to the server log.
-     * 
-     * @param message
-     *            Message to send
+     *
+     * @param message Message to send
      */
     public final static void info(String message) {
         plugin.logInfo(message);
@@ -143,9 +141,8 @@ public final class MachinaCore extends MachinaCraftPlugin {
 
     /**
      * Send a warning message to the server log.
-     * 
-     * @param message
-     *            Message to send
+     *
+     * @param message Message to send
      */
     public final static void warning(String message) {
         plugin.logWarning(message);
@@ -153,9 +150,8 @@ public final class MachinaCore extends MachinaCraftPlugin {
 
     /**
      * Send a severe message to the server log.
-     * 
-     * @param message
-     *            Message to send
+     *
+     * @param message Message to send
      */
     public final static void severe(String message) {
         plugin.logSevere(message);
@@ -163,11 +159,9 @@ public final class MachinaCore extends MachinaCraftPlugin {
 
     /**
      * Send a severe message and an exception to the server log.
-     * 
-     * @param message
-     *            Message to send
-     * @param ex
-     *            Exception to send
+     *
+     * @param message Message to send
+     * @param ex      Exception to send
      */
     public final static void exception(String message, Throwable ex) {
         plugin.logException(message, ex);

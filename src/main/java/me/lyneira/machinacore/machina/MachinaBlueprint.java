@@ -18,9 +18,9 @@ import org.bukkit.entity.Player;
  * trigger block. Its results are handed to the BlueprintDetector that made it
  * It can be supplied with a detector class that identifies additional portions
  * of the machina and performs other detect-time configuration.
- * 
+ * <p>
  * The trigger block
- * 
+ *
  * @author Lyneira
  */
 public class MachinaBlueprint {
@@ -76,14 +76,11 @@ public class MachinaBlueprint {
     /**
      * Detects whether a machina conforming to this blueprint is present at the
      * given block and adds it to the given universe.
-     * 
-     * @param universe
-     *            The universe (and its corresponding world) to detect in
-     * @param block
-     *            The block to detect at
-     * @param player
-     *            The player that initiated this detection or null if not a
-     *            player
+     *
+     * @param universe The universe (and its corresponding world) to detect in
+     * @param block    The block to detect at
+     * @param player   The player that initiated this detection or null if not a
+     *                 player
      * @return
      */
     public DetectResult detect(Universe universe, Block block, Player player) {

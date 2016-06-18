@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Main Plugin.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaBuilder extends JavaPlugin {
@@ -22,10 +22,10 @@ public class MachinaBuilder extends JavaPlugin {
     public final void onEnable() {
         PluginDescriptionFile pdf = getDescription();
         log.info(pdf.getName() + " version " + pdf.getVersion() + " is now enabled.");
-        
+
         ConfigurationManager config = new ConfigurationManager(this);
         Builder.loadConfiguration(config.getAll());
-        
+
         blueprint = new Blueprint();
 
         machinaCore = (MachinaCore) getServer().getPluginManager().getPlugin("MachinaCore");
@@ -39,7 +39,7 @@ public class MachinaBuilder extends JavaPlugin {
 
         machinaCore.unRegisterBlueprint(blueprint.blueprint);
     }
-    
+
     static void log(String message) {
         log.info("MachinaBuilder: " + message);
     }

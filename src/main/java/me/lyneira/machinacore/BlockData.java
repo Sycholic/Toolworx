@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Class that contains useful information about block types.
- * 
+ *
  * @author Lyneira
  */
 public final class BlockData {
@@ -29,7 +29,7 @@ public final class BlockData {
     private static final BreakTime breakTimeSlow = new BreakTime(20);
     private static final BreakTime breakTimeTough = new BreakTime(25);
     private static final BreakTime breakTimeObsidian = new BreakTime(220);
-    
+
     public static final int chestId = Material.CHEST.getId();
 
     private static class BreakTime {
@@ -47,18 +47,14 @@ public final class BlockData {
     /**
      * Returns the ItemStack that would result from a player breaking the given
      * Block with an appropriate tool.
-     * 
-     * @param location
-     *            The location where the block is being broken
+     *
+     * @param location The location where the block is being broken
      * @return The item stack resulting from the block break, or null if there
-     *         is no drop
+     * is no drop
      */
-<<<<<<< HEAD
+
     public static final Collection<ItemStack> breakBlock(final BlockLocation location) {
         Block block = location.getBlock();
-=======
-    public static final Collection<ItemStack> breakBlock(final Block block) {
->>>>>>> origin/master
         BlockData data;
         int blockType = block.getTypeId();
         if (blockType >= blockId.length || blockType < 0) {
@@ -95,11 +91,7 @@ public final class BlockData {
         }
         if (amount > 0) {
             List<ItemStack> drop = new ArrayList<ItemStack>(1);
-<<<<<<< HEAD
             drop.add(new ItemStack(item, amount, damageValue));
-=======
-            drop.add(new ItemStack(item, amount, (short) 0, Byte.valueOf(dataValue)));
->>>>>>> origin/master
             return drop;
         } else {
             return new ArrayList<ItemStack>(1);
@@ -202,17 +194,17 @@ public final class BlockData {
 
         set(Material.NOTE_BLOCK.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
-<<<<<<< HEAD
+        <<<<<<<HEAD
         set(Material.BED_BLOCK.getId()).copyData(true);
 
         set(Material.POWERED_RAIL.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeMedium);
 
         set(Material.DETECTOR_RAIL.getId()).drillable(true).copyData(true).attached(true).drillTime(breakTimeMedium);
-=======
+        =======
         set(Material.POWERED_RAIL.getId()).drillable(true).attached(true);
 
         set(Material.DETECTOR_RAIL.getId()).drillable(true).attached(true);
->>>>>>> origin/master
+        >>>>>>>origin / master
 
         set(Material.PISTON_STICKY_BASE.getId()).solid(true);
 
@@ -262,11 +254,11 @@ public final class BlockData {
 
         set(Material.WOOD_STAIRS.getId()).drillable(true).solid(true).drillTime(breakTimeMedium);
 
-<<<<<<< HEAD
+        <<<<<<<HEAD
         set(Material.CHEST.getId()).copyData(true).inventory(true);
-=======
+        =======
         set(Material.CHEST.getId()).solid(true).inventory(true);
->>>>>>> origin/master
+        >>>>>>>origin / master
 
         set(Material.REDSTONE_WIRE.getId()).drillable(true).attached(true);
 
@@ -401,7 +393,6 @@ public final class BlockData {
 
         set(Material.REDSTONE_LAMP_ON.getId()).solid(true).drillable(true).drillTime(breakTimeFast);
 
-<<<<<<< HEAD
         set(Material.WOOD_DOUBLE_STEP.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
 
         set(Material.WOOD_STEP.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
@@ -409,21 +400,11 @@ public final class BlockData {
         set(Material.COCOA.getId()).solid(true).drillable(true).drillTime(breakTimeFast);
 
         set(Material.SANDSTONE_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
-=======
-        set(Material.WOOD_DOUBLE_STEP.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
-
-        set(Material.WOOD_STEP.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
-
-        set(Material.COCOA.getId()).solid(true).drillable(true).drillTime(breakTimeFast);
-
-        set(Material.SANDSTONE_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
->>>>>>> origin/master
 
         set(Material.EMERALD_ORE.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
         set(Material.EMERALD_BLOCK.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
-<<<<<<< HEAD
         set(Material.SPRUCE_WOOD_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
 
         set(Material.BIRCH_WOOD_STAIRS.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
@@ -447,50 +428,31 @@ public final class BlockData {
         set(Material.GOLD_PLATE.getId()).drillable(true).attached(true).drillTime(breakTimeMedium);
 
         set(Material.IRON_PLATE.getId()).drillable(true).attached(true).drillTime(breakTimeMedium);
-        
+
         set(Material.REDSTONE_COMPARATOR_OFF.getId()).drillable(true).copyData(true).attached(true);
 
         set(Material.REDSTONE_COMPARATOR_ON.getId()).drillable(true).copyData(true).attached(true);
-        
+
         set(Material.DAYLIGHT_DETECTOR.getId()).drillable(true).drillTime(breakTimeFast);
-        
+
         set(Material.REDSTONE_BLOCK.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
-        
+
         set(Material.QUARTZ_ORE.getId()).solid(true).drillable(true).drillTime(breakTimeSlow);
 
         set(Material.DROPPER.getId()).solid(true).inventory(true);
-        
+
         set(Material.QUARTZ_BLOCK.getId()).copyData(true).solid(true).drillable(true).drillTime(breakTimeSlow);
-        
+
         set(Material.QUARTZ_STAIRS.getId()).copyData(true).solid(true).drillable(true).drillTime(breakTimeSlow);
-        
+
         set(Material.ACTIVATOR_RAIL.getId()).copyData(true).attached(true).drillable(true).drillTime(breakTimeMedium);
-        
+
         set(Material.DROPPER.getId()).copyData(true).solid(true).inventory(true);
-        
+
         set(Material.LOG.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
         set(Material.LOG_2.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeMedium);
         set(Material.LEAVES_2.getId()).solid(true).drillable(true).copyData(true).drillTime(breakTimeFast);
-        
-=======
-        set(Material.SPRUCE_WOOD_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
 
-        set(Material.BIRCH_WOOD_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
-
-        set(Material.JUNGLE_WOOD_STAIRS.getId()).solid(true).drillable(true).drillTime(breakTimeMedium);
-
-        set(Material.COBBLE_WALL.getId()).drillable(true).drillTime(breakTimeMedium);
-
-        set(Material.FLOWER_POT.getId()).drillable(true).attached(true).drillTime(breakTimeFast);
-
-        set(Material.CARROT.getId()).drillable(true).attached(true).drillTime(breakTimeFast);
-
-        set(Material.POTATO.getId()).drillable(true).attached(true).drillTime(breakTimeFast);
-
-        set(Material.WOOD_BUTTON.getId()).drillable(true).attached(true).drillTime(breakTimeFast);
-
-        set(Material.ANVIL.getId()).drillable(true).drillTime(breakTimeTough);
->>>>>>> origin/master
     }
 
     // Private setters to make the initialization look better.
@@ -616,10 +578,10 @@ public final class BlockData {
                     data.drillTime(new BreakTime(Math.max(blockSection.getInt("drillTime", 1), 1)));
                 }
             }
-<<<<<<< HEAD
+            <<<<<<<HEAD
             data.drop(blockSection.getInt("drop", data.drop));
             data.data((short) blockSection.getInt("data", data.data));
-=======
+            =======
             String dropMaterial = blockSection.getString("drop");
             if (dropMaterial != null) {
                 int i = MPConfig.parseTypeId(dropMaterial, -2);
@@ -631,7 +593,7 @@ public final class BlockData {
             }
 
             data.data(blockSection.getInt("data", data.data));
->>>>>>> origin/master
+            >>>>>>>origin / master
             data.dropMin(blockSection.getInt("dropMin", data.dropMin));
             data.dropRandom(blockSection.getInt("dropRandom", data.dropRandom));
             data.inventory(blockSection.getBoolean("hasInventory", data.hasInventory));
@@ -652,9 +614,8 @@ public final class BlockData {
 
     /**
      * Returns true if the given block type is solid.
-     * 
-     * @param typeId
-     *            The block id to check
+     *
+     * @param typeId The block id to check
      * @return True if the block type is solid
      */
     public static final boolean isSolid(final int typeId) {
@@ -668,9 +629,8 @@ public final class BlockData {
 
     /**
      * Returns true if the given block type can be drilled.
-     * 
-     * @param typeId
-     *            The block id to check
+     *
+     * @param typeId The block id to check
      * @return True if the block type can be drilled
      */
     public static final boolean isDrillable(final int typeId) {
@@ -684,9 +644,8 @@ public final class BlockData {
 
     /**
      * Returns the drill time (in server ticks) for the given block type
-     * 
-     * @param typeId
-     *            The block id to check
+     *
+     * @param typeId The block id to check
      * @return The drill time in server ticks
      */
     public static final int getDrillTime(final int typeId) {
@@ -700,9 +659,8 @@ public final class BlockData {
 
     /**
      * Returns true if the given block type has an inventory.
-     * 
-     * @param typeId
-     *            The block id to check
+     *
+     * @param typeId The block id to check
      * @return True if the block type has an inventory.
      */
     public static final boolean hasInventory(final int typeId) {
@@ -717,9 +675,8 @@ public final class BlockData {
     /**
      * Returns true if the given block type can only exist attached to another
      * block.
-     * 
-     * @param typeId
-     *            The block id to check
+     *
+     * @param typeId The block id to check
      * @return True if the block type is attached.
      */
     public static final boolean isAttached(final int typeId) {

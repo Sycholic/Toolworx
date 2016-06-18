@@ -6,7 +6,7 @@ import org.bukkit.block.Block;
 /**
  * Represents a single block with type and data in a Machina. A data value of -1
  * means anything goes.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaBlock extends BlockVector {
@@ -37,7 +37,7 @@ public class MachinaBlock extends BlockVector {
         this.typeId = typeId;
         this.data = -1;
     }
-    
+
     public MachinaBlock(MachinaBlock other, int originX, int originY, int originZ) {
         super(other.x + originX, other.y + originY, other.z + originZ);
         typeId = other.typeId;
@@ -47,23 +47,22 @@ public class MachinaBlock extends BlockVector {
     /**
      * Returns a MachinaBlock rotated by the given BlockRotation around the Y
      * axis.
-     * 
-     * @param rotate
-     *            The amount to rotate by
+     *
+     * @param rotate The amount to rotate by
      * @return A new rotated MachinaBlock
      */
     @Override
     public MachinaBlock rotateYaw(final BlockRotation rotate) {
         switch (rotate) {
-        case ROTATE_0:
-            return this;
-        case ROTATE_90:
-            return new MachinaBlock(z, y, -x, typeId, data);
-        case ROTATE_180:
-            return new MachinaBlock(-x, y, -z, typeId, data);
-        case ROTATE_270:
-        default:
-            return new MachinaBlock(-z, y, x, typeId, data);
+            case ROTATE_0:
+                return this;
+            case ROTATE_90:
+                return new MachinaBlock(z, y, -x, typeId, data);
+            case ROTATE_180:
+                return new MachinaBlock(-x, y, -z, typeId, data);
+            case ROTATE_270:
+            default:
+                return new MachinaBlock(-z, y, x, typeId, data);
         }
     }
 
@@ -72,7 +71,7 @@ public class MachinaBlock extends BlockVector {
      * if successful. In other words, it returns true if the world contains this
      * block's type and data at this block's location. A data value of -1 will
      * only match the type.
-     * 
+     *
      * @param world
      * @return
      */
@@ -91,9 +90,8 @@ public class MachinaBlock extends BlockVector {
     /**
      * Compares only the type of this MachinaBlock to the given block and
      * returns true if they match.
-     * 
-     * @param block
-     *            The block to compare to
+     *
+     * @param block The block to compare to
      * @return True if the type matches.
      */
     public boolean matchTypeOnly(Block block) {

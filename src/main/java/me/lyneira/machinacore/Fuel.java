@@ -20,7 +20,7 @@ import me.lyneira.machinacore.block.BlockRotation;
 
 /**
  * Represents fuel properties and implements fuel consumption from a furnace.
- * 
+ *
  * @author Lyneira
  */
 public class Fuel {
@@ -69,12 +69,12 @@ public class Fuel {
     }
 
     //
+
     /**
      * Returns the burn time for the given Material, as if it were used to smelt
      * something in a furnace.
-     * 
-     * @param typeId
-     *            The material for which to get the burn time.
+     *
+     * @param typeId The material for which to get the burn time.
      * @return The burn time. Returns 0 for any material that is not a fuel.
      */
     public static int burnTime(int typeId) {
@@ -87,43 +87,43 @@ public class Fuel {
     /**
      * Returns the base Minecraft burn time for the given material. This will
      * ignore any changes made to burn times in the config file.
-     * 
+     *
      * @param material
      * @return The burn time. Returns 0 for any material that is not a fuel.
      */
     public static int burnTimeBase(Material material) {
         switch (material) {
-        case BLAZE_ROD:
-            return blazeRodTime;
+            case BLAZE_ROD:
+                return blazeRodTime;
 
-        case COAL:
-            return coalTime;
+            case COAL:
+                return coalTime;
 
-        case WOOD:
-        case LOG:
-        case FENCE:
-        case WOOD_STAIRS:
-        case TRAP_DOOR:
-        case WORKBENCH:
-        case BOOKSHELF:
-        case CHEST:
-        case JUKEBOX:
-        case NOTE_BLOCK:
-        //case LOCKED_CHEST:
-        case FENCE_GATE:
-            return woodTime;
+            case WOOD:
+            case LOG:
+            case FENCE:
+            case WOOD_STAIRS:
+            case TRAP_DOOR:
+            case WORKBENCH:
+            case BOOKSHELF:
+            case CHEST:
+            case JUKEBOX:
+            case NOTE_BLOCK:
+                //case LOCKED_CHEST:
+            case FENCE_GATE:
+                return woodTime;
 
-        case SAPLING:
-        case STICK:
-            return saplingTime;
-        default:
-            return 0;
+            case SAPLING:
+            case STICK:
+                return saplingTime;
+            default:
+                return 0;
         }
     }
 
     /**
      * Returns true if this material can be burned in a furnace.
-     * 
+     *
      * @param material
      * @return
      */
@@ -135,9 +135,8 @@ public class Fuel {
 
     /**
      * Consumes fuel from the given Furnace.
-     * 
-     * @param furnace
-     *            The furnace to consume fuel from
+     *
+     * @param furnace The furnace to consume fuel from
      * @return The burn time of the fuel consumed. Returns 0 on failure.
      */
     public static int consume(final Furnace furnace) {
@@ -160,16 +159,13 @@ public class Fuel {
     /**
      * Sets the given Block to a Furnace with the given burn state, and sets the
      * furnace contents to the given Inventory.
-     * 
-     * @param furnaceBlock
-     *            The block to set as a Furnace
-     * @param direction
-     *            The direction to set the furnace to.
-     * @param burning
-     *            Whether the furnace is burning
+     *
+     * @param furnaceBlock The block to set as a Furnace
+     * @param direction    The direction to set the furnace to.
+     * @param burning      Whether the furnace is burning
      * @return True if the operation was a success, false if the existing block
-     *         could not be cast to a furnace. In that case, this function does
-     *         nothing.
+     * could not be cast to a furnace. In that case, this function does
+     * nothing.
      */
     public static boolean setFurnace(final Block furnaceBlock, final BlockRotation direction, final boolean burning) {
         try {
@@ -210,7 +206,7 @@ public class Fuel {
 
     private static Set<Material> getBurnableMaterials() {
         Set<Material> burnables = new HashSet<Material>(24);
-        for (Iterator<Recipe> it = MachinaCore.plugin.getServer().recipeIterator(); it.hasNext();) {
+        for (Iterator<Recipe> it = MachinaCore.plugin.getServer().recipeIterator(); it.hasNext(); ) {
             Recipe recipe = it.next();
             if (recipe instanceof FurnaceRecipe) {
                 burnables.add(((FurnaceRecipe) recipe).getInput().getType());

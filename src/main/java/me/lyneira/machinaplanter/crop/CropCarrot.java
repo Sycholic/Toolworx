@@ -1,6 +1,7 @@
 package me.lyneira.machinaplanter.crop;
 
 import java.util.Collection;
+
 import me.lyneira.machinacore.BlockLocation;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -8,7 +9,7 @@ import org.bukkit.material.MaterialData;
 
 /**
  * Handles carrots for the planter.
- * 
+ *
  * @author Lyneira
  */
 public class CropCarrot implements CropHandler {
@@ -28,7 +29,7 @@ public class CropCarrot implements CropHandler {
     public Material getPlantableItem() {
         return Material.CARROT_ITEM;
     }
-    
+
     @Override
     public boolean checkPlantableItemData(MaterialData data) {
         return true;

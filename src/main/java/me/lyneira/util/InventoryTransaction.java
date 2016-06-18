@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
  * Represents a transaction on an {@link Inventory}. The transaction can be
  * verified before it is attempted, and will either execute entirely or not at
  * all.
- * 
+ *
  * @author Lyneira
  */
 public class InventoryTransaction {
@@ -24,7 +24,7 @@ public class InventoryTransaction {
 
     /**
      * Constructs a new InventoryTransaction for the given inventory.
-     * 
+     *
      * @param inventory
      */
     public InventoryTransaction(Inventory inventory) {
@@ -33,7 +33,7 @@ public class InventoryTransaction {
 
     /**
      * Adds an {@link ItemStack} to be added to the transaction
-     * 
+     *
      * @param item
      */
     public void add(ItemStack item) {
@@ -45,7 +45,7 @@ public class InventoryTransaction {
 
     /**
      * Adds multiple {@link ItemStack}s to be added to the transaction.
-     * 
+     *
      * @param items
      */
     public void add(Collection<ItemStack> items) {
@@ -61,7 +61,7 @@ public class InventoryTransaction {
 
     /**
      * Adds an {@link ItemStack} to be removed to the transaction.
-     * 
+     *
      * @param item
      */
     public void remove(ItemStack item) {
@@ -73,7 +73,7 @@ public class InventoryTransaction {
 
     /**
      * Adds multiple {@link ItemStack}s to be removed to the transaction.
-     * 
+     *
      * @param items
      */
     public void remove(Collection<ItemStack> items) {
@@ -94,7 +94,7 @@ public class InventoryTransaction {
      * inventory. When executed the inventory's contents will be set to this
      * copy. It is important not to modify the inventory between verify() and
      * execute() to prevent item deletion or duplication side effects.
-     * 
+     *
      * @return True if the transaction can be completed.
      */
     public boolean verify() {
@@ -117,7 +117,7 @@ public class InventoryTransaction {
         verifyResult = true;
         // Remove items first
         for (ItemStack item : removeItems) {
-            for (int toDelete = item.getAmount(); toDelete > 0;) {
+            for (int toDelete = item.getAmount(); toDelete > 0; ) {
                 int first = first(item);
                 if (first == -1) {
                     // We don't have this item in inventory
@@ -186,7 +186,7 @@ public class InventoryTransaction {
      * Attempts to execute the transaction on the inventory, returning true if
      * successful. If the transaction has not yet been verified, it will be
      * verified before executing.
-     * 
+     *
      * @return True if successful, false otherwise.
      */
     public boolean execute() {
@@ -201,7 +201,7 @@ public class InventoryTransaction {
     /**
      * Returns the index of the first stack for this itemstack. -1 durability on
      * item means any data value is allowed.
-     * 
+     *
      * @param contents
      * @param item
      * @return The first index of a partial item stack, -1 if none was found.
@@ -219,7 +219,7 @@ public class InventoryTransaction {
     /**
      * Returns the index of the first partial stack for this itemstack. -1
      * durability on item means any data value is allowed.
-     * 
+     *
      * @param contents
      * @param item
      * @return The first index of a partial item stack, -1 if none was found.
@@ -236,7 +236,7 @@ public class InventoryTransaction {
 
     /**
      * Returns the index of the first empty slot.
-     * 
+     *
      * @param contents
      * @return The first index of an empty slot, or -1 if none was found.
      */

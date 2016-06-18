@@ -15,7 +15,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Built-in endpoint for a furnace.
- * 
+ *
  * @author Lyneira
  */
 public class FurnaceEndpoint implements PipelineEndpoint, Comparable<FurnaceEndpoint> {
@@ -54,11 +54,11 @@ public class FurnaceEndpoint implements PipelineEndpoint, Comparable<FurnaceEndp
     @Override
     public boolean verify() {
         switch (location.getType()) {
-        case FURNACE:
-        case BURNING_FURNACE:
-            return true;
-        default:
-            return false;
+            case FURNACE:
+            case BURNING_FURNACE:
+                return true;
+            default:
+                return false;
         }
     }
 
@@ -67,7 +67,7 @@ public class FurnaceEndpoint implements PipelineEndpoint, Comparable<FurnaceEndp
      * not check if the location has a valid furnace.<br>
      * Fuels: Added to the fuel slot if there is room.<br>
      * Items that can be burnt: Added to the burn slot.
-     * 
+     *
      * @param location
      * @param inventory
      * @return True if the inventory was changed.

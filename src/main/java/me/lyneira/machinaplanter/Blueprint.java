@@ -13,9 +13,8 @@ import me.lyneira.machinacore.machina.MachinaBlueprint;
 
 /**
  * MachinaBlueprint representing a Planter blueprint
- * 
+ *
  * @author Lyneira
- * 
  */
 class Blueprint implements MachinaBlueprint {
 
@@ -48,16 +47,16 @@ class Blueprint implements MachinaBlueprint {
         // Find the direction of the rail and moving rail.
         for (BlockRotation i : BlockRotation.values()) {
             switch (base.getRelative(i.getYawFace()).getType()) {
-            case FURNACE:
-            case BURNING_FURNACE:
-                furnace = base.getRelative(i.getYawFace());
-                movingRailYaw = i.getOpposite();
-                break;
-            case CHEST:
-                chest = base.getRelative(i.getYawFace());
-                railYaw = i.getOpposite();
-                break;
-            default:
+                case FURNACE:
+                case BURNING_FURNACE:
+                    furnace = base.getRelative(i.getYawFace());
+                    movingRailYaw = i.getOpposite();
+                    break;
+                case CHEST:
+                    chest = base.getRelative(i.getYawFace());
+                    railYaw = i.getOpposite();
+                    break;
+                default:
             }
         }
 
@@ -75,7 +74,7 @@ class Blueprint implements MachinaBlueprint {
             player.sendMessage("You do not have permission to activate a planter.");
             return null;
         }
-        
+
         if (EventSimulator.inventoryProtectedStatic(player, chest))
             return null;
 

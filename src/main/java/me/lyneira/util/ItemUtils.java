@@ -4,7 +4,7 @@ import org.bukkit.inventory.ItemStack;
 
 /**
  * Utility functions for dealing with items.
- * 
+ *
  * @author Lyneira
  */
 public class ItemUtils {
@@ -23,7 +23,7 @@ public class ItemUtils {
      * <p>
      * Not safe to call with null items.
      * </p>
-     * 
+     *
      * @param item
      * @param other
      * @return True if the item stacks match, false otherwise.
@@ -38,7 +38,7 @@ public class ItemUtils {
      * <p>
      * This function is safe to call with null items.
      * </p>
-     * 
+     *
      * @param item
      * @param other
      * @return True if the item stacks are not null and match, false otherwise.
@@ -62,7 +62,7 @@ public class ItemUtils {
      * <p>
      * Not safe to call with null items.
      * </p>
-     * 
+     *
      * @param ingredient
      * @param item
      * @return True if the item stacks match, false otherwise.
@@ -80,7 +80,7 @@ public class ItemUtils {
      * <p>
      * This function is safe to call with null items.
      * </p>
-     * 
+     *
      * @param ingredient
      * @param item
      * @return True if the item stacks match, false otherwise.

@@ -13,9 +13,8 @@ import org.bukkit.block.Block;
  * Represents and manages all {@link Universe}s (worlds) that MachinaCraft knows
  * about. Provides fast lookups from world to universe. When given a world that
  * does not have a Universe yet, it will be created.
- * 
+ *
  * @author Lyneira
- * 
  */
 public class Multiverse {
     private final THashMap<World, Universe> universes = new THashMap<World, Universe>();
@@ -23,9 +22,8 @@ public class Multiverse {
     /**
      * Returns the universe for the given world. If it doesn't exist yet, a new
      * one will be created.
-     * 
-     * @param world
-     *            The world to get the universe for
+     *
+     * @param world The world to get the universe for
      * @return The universe for the world.
      */
     Universe get(World world) {
@@ -40,9 +38,8 @@ public class Multiverse {
     /**
      * Returns the machina that owns this block. If no machina owns this block,
      * returns null.
-     * 
-     * @param location
-     *            The location to get the machina for.
+     *
+     * @param location The location to get the machina for.
      * @return The machina owning this location, or null.
      */
     Machina getMachina(Block location) {
@@ -51,9 +48,8 @@ public class Multiverse {
 
     /**
      * Loads the universe for a world.
-     * 
-     * @param world
-     *            The world to be loaded
+     *
+     * @param world The world to be loaded
      */
     void load(World world) {
         Universe.multiverseFriend.load(get(world));
@@ -61,9 +57,8 @@ public class Multiverse {
 
     /**
      * Unloads the universe for a world.
-     * 
-     * @param world
-     *            The world being unloaded
+     *
+     * @param world The world being unloaded
      */
     void unload(World world) {
         Universe universe = universes.remove(world);
@@ -74,18 +69,20 @@ public class Multiverse {
 
     /**
      * Saves the universe for a world.
-     * 
-     * @param world
-     *            The world being saved
+     *
+     * @param world The world being saved
      */
     void save(World world) {
         Universe.multiverseFriend.save(get(world));
     }
-    
+
     public static abstract class UniverseFriend {
         protected abstract Universe create(World world);
+
         protected abstract void load(Universe universe);
+
         protected abstract void unload(Universe universe);
+
         protected abstract void save(Universe universe);
     }
 }

@@ -17,7 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Core plugin for machinacraft factory components.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaFactory extends JavaPlugin {
@@ -43,7 +43,7 @@ public class MachinaFactory extends JavaPlugin {
         log.info(pdf.getName() + " version " + pdf.getVersion() + " is now enabled.");
 
         machinaCore = (MachinaCore) getServer().getPluginManager().getPlugin("MachinaCore");
-        
+
         ConfigurationManager config = new ConfigurationManager(this);
         ComponentBlueprint.loadConfiguration(config.getAll());
 
@@ -71,7 +71,7 @@ public class MachinaFactory extends JavaPlugin {
     /**
      * Registers a {@link MachinaBlueprint} with MachinaFactoryCore. If it is
      * lever-activatable, it will also be registered with MachinaCore.
-     * 
+     *
      * @param blueprint
      */
     public void registerFactoryBlueprint(MachinaBlueprint blueprint, Class<? extends Machina> machinaType, boolean leverActivatable) {
@@ -87,7 +87,7 @@ public class MachinaFactory extends JavaPlugin {
      * Unregisters the {@link MachinaFactoryBlueprint} with MachinaFactoryCore.
      * If it was lever-activatable, it will also be unregistered with
      * MachinaCore.
-     * 
+     *
      * @param blueprint
      */
     public void unregisterFactoryBlueprint(MachinaBlueprint blueprint) {
@@ -103,11 +103,9 @@ public class MachinaFactory extends JavaPlugin {
 
     /**
      * Attempts to detect an endpoint at the given location and returns it.
-     * 
-     * @param player
-     *            The player activating this machina
-     * @param location
-     *            The location to detect at
+     *
+     * @param player   The player activating this machina
+     * @param location The location to detect at
      * @return A PipelineEndpoint if successful, null otherwise.
      */
     PipelineEndpoint detectEndpoint(Player player, BlockLocation location) {
@@ -118,9 +116,10 @@ public class MachinaFactory extends JavaPlugin {
             return (PipelineEndpoint) detectedMachina;
         return null;
     }
-    
+
     /**
      * Sends an informational message to the server log.
+     *
      * @param message
      */
     public static void log(String message) {

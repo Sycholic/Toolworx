@@ -22,7 +22,7 @@ class Detector implements MachinaDetector {
     static int materialHeadFast = Material.DIAMOND_BLOCK.getId();
     static final int materialFurnace = Material.FURNACE.getId();
     static final int materialFurnaceBurning = Material.BURNING_FURNACE.getId();
-    private static final int[] furnaceTypes = new int[] { materialFurnace, materialFurnaceBurning };
+    private static final int[] furnaceTypes = new int[]{materialFurnace, materialFurnaceBurning};
 
     private final MachinaBlueprint blueprint;
     final int core;

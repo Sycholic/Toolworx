@@ -15,11 +15,11 @@ import me.lyneira.machinacore.machina.MachinaController;
 
 /**
  * Dispatches events to the controller of the machina they were intended for.
- * 
+ * <p>
  * Inspired by and loosely based on Bukkit's event system (notably
  * org.bukkit.plugin.java.JavaPluginLoader for the reflection magic), which is
  * based on lahwran's fevents.
- * 
+ *
  * @author Lyneira
  */
 public final class EventDispatcher {

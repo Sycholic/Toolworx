@@ -12,7 +12,7 @@ import me.lyneira.machinacore.plugin.MachinaPlugin;
 /**
  * Class that stores blueprints by plugin and provides iterators over blueprints
  * by plugin or all blueprints.
- * 
+ *
  * @author Lyneira
  */
 class BlueprintStore {
@@ -24,11 +24,9 @@ class BlueprintStore {
      * Adds the given list of blueprints for the given plugin to the store. If
      * there already was a list stored for this plugin, it is replaced by the
      * given list.
-     * 
-     * @param plugin
-     *            The plugin for which to store
-     * @param blueprintArray
-     *            The list of blueprints to store
+     *
+     * @param plugin         The plugin for which to store
+     * @param blueprintArray The list of blueprints to store
      */
     void put(MachinaPlugin plugin, MachinaBlueprint[] blueprintArray) {
         blueprints.put(plugin, blueprintArray);
@@ -37,9 +35,8 @@ class BlueprintStore {
 
     /**
      * Removes the stored blueprints for a given plugin.
-     * 
-     * @param plugin
-     *            The plugin for which to remove
+     *
+     * @param plugin The plugin for which to remove
      */
     void remove(MachinaPlugin plugin) {
         blueprints.remove(plugin);
@@ -56,7 +53,7 @@ class BlueprintStore {
 
     /**
      * Returns an iterator over all blueprints in the store.
-     * 
+     *
      * @return An iterator over all blueprints
      */
     MachinaBlueprint[] blueprints() {

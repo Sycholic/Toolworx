@@ -2,7 +2,7 @@ package me.lyneira.machinaplanter;
 
 /**
  * Thrown when the planter has no energy.
- * 
+ *
  * @author Lyneira
  */
 class NoEnergyException extends Exception {

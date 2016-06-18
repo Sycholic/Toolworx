@@ -5,7 +5,7 @@ package me.lyneira.machinafactory;
  * <br>
  * Suggested implementation:<br>
  * private static final PacketListener
- * <P>
+ * <p>
  * inside the implementing MyEndpoint class.<br>
  * Suggested implementation of handle():<br>
  * return ((MyEndpointClass) endpoint).handle(payload);<br>
@@ -16,22 +16,19 @@ package me.lyneira.machinafactory;
  * <b>Important</b>:<br>
  * payloadType() must not return null, or the {@link PacketHandler} will throw a
  * NullPointerException.
- * 
- * @param <P>
- *            The type of payload this listener can handle.<br>
+ *
+ * @param <P> The type of payload this listener can handle.<br>
  * @author Lyneira
  */
 public interface PacketListener<P> {
     /**
      * Dispatches the payload to the endpoint.
-     * 
+     * <p>
      * <p><b>Suggested implementation:</b><br>
      * return ((MyEndpointClass) endpoint).handle(payload);</p>
-     * 
-     * @param endpoint
-     *            The endpoint to dispatch to
-     * @param payload
-     *            The payload being sent
+     *
+     * @param endpoint The endpoint to dispatch to
+     * @param payload  The payload being sent
      * @return True if the payload was successfully handled.
      */
     public boolean handle(PipelineEndpoint endpoint, P payload);
@@ -39,12 +36,11 @@ public interface PacketListener<P> {
     /**
      * Returns the class handled by this packet listener. Null return values
      * will generate a NullPointerException.
-     * 
+     * <p>
      * <p><b>Suggested implementation:</b><br>
      * return P.class;</p>
-     * 
+     *
      * @return The class object for this packetlistener.
-     * 
      */
     public Class<P> payloadType();
 }

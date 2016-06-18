@@ -4,13 +4,13 @@ import me.lyneira.MachinaCore.plugin.MachinaPlugin;
 
 /**
  * Main Plugin.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaDrill extends MachinaPlugin {
-    
+
     static MachinaDrill plugin;
-    
+
     @Override
     protected void mpEnable() {
         plugin = this;
@@ -21,7 +21,7 @@ public class MachinaDrill extends MachinaPlugin {
     protected void mpDisable() {
 
     }
-    
+
 //    final static Logger log = Logger.getLogger("Minecraft");
 //    private MachinaCore machinaCore;
 //

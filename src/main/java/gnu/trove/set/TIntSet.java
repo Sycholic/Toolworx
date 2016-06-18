@@ -35,7 +35,7 @@ import java.util.Set;
 /**
  * An implementation of the <tt>Set</tt> interface that uses an
  * open-addressed hash table to store its contents.
- *
+ * <p>
  * Created: Sat Nov  3 10:38:17 2001
  *
  * @author Eric D. Friedman, Rob Eden, Jeff Randall
@@ -64,7 +64,7 @@ public interface TIntSet extends TIntCollection {
      */
     int size();
 
-    
+
     /**
      * Returns <tt>true</tt> if this set contains no elements.
      *
@@ -79,7 +79,7 @@ public interface TIntSet extends TIntCollection {
      * @param entry an <code>int</code> value
      * @return true if the set contains the specified element.
      */
-    boolean contains( int entry );
+    boolean contains(int entry);
 
 
     /**
@@ -96,12 +96,12 @@ public interface TIntSet extends TIntCollection {
      * If this set makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the
      * elements in the same order.
-     *
+     * <p>
      * <p>The returned array will be "safe" in that no references to it
      * are maintained by this set.  (In other words, this method must
      * allocate a new array even if this set is backed by an array).
      * The caller is thus free to modify the returned array.
-     *
+     * <p>
      * <p>This method acts as bridge between array-based and collection-based
      * APIs.
      *
@@ -112,28 +112,28 @@ public interface TIntSet extends TIntCollection {
 
     /**
      * Returns an array containing elements in this set.
-     *
+     * <p>
      * <p>If this set fits in the specified array with room to spare
      * (i.e., the array has more elements than this set), the element in
      * the array immediately following the end of the set is set to
      * <tt>{@link #getNoEntryValue()}</tt>.  (This is useful in determining
      * the length of this set <i>only</i> if the caller knows that this
      * set does not contain any elements representing null.)
-     *
+     * <p>
      * <p>If the native array is smaller than the set size,
      * the array will be filled with elements in Iterator order
      * until it is full and exclude the remainder.
-     *
+     * <p>
      * <p>If this set makes any guarantees as to what order its elements
      * are returned by its iterator, this method must return the elements
      * in the same order.
      *
      * @param dest the array into which the elements of this set are to be
-     *        stored.
+     *             stored.
      * @return an <tt>int[]</tt> containing all the elements in this set
      * @throws NullPointerException if the specified array is null
      */
-    int[] toArray( int[] dest );
+    int[] toArray(int[] dest);
 
 
     /**
@@ -142,7 +142,7 @@ public interface TIntSet extends TIntCollection {
      * @param entry a <code>int</code> value
      * @return true if the set was modified by the add operation
      */
-    boolean add( int entry );
+    boolean add(int entry);
 
 
     /**
@@ -151,7 +151,7 @@ public interface TIntSet extends TIntCollection {
      * @param entry an <code>int</code> value
      * @return true if the set was modified by the remove operation.
      */
-    boolean remove( int entry );
+    boolean remove(int entry);
 
 
     /**
@@ -161,7 +161,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>Collection</code> value
      * @return true if all elements were present in the set.
      */
-    boolean containsAll( Collection<?> collection );
+    boolean containsAll(Collection<?> collection);
 
 
     /**
@@ -171,7 +171,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>TIntCollection</code> value
      * @return true if all elements were present in the set.
      */
-    boolean containsAll( TIntCollection collection );
+    boolean containsAll(TIntCollection collection);
 
 
     /**
@@ -181,7 +181,7 @@ public interface TIntSet extends TIntCollection {
      * @param array as <code>array</code> of int primitives.
      * @return true if all elements were present in the set.
      */
-    boolean containsAll( int[] array );
+    boolean containsAll(int[] array);
 
 
     /**
@@ -190,7 +190,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>Collection</code> value
      * @return true if the set was modified by the add all operation.
      */
-    boolean addAll( Collection<? extends Integer> collection );
+    boolean addAll(Collection<? extends Integer> collection);
 
 
     /**
@@ -199,7 +199,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>TIntCollection</code> value
      * @return true if the set was modified by the add all operation.
      */
-    boolean addAll( TIntCollection collection );
+    boolean addAll(TIntCollection collection);
 
 
     /**
@@ -208,7 +208,7 @@ public interface TIntSet extends TIntCollection {
      * @param array a <code>array</code> of int primitives.
      * @return true if the set was modified by the add all operation.
      */
-    boolean addAll( int[] array );
+    boolean addAll(int[] array);
 
 
     /**
@@ -218,7 +218,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>Collection</code> value
      * @return true if the set was modified by the retain all operation
      */
-    boolean retainAll( Collection<?> collection );
+    boolean retainAll(Collection<?> collection);
 
 
     /**
@@ -228,7 +228,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>TIntCollection</code> value
      * @return true if the set was modified by the retain all operation
      */
-    boolean retainAll( TIntCollection collection );
+    boolean retainAll(TIntCollection collection);
 
 
     /**
@@ -238,7 +238,7 @@ public interface TIntSet extends TIntCollection {
      * @param array an <code>array</code> of int primitives.
      * @return true if the set was modified by the retain all operation
      */
-    boolean retainAll( int[] array );
+    boolean retainAll(int[] array);
 
 
     /**
@@ -247,7 +247,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>Collection</code> value
      * @return true if the set was modified by the remove all operation.
      */
-    boolean removeAll( Collection<?> collection );
+    boolean removeAll(Collection<?> collection);
 
 
     /**
@@ -256,7 +256,7 @@ public interface TIntSet extends TIntCollection {
      * @param collection a <code>TIntCollection</code> value
      * @return true if the set was modified by the remove all operation.
      */
-    boolean removeAll( TIntCollection collection );
+    boolean removeAll(TIntCollection collection);
 
 
     /**
@@ -265,7 +265,7 @@ public interface TIntSet extends TIntCollection {
      * @param array an <code>array</code> of int primitives.
      * @return true if the set was modified by the remove all operation.
      */
-    public boolean removeAll( int[] array );
+    public boolean removeAll(int[] array);
 
 
     /**
@@ -281,7 +281,7 @@ public interface TIntSet extends TIntCollection {
      * @return false if the loop over the set terminated because
      * the procedure returned false for some value.
      */
-    boolean forEach( TIntProcedure procedure );
+    boolean forEach(TIntProcedure procedure);
 
 
     // Comparison and hashing
@@ -298,7 +298,7 @@ public interface TIntSet extends TIntCollection {
      * @param o object to be compared for equality with this set
      * @return <tt>true</tt> if the specified object is equal to this set
      */
-    boolean equals( Object o );
+    boolean equals(Object o);
 
 
     /**

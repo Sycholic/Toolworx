@@ -26,7 +26,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Abstract builder that can move and build rail behind its furnace.
- * 
+ *
  * @author Lyneira
  */
 public abstract class Builder extends Movable {
@@ -44,7 +44,7 @@ public abstract class Builder extends Movable {
      * Whether the builder should use energy.
      */
     private static boolean useEnergy = true;
-    
+
     /**
      * Whether the builder should use a pickaxe when removing blocks to replace them.
      */
@@ -101,15 +101,11 @@ public abstract class Builder extends Movable {
 
     /**
      * Creates a new drill.
-     * 
-     * @param plugin
-     *            The MachinaCore plugin
-     * @param anchor
-     *            The anchor location of the drill
-     * @param yaw
-     *            The direction of the drill
-     * @param modules
-     *            The active modules for the drill
+     *
+     * @param plugin  The MachinaCore plugin
+     * @param anchor  The anchor location of the drill
+     * @param yaw     The direction of the drill
+     * @param modules The active modules for the drill
      */
     Builder(final Blueprint blueprint, final List<Integer> modules, final BlockRotation yaw, Player player, BlockLocation anchor, //
             BlueprintBlock furnace, BlueprintBlock centralBase, BlueprintBlock primaryHead, BlueprintBlock supplyChest) {
@@ -154,11 +150,9 @@ public abstract class Builder extends Movable {
     /**
      * Rotates the builder to the new direction, if this would not cause a
      * collision.
-     * 
-     * @param anchor
-     *            The anchor of the builder
-     * @param newYaw
-     *            The new direction
+     *
+     * @param anchor The anchor of the builder
+     * @param newYaw The new direction
      */
     protected void doRotate(final BlockLocation anchor, final BlockRotation newYaw) {
         BlockRotation rotateBy = newYaw.subtract(yaw);
@@ -177,11 +171,9 @@ public abstract class Builder extends Movable {
 
     /**
      * Uses the given amount of energy and returns true if successful.
-     * 
-     * @param anchor
-     *            The anchor of the Builder
-     * @param energy
-     *            The amount of energy needed for the next action
+     *
+     * @param anchor The anchor of the Builder
+     * @param energy The amount of energy needed for the next action
      * @return True if enough energy could be used up
      */
     protected boolean useEnergy(final BlockLocation anchor, final int energy) {
@@ -229,9 +221,8 @@ public abstract class Builder extends Movable {
     /**
      * Returns the burning furnace to its normal state and decrements the number
      * of active drills.
-     * 
-     * @param anchor
-     *            The anchor of the Drill being deactivated
+     *
+     * @param anchor The anchor of the Drill being deactivated
      */
     @Override
     public void onDeActivate(final BlockLocation anchor) {
@@ -247,11 +238,9 @@ public abstract class Builder extends Movable {
 
     /**
      * Sets the builder's furnace to the given state and set correct direction.
-     * 
-     * @param anchor
-     *            The builder's anchor
-     * @param burning
-     *            Whether the furnace should be burning.
+     *
+     * @param anchor  The builder's anchor
+     * @param burning Whether the furnace should be burning.
      */
     private final void setFurnace(final BlockLocation anchor, final boolean burning) {
         Block furnaceBlock = anchor.getRelative(furnace.vector(yaw)).getBlock();
@@ -260,7 +249,7 @@ public abstract class Builder extends Movable {
 
     /**
      * Sets a chest facing backwards.
-     * 
+     *
      * @param anchor
      */
     protected void setChest(final BlockLocation anchor, final BlueprintBlock chest) {
@@ -271,7 +260,7 @@ public abstract class Builder extends Movable {
 
     /**
      * Method used to set all the containers on a builder after it has rotated.
-     * 
+     *
      * @param anchor
      */
     protected abstract void setContainers(final BlockLocation anchor);
@@ -282,7 +271,7 @@ public abstract class Builder extends Movable {
     protected interface State {
         /**
          * Executes the state and returns the next state.
-         * 
+         *
          * @param anchor
          * @return
          */
@@ -291,7 +280,7 @@ public abstract class Builder extends Movable {
         /**
          * Enqueues the state and returns the delay needed before it can
          * execute.
-         * 
+         *
          * @param anchor
          * @return
          */
@@ -303,7 +292,7 @@ public abstract class Builder extends Movable {
      * your subclass is fully constructed, so you can't rely on any internal
      * fields yet. The builder's startingState field will be set to the return
      * value of this field.
-     * 
+     *
      * @return The starting state the builder will use.
      */
     protected abstract State getStartingState();
@@ -315,9 +304,8 @@ public abstract class Builder extends Movable {
         /**
          * Moves the drill forward if there is empty space to move into, and
          * ground to stand on.
-         * 
-         * @param anchor
-         *            The anchor of the Drill to move
+         *
+         * @param anchor The anchor of the Drill to move
          */
         @Override
         public State run(BlockLocation anchor) {
@@ -405,7 +393,7 @@ public abstract class Builder extends Movable {
             return moveDelay;
         }
     }
-    
+
     private class GetBearings implements State {
         @Override
         public State run(BlockLocation anchor) {
@@ -416,14 +404,15 @@ public abstract class Builder extends Movable {
         public int enqueue(BlockLocation anchor) {
             return 10;
         }
-        
+
     }
 
     // **** Static stuff ****
+
     /**
      * Returns true if the current limit allows activating another builder for
      * this player.
-     * 
+     *
      * @param player
      * @return True if the player can activate another builder.
      */
@@ -460,7 +449,7 @@ public abstract class Builder extends Movable {
 
     /**
      * Returns true if the given target location is valid to build in.
-     * 
+     *
      * @param target
      * @return True if this location is valid
      */
@@ -471,7 +460,7 @@ public abstract class Builder extends Movable {
     /**
      * Returns true if the given target location is valid to place a block
      * against.
-     * 
+     *
      * @param target
      * @return True if this location is valid to place against
      */
@@ -481,7 +470,7 @@ public abstract class Builder extends Movable {
 
     /**
      * Loads the given configuration.
-     * 
+     *
      * @param configuration
      */
     static void loadConfiguration(ConfigurationSection configuration) {

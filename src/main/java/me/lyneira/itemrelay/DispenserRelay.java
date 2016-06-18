@@ -17,7 +17,7 @@ import org.bukkit.inventory.ItemStack;
 /**
  * Item Relay with a dispenser as container. Will also suck in items near it on
  * each tick.
- * 
+ *
  * @author Lyneira
  */
 public class DispenserRelay extends ItemRelay {
@@ -36,7 +36,7 @@ public class DispenserRelay extends ItemRelay {
         BlockLocation container = container();
         Location location = container.getLocation();
         for (Entity i : container.getWorld().getEntitiesByClass(Item.class)) {
-            if (! i.isDead() && i.getLocation().distance(location) < suctionDistance) {
+            if (!i.isDead() && i.getLocation().distance(location) < suctionDistance) {
                 ItemStack item = ((Item) i).getItemStack();
                 Inventory myInventory = (((InventoryHolder) container().getBlock().getState()).getInventory());
                 InventoryTransaction transaction = new InventoryTransaction(myInventory);

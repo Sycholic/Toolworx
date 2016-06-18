@@ -18,7 +18,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 /**
  * Class that verifies the left 3x3 slots of a chest's inventory with
  * {@link ShapelessRecipe}s or {@link ShapedRecipe}s.
- * 
+ *
  * @author Lyneira
  */
 class RecipeVerifier {
@@ -30,7 +30,7 @@ class RecipeVerifier {
     /**
      * Constructs a new RecipeVerifier from the given inventory. A chest
      * inventory is assumed.
-     * 
+     *
      * @param inventory
      */
     RecipeVerifier(Inventory inventory) throws ComponentActivateException {
@@ -44,7 +44,7 @@ class RecipeVerifier {
     /**
      * Iterates through the given Recipe iterator and finds the recipe laid out
      * on this verifier's inventory.
-     * 
+     *
      * @param it
      * @return A list of ingredients needed for each combine.
      */
@@ -72,7 +72,8 @@ class RecipeVerifier {
     Transaction collect(ShapelessRecipe recipe) {
         List<ItemStack> ingredients = recipe.getIngredientList();
         List<ItemStack> collected = new ArrayList<ItemStack>(ingredients.size());
-        INGREDIENTS: for (ItemStack ingredient : ingredients) {
+        INGREDIENTS:
+        for (ItemStack ingredient : ingredients) {
             for (ItemStack item : collected) {
                 if (ItemUtils.itemEqualsTypeAndData(item, ingredient)) {
                     item.setAmount(item.getAmount() + ingredient.getAmount());
@@ -89,7 +90,7 @@ class RecipeVerifier {
         String[] shape = recipe.getShape();
         Map<Character, ItemStack> map = recipe.getIngredientMap();
         for (String s : shape)
-            INGREDIENTS: for (int i = 0; i < s.length(); i++) {
+            INGREDIENTS:for (int i = 0; i < s.length(); i++) {
                 ItemStack ingredient = map.get(s.charAt(i));
                 if (ingredient == null)
                     continue;
@@ -107,18 +108,19 @@ class RecipeVerifier {
     /**
      * Returns true if the recipe contained in this verifier matches the given
      * {@link ShapelessRecipe}.
-     * 
+     *
      * @param recipe
      * @return True if the recipe was verified.
      */
     boolean verify(ShapelessRecipe recipe) {
         List<ItemStack> ingredients = recipe.getIngredientList();
         for (int i = 0; i < rows; i++) {
-            RECIPEITEM: for (int j = 0; j < columns; j++) {
+            RECIPEITEM:
+            for (int j = 0; j < columns; j++) {
                 ItemStack recipeItem = matrix[i][j];
                 if (recipeItem == null)
                     continue;
-                for (Iterator<ItemStack> it = ingredients.iterator(); it.hasNext();) {
+                for (Iterator<ItemStack> it = ingredients.iterator(); it.hasNext(); ) {
                     ItemStack ingredient = it.next();
 
                     if (ItemUtils.recipeIngredientEqualsTypeAndData(ingredient, recipeItem)) {

@@ -14,7 +14,7 @@ import com.google.common.base.Predicate;
  * Class for processing of an Inventory one item at a time. Maintains a cursor
  * to the current {@link ItemStack}, starting at the first slot. The cursor can
  * be manipulated by the find function.
- * 
+ *
  * @author Lyneira
  */
 public class InventoryManager {
@@ -27,7 +27,7 @@ public class InventoryManager {
 
     /**
      * Finds the first ItemStack that satisfies the given {@link Predicate}.
-     * 
+     *
      * @param predicate
      * @return True if an ItemStack was found.
      */
@@ -43,7 +43,7 @@ public class InventoryManager {
 
     /**
      * Finds the first non-empty slot in the inventory.
-     * 
+     *
      * @return True if an item was found.
      */
     public final boolean findFirst() {
@@ -58,7 +58,7 @@ public class InventoryManager {
 
     /**
      * Finds the first slot matching the given item. Amount is not checked.
-     * 
+     *
      * @param material
      * @return True if an item was found.
      */
@@ -71,9 +71,10 @@ public class InventoryManager {
         }
         return false;
     }
-    
+
     /**
      * Finds the first slot matching the given material.
+     *
      * @param material The material to look for.
      * @return True if an item was found.
      */
@@ -88,9 +89,10 @@ public class InventoryManager {
         }
         return false;
     }
-    
+
     /**
      * Finds the first slot matching the given type id and data. This won't find items of type 0 (air).
+     *
      * @param typeId
      * @param data
      * @return True if an item was found.
@@ -109,7 +111,7 @@ public class InventoryManager {
 
     /**
      * Increments the ItemStack at the current position.
-     * 
+     *
      * @param amount
      */
     public void increment() {
@@ -128,7 +130,7 @@ public class InventoryManager {
 
     /**
      * Subtracts the given amount from the ItemStack at the current position.
-     * 
+     *
      * @param amount
      */
     public void decrement() {
@@ -147,7 +149,7 @@ public class InventoryManager {
 
     /**
      * Gets a copy of the ItemStack at the current position.
-     * 
+     *
      * @return
      */
     public ItemStack get() {
@@ -156,7 +158,7 @@ public class InventoryManager {
 
     /**
      * Sets the current position to a copy of the given ItemStack.
-     * 
+     *
      * @param item
      */
     public void set(ItemStack item) {
@@ -176,7 +178,7 @@ public class InventoryManager {
      * Returns the inventory belonging only to the given block, filtering out
      * double inventories. Does not check whether the given block has an
      * inventory.
-     * 
+     *
      * @return The inventory for the given block.
      */
     public static Inventory getSafeInventory(Block block) {
@@ -197,38 +199,38 @@ public class InventoryManager {
     /**
      * Detects a pattern of items placed on the left hand side of the inventory,
      * maximum size 3x3. Dispenser and chest inventories supported.
-     * 
+     *
      * @param inventory
      * @return A matrix of itemstacks, null values mean an empty slot. Returns
-     *         null if no pattern could be found.
+     * null if no pattern could be found.
      */
     public static ItemStack[][] detectPattern(Inventory inventory) {
         final int size = inventory.getSize();
         final ItemStack[][] contents;
         if (size == 9) {
             // Dispenser
-            contents = new ItemStack[][] { new ItemStack[] { inventory.getItem(0), //
+            contents = new ItemStack[][]{new ItemStack[]{inventory.getItem(0), //
                     inventory.getItem(1), //
                     inventory.getItem(2), //
-            }, new ItemStack[] { inventory.getItem(3), //
+            }, new ItemStack[]{inventory.getItem(3), //
                     inventory.getItem(4), //
                     inventory.getItem(5), //
-            }, new ItemStack[] { inventory.getItem(6), //
+            }, new ItemStack[]{inventory.getItem(6), //
                     inventory.getItem(7), //
                     inventory.getItem(8), //
-            } };
+            }};
         } else if (size == 27 || size == 2 * 27) {
             // Chest inventory
-            contents = new ItemStack[][] { new ItemStack[] { inventory.getItem(0), //
+            contents = new ItemStack[][]{new ItemStack[]{inventory.getItem(0), //
                     inventory.getItem(1), //
                     inventory.getItem(2), //
-            }, new ItemStack[] { inventory.getItem(9), //
+            }, new ItemStack[]{inventory.getItem(9), //
                     inventory.getItem(10), //
                     inventory.getItem(11), //
-            }, new ItemStack[] { inventory.getItem(18), //
+            }, new ItemStack[]{inventory.getItem(18), //
                     inventory.getItem(19), //
                     inventory.getItem(20), //
-            } };
+            }};
         } else {
             return null;
         }

@@ -4,9 +4,8 @@ package me.lyneira.machinafactory;
  * Represents a packet handler for {@link PipelineEndpoint} implementations.
  * Suggested usage in your implementation:<br>
  * private static final PacketHandler handler = new PacketHandler(PacketListener<?>...);
- * 
+ *
  * @author Lyneira
- * 
  */
 public class PacketHandler {
     private final PacketListener<?>[] listeners;
@@ -14,6 +13,7 @@ public class PacketHandler {
 
     /**
      * Constructs a new PacketHandler for the given PacketListeners.
+     *
      * @param listeners A list of PacketListeners for class types this handler should handle.
      */
     public PacketHandler(PacketListener<?>... listeners) {
@@ -29,6 +29,7 @@ public class PacketHandler {
 
     /**
      * Dispatches the payload to the first listener able to handle it.
+     *
      * @param endpoint
      * @param payload
      * @return True if the payload was handled successfully.

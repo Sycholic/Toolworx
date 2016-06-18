@@ -10,7 +10,7 @@ import org.bukkit.material.MaterialData;
 
 /**
  * Handles pumpkins for the planter.
- * 
+ *
  * @author Lyneira
  */
 public class CropPumpkin implements CropHandler {
@@ -30,7 +30,7 @@ public class CropPumpkin implements CropHandler {
     public Material getPlantableItem() {
         return Material.PUMPKIN_SEEDS;
     }
-    
+
     @Override
     public boolean checkPlantableItemData(MaterialData data) {
         return true;

@@ -20,7 +20,7 @@ import me.lyneira.machinacore.block.BlockRotation;
 
 /**
  * HoverPad operation class
- * 
+ *
  * @author Lyneira
  * @author Nividica
  */
@@ -128,13 +128,11 @@ class HoverPad extends Movable {
 
     /**
      * Moves a value toward another by 1
-     * 
-     * @param fromValue
-     *            The base value
-     * @param toValue
-     *            The new value
+     *
+     * @param fromValue The base value
+     * @param toValue   The new value
      * @return fromValue+1: Ascending/Forward, fromValue: Still, fromValue-1:
-     *         Descending/Backward
+     * Descending/Backward
      */
     private int stepValueToward(int fromValue, int toValue) {
         int returnValue = fromValue;
@@ -153,9 +151,8 @@ class HoverPad extends Movable {
 
     /**
      * Turns the lever attached to the anchor off and returns null
-     * 
-     * @param anchor
-     *            The current location of the anchor
+     *
+     * @param anchor The current location of the anchor
      * @return null
      */
     private HeartBeatEvent stopPad(BlockLocation anchor) {
@@ -203,7 +200,7 @@ class HoverPad extends Movable {
 
     /**
      * Moves the pad to the player's position
-     * 
+     *
      * @param anchor
      * @param newAnchor
      * @return True: The HoverPad moved, False: The HoverPad could not move
@@ -220,10 +217,10 @@ class HoverPad extends Movable {
 
         return true;
     }
-    
+
     static void loadConfiguration(ConfigurationSection configuration) {
         baseMoveDelay = Math.max(configuration.getInt("move-delay", baseMoveDelay), 1);
-        halfMoveDelay = Math.max(baseMoveDelay/2, 1);
+        halfMoveDelay = Math.max(baseMoveDelay / 2, 1);
     }
 
 }

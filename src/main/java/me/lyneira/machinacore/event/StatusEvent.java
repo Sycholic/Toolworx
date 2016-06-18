@@ -4,9 +4,8 @@ import org.bukkit.entity.Player;
 
 /**
  * Called when a player requests status information from a machina.
- * 
+ *
  * @author Lyneira
- * 
  */
 public class StatusEvent extends Event {
     /**

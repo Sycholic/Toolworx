@@ -5,10 +5,9 @@ import java.util.Iterator;
 /**
  * An iterator over all elements of this map. If this iterator is used after the
  * map is cleared, the results are undefined.
- * 
- * @author Lyneira
- * 
+ *
  * @param <T>
+ * @author Lyneira
  */
 public class UniqueIdObjectIterator<T> implements Iterator<T> {
 
@@ -40,7 +39,7 @@ public class UniqueIdObjectIterator<T> implements Iterator<T> {
 
     /**
      * Returns the id of the last item returned by this iterator.
-     * 
+     *
      * @return
      */
     public int lastId() {

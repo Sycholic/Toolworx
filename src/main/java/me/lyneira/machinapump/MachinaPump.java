@@ -10,7 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Main Plugin.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaPump extends JavaPlugin {
@@ -21,7 +21,7 @@ public class MachinaPump extends JavaPlugin {
     public final void onEnable() {
         PluginDescriptionFile pdf = getDescription();
         log.info(pdf.getName() + " version " + pdf.getVersion() + " is now enabled.");
-        
+
         ConfigurationManager config = new ConfigurationManager(this);
         Pump.loadConfiguration(config.getAll());
 

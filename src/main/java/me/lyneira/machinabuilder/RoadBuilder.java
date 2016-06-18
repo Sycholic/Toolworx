@@ -29,7 +29,7 @@ import com.google.common.base.Predicate;
 /**
  * BlockDropperBuilder that also lays roads by replacing blocks under it with
  * those from its chest.
- * 
+ *
  * @author Lyneira
  */
 public class RoadBuilder extends BlockDropperBuilder {
@@ -143,9 +143,8 @@ public class RoadBuilder extends BlockDropperBuilder {
     /**
      * Uses the appropriate tool for this drill type and returns true if
      * successful.
-     * 
-     * @param anchor
-     *            The anchor of the Drill
+     *
+     * @param anchor The anchor of the Drill
      * @return True if a use of the pickaxe was expended.
      */
     private boolean useTool(final BlockLocation anchor) {

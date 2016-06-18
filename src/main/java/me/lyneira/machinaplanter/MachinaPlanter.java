@@ -10,18 +10,18 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 /**
  * Main Plugin.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaPlanter extends JavaPlugin {
     private final static Logger log = Logger.getLogger("Minecraft");
     private MachinaCore machinaCore;
     private Blueprint blueprint;
-    
+
     public static void log(String message) {
         log.info("MachinaPlanter: " + message);
     }
-    
+
     @Override
     public final void onEnable() {
         PluginDescriptionFile pdf = getDescription();
@@ -29,7 +29,7 @@ public class MachinaPlanter extends JavaPlugin {
 
         ConfigurationManager config = new ConfigurationManager(this);
         Planter.loadConfiguration(config.getAll());
-        
+
         blueprint = new Blueprint();
 
         machinaCore = (MachinaCore) getServer().getPluginManager().getPlugin("MachinaCore");

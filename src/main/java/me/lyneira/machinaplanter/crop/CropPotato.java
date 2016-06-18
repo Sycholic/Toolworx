@@ -2,6 +2,7 @@ package me.lyneira.machinaplanter.crop;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
 import me.lyneira.machinacore.BlockLocation;
 
 import org.bukkit.Material;
@@ -10,7 +11,7 @@ import org.bukkit.material.MaterialData;
 
 /**
  * Handles potatoes for the planter.
- * 
+ *
  * @author Lyneira
  */
 public class CropPotato implements CropHandler {
@@ -30,7 +31,7 @@ public class CropPotato implements CropHandler {
     public Material getPlantableItem() {
         return Material.POTATO_ITEM;
     }
-    
+
     @Override
     public boolean checkPlantableItemData(MaterialData data) {
         return true;

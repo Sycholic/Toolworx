@@ -5,12 +5,11 @@ import java.util.Arrays;
 /**
  * Class for internal use by a collection that needs to assign unique ids to its
  * elements. Also provides O(1) lookup of elements by their id.
- * 
+ * <p>
  * This map does not permit null values.
- * 
- * @author Lyneira
- * 
+ *
  * @param <T>
+ * @author Lyneira
  */
 public class UniqueIdObjectMap<T> {
 
@@ -21,9 +20,8 @@ public class UniqueIdObjectMap<T> {
     /**
      * Constructs a new map with space for at least the specified number of
      * elements.
-     * 
-     * @param initialCapacity
-     *            The initial capacity of the map
+     *
+     * @param initialCapacity The initial capacity of the map
      */
     @SuppressWarnings("unchecked")
     public UniqueIdObjectMap(int initialCapacity) {
@@ -36,9 +34,8 @@ public class UniqueIdObjectMap<T> {
     /**
      * Constructs a shallow copy of the given map. Suitable when the map
      * contains immutable objects.
-     * 
-     * @param other
-     *            The map to copy.
+     *
+     * @param other The map to copy.
      */
     public UniqueIdObjectMap(UniqueIdObjectMap<T> other) {
         elementData = Arrays.copyOf(other.elementData, other.elementData.length);
@@ -74,7 +71,7 @@ public class UniqueIdObjectMap<T> {
 
     /**
      * Returns this map's size.
-     * 
+     *
      * @return The size of the map
      */
     public int size() {
@@ -83,7 +80,7 @@ public class UniqueIdObjectMap<T> {
 
     /**
      * Returns this map's capacity.
-     * 
+     *
      * @return The capacity of the map
      */
     public int capacity() {
@@ -92,9 +89,8 @@ public class UniqueIdObjectMap<T> {
 
     /**
      * Returns the element at the given id, or null if no such element exists.
-     * 
-     * @param id
-     *            The id of the element to get.
+     *
+     * @param id The id of the element to get.
      * @return The requested element or null.
      */
     public T get(int id) {
@@ -106,9 +102,8 @@ public class UniqueIdObjectMap<T> {
 
     /**
      * Adds a new element to the map and returns a unique id for it.
-     * 
-     * @param element
-     *            The element to add
+     *
+     * @param element The element to add
      * @return The id for the added element
      */
     public int add(T element) {
@@ -127,11 +122,9 @@ public class UniqueIdObjectMap<T> {
     /**
      * Puts the element at the specified spot in the map. If there was already
      * an element here, it will be replaced.
-     * 
-     * @param element
-     *            The element to put
-     * @param id
-     *            The slot to put the element at
+     *
+     * @param element The element to put
+     * @param id      The slot to put the element at
      */
     public void put(T element, int id) {
         if (element == null) {
@@ -178,7 +171,7 @@ public class UniqueIdObjectMap<T> {
     /**
      * Returns an iterator over all elements of this map. If this iterator is
      * used after the map is cleared, the results are undefined.
-     * 
+     *
      * @return An iterator over all elements of the map
      */
     public UniqueIdObjectIterator<T> iterator() {

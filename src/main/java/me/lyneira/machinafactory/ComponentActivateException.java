@@ -2,6 +2,7 @@ package me.lyneira.machinafactory;
 
 /**
  * Thrown when a component being created is unable to activate.
+ *
  * @author Lyneira
  */
 public class ComponentActivateException extends Exception {

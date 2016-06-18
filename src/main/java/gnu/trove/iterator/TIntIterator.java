@@ -32,7 +32,7 @@ public interface TIntIterator extends TIterator {
      * and returns it.
      *
      * @return the next int in the collection
-     * @exception NoSuchElementException if the iterator is already exhausted
+     * @throws NoSuchElementException if the iterator is already exhausted
      */
     public int next();
 }

@@ -6,7 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 /**
  * Wrapper class with convenience methods for loading material ids and bounded
  * values for MachinaCraft plugins.
- * 
+ *
  * @author Lyneira
  */
 
@@ -22,7 +22,8 @@ public class MPConfig {
 
     /**
      * Returns the typeId specified by the given config path. Will match either an integer or a material enum name.
-     * @param path The config path to get
+     *
+     * @param path         The config path to get
      * @param defaultValue The default value to return if a typeId could not be matched.
      * @return A type id
      */
@@ -41,8 +42,9 @@ public class MPConfig {
 
     /**
      * Returns the typeId specified by the given string. Will match either an integer or a material enum name.
+     *
      * @param configItem The string to parse
-     * @param The default value to return if a typeId could not be matched.
+     * @param The        default value to return if a typeId could not be matched.
      * @return A type id
      */
     public static int parseTypeId(String stringType, int defaultValue) {

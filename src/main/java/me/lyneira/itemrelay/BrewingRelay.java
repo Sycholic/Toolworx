@@ -23,7 +23,7 @@ import com.google.common.base.Predicate;
 
 /**
  * Item Relay with a brewing stand for automatic brewing.
- * 
+ *
  * @author Lyneira
  */
 public class BrewingRelay extends ItemRelay {
@@ -57,18 +57,18 @@ public class BrewingRelay extends ItemRelay {
             }
 
             switch (item.getType()) {
-            case AIR:
-                emptySlots++;
-                break;
-            case POTION:
-                PotionTier current = getTier(item);
-                if (current.ordinal() < tier.ordinal())
-                    tier = current;
-                break;
-            default:
-                // An incompatible item was found, flush the brewing stand.
-                state = brewingFlush;
-                return false;
+                case AIR:
+                    emptySlots++;
+                    break;
+                case POTION:
+                    PotionTier current = getTier(item);
+                    if (current.ordinal() < tier.ordinal())
+                        tier = current;
+                    break;
+                default:
+                    // An incompatible item was found, flush the brewing stand.
+                    state = brewingFlush;
+                    return false;
             }
         }
 
@@ -96,32 +96,32 @@ public class BrewingRelay extends ItemRelay {
         boolean found = false;
 
         switch (tier) {
-        case WATER:
-            found = manager.find(waterBottle);
-            if (found)
+            case WATER:
+                found = manager.find(waterBottle);
+                if (found)
+                    break;
+                return fillWaterBottle(brewingInventory, manager);
+            case AWKWARD:
+                found = manager.find(awkwardPotion);
                 break;
-            return fillWaterBottle(brewingInventory, manager);
-        case AWKWARD:
-            found = manager.find(awkwardPotion);
-            break;
-        case POTION:
-            found = manager.find(potion);
-            break;
-        case EMPTY:
-            // Completely empty brewer: Search for water bottles first, then
-            // empty glass bottles, then awkward, then others.
-            found = manager.find(waterBottle);
-            if (found)
+            case POTION:
+                found = manager.find(potion);
                 break;
-            if (fillWaterBottle(brewingInventory, manager))
-                return true;
-            found = manager.find(awkwardPotion);
-            if (found)
+            case EMPTY:
+                // Completely empty brewer: Search for water bottles first, then
+                // empty glass bottles, then awkward, then others.
+                found = manager.find(waterBottle);
+                if (found)
+                    break;
+                if (fillWaterBottle(brewingInventory, manager))
+                    return true;
+                found = manager.find(awkwardPotion);
+                if (found)
+                    break;
+                found = manager.find(potion);
                 break;
-            found = manager.find(potion);
-            break;
-        default:
-            return false;
+            default:
+                return false;
         }
         if (found) {
             for (int i = 0; i < 3; i++) {
@@ -143,7 +143,7 @@ public class BrewingRelay extends ItemRelay {
     private boolean fillWaterBottle(BrewerInventory brewingInventory, InventoryManager manager) {
         if (!(manager.findMaterial(Material.WATER_BUCKET) && manager.findMaterial(Material.GLASS_BOTTLE)))
             return false;
-        
+
         for (int i = 0; i < 3; i++) {
             ItemStack item = brewingInventory.getItem(i);
             if (item == null || item.getType() == Material.AIR) {
@@ -171,7 +171,7 @@ public class BrewingRelay extends ItemRelay {
      * Determines the tier of a given potion.
      * <p/>
      * <b>Pre:</b> The item stack must be of type Material.POTION.
-     * 
+     *
      * @param item
      * @return
      */
@@ -217,23 +217,23 @@ public class BrewingRelay extends ItemRelay {
             if (item == null)
                 return false;
             switch (item.getType()) {
-            // Primary ingredients:
-            case NETHER_STALK:
-                // Secondary ingredients:
-            case MAGMA_CREAM:
-            case SUGAR:
-            case SPECKLED_MELON:
-            case SPIDER_EYE:
-            case GHAST_TEAR:
-            case BLAZE_POWDER:
-                // Tertiary ingredients:
-            case REDSTONE:
-            case GLOWSTONE_DUST:
-            case FERMENTED_SPIDER_EYE:
-            case SULPHUR:
-                return true;
-            default:
-                return false;
+                // Primary ingredients:
+                case NETHER_STALK:
+                    // Secondary ingredients:
+                case MAGMA_CREAM:
+                case SUGAR:
+                case SPECKLED_MELON:
+                case SPIDER_EYE:
+                case GHAST_TEAR:
+                case BLAZE_POWDER:
+                    // Tertiary ingredients:
+                case REDSTONE:
+                case GLOWSTONE_DUST:
+                case FERMENTED_SPIDER_EYE:
+                case SULPHUR:
+                    return true;
+                default:
+                    return false;
             }
         }
     };

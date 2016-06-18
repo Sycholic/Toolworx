@@ -1,6 +1,7 @@
 package me.lyneira.machinaplanter.crop;
 
 import java.util.Collection;
+
 import me.lyneira.machinacore.BlockLocation;
 import me.lyneira.machinacore.BlockRotation;
 import org.bukkit.DyeColor;
@@ -17,7 +18,7 @@ import org.bukkit.material.Tree;
 
 /**
  * Handles cocoa beans for the planter.
- * 
+ *
  * @author Lyneira
  */
 public class CropCocoa implements CropHandler {
@@ -66,13 +67,13 @@ public class CropCocoa implements CropHandler {
                 return false;
             }
             switch (size) {
-            case SMALL:
-                cocoaPlant.setSize(CocoaPlant.CocoaPlantSize.MEDIUM);
-                break;
-            case MEDIUM:
-                cocoaPlant.setSize(CocoaPlant.CocoaPlantSize.LARGE);
-                break;
-            default:
+                case SMALL:
+                    cocoaPlant.setSize(CocoaPlant.CocoaPlantSize.MEDIUM);
+                    break;
+                case MEDIUM:
+                    cocoaPlant.setSize(CocoaPlant.CocoaPlantSize.LARGE);
+                    break;
+                default:
             }
             state.setData(cocoaPlant);
             return state.update();
@@ -98,7 +99,7 @@ public class CropCocoa implements CropHandler {
 
     @Override
     public Collection<ItemStack> getDrops() {
-        
+
         Dye dye = new Dye();
         dye.setColor(DyeColor.BROWN);
         ItemStack item = new ItemStack(Material.INK_SACK, 3, dye.getData());
@@ -122,9 +123,10 @@ public class CropCocoa implements CropHandler {
         state.setData(new CocoaPlant(CocoaPlant.CocoaPlantSize.SMALL, rotation.getYawFace()));
         state.update();
     }
-    
+
     /**
      * Finds a jungle log around this crop block.
+     *
      * @param crop The block to check around.
      * @return The rotation for which a jungle log was found, null otherwise.
      */

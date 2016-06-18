@@ -2,7 +2,7 @@ package me.lyneira.machinafactory;
 
 /**
  * Thrown when the receiving PipelineEndpoint can't handle this packet type.
- * 
+ *
  * @author Lyneira
  */
 public class PacketTypeUnsupportedException extends Exception {

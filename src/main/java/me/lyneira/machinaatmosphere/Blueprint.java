@@ -16,7 +16,7 @@ public class Blueprint implements MachinaBlueprint {
 
     final static BlueprintBlock sign;
 
-    final static BlueprintBlock[] blocks = { new BlueprintBlock(new BlockVector(-1, 0, 0), Material.LEVER, true), //
+    final static BlueprintBlock[] blocks = {new BlueprintBlock(new BlockVector(-1, 0, 0), Material.LEVER, true), //
             new BlueprintBlock(new BlockVector(0, 0, 0), Material.SMOOTH_BRICK, false), //
             new BlueprintBlock(new BlockVector(0, 1, 0), Material.GOLD_BLOCK, false), //
             new BlueprintBlock(new BlockVector(0, 2, 0), Material.DIAMOND_BLOCK, false), //

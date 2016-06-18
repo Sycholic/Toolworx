@@ -14,7 +14,7 @@ import me.lyneira.machinacore.block.BlockRotation;
 
 /**
  * Class representing the blueprint of any factory component.
- * 
+ *
  * @author Lyneira
  */
 public class ComponentBlueprint {
@@ -49,16 +49,13 @@ public class ComponentBlueprint {
      * <p>
      * Note: Attachables such as a torch should be put last in their array.
      * </p>
-     * 
-     * @param blueprintBase
-     *            An array of {@link BlueprintBlock}s that is present in either
-     *            state.
-     * @param blueprintInactive
-     *            An array of {@link BlueprintBlock}s that need to be present
-     *            when the component first powers on.
-     * @param blueprintActive
-     *            An array of {@link BlueprintBlock}s that will replace the
-     *            inactive blueprint while the component is powered on.
+     *
+     * @param blueprintBase     An array of {@link BlueprintBlock}s that is present in either
+     *                          state.
+     * @param blueprintInactive An array of {@link BlueprintBlock}s that need to be present
+     *                          when the component first powers on.
+     * @param blueprintActive   An array of {@link BlueprintBlock}s that will replace the
+     *                          inactive blueprint while the component is powered on.
      */
     public ComponentBlueprint(BlueprintBlock[] blueprintBase, BlueprintBlock[] blueprintInactive, BlueprintBlock[] blueprintActive) {
         // Verify whether active and inactive have the same size and contain the
@@ -81,9 +78,9 @@ public class ComponentBlueprint {
         for (int i = 0; i < dataIndices.size(); i++)
             this.dataIndices[i] = dataIndices.get(i);
 
-        this.blueprintBase = (blueprintBase == null) ? Arrays.asList(new BlueprintBlock[] {}) : Arrays.asList(blueprintBase.clone());
-        this.blueprintInactive = (blueprintInactive == null) ? Arrays.asList(new BlueprintBlock[] {}) : Arrays.asList(blueprintInactive.clone());
-        this.blueprintActive = (blueprintActive == null) ? Arrays.asList(new BlueprintBlock[] {}) : Arrays.asList(blueprintActive.clone());
+        this.blueprintBase = (blueprintBase == null) ? Arrays.asList(new BlueprintBlock[]{}) : Arrays.asList(blueprintBase.clone());
+        this.blueprintInactive = (blueprintInactive == null) ? Arrays.asList(new BlueprintBlock[]{}) : Arrays.asList(blueprintInactive.clone());
+        this.blueprintActive = (blueprintActive == null) ? Arrays.asList(new BlueprintBlock[]{}) : Arrays.asList(blueprintActive.clone());
         activateDiffPlus = positiveDifference(this.blueprintActive, this.blueprintInactive);
         activateDiffMinus = negativeDifference(this.blueprintInactive, this.blueprintActive);
         deactivateDiffPlus = positiveDifference(this.blueprintInactive, this.blueprintActive);
@@ -94,12 +91,11 @@ public class ComponentBlueprint {
     /**
      * Detects the non-key blocks in the blueprint and returns true if the
      * component is active.
-     * 
+     *
      * @param anchor
      * @param yaw
      * @return True if the detected machina is active.
-     * @throws Exception
-     *             if detection failed.
+     * @throws Exception if detection failed.
      */
     boolean detectOther(BlockLocation anchor, BlockRotation yaw) throws ComponentDetectException {
         if (!detectOther(anchor, yaw, blueprintBase))
@@ -116,7 +112,7 @@ public class ComponentBlueprint {
     /**
      * Detects the non-key blocks in the given {@link BlueprintBlock} list and
      * return true if successful.
-     * 
+     *
      * @param anchor
      * @param yaw
      * @param blueprint
@@ -138,11 +134,9 @@ public class ComponentBlueprint {
 
     /**
      * Calculates the difference set between blueprint and filterBy.
-     * 
-     * @param blueprint
-     *            The blueprint to start with
-     * @param filterBy
-     *            The blueprint to filter by
+     *
+     * @param blueprint The blueprint to start with
+     * @param filterBy  The blueprint to filter by
      * @return A new list
      */
     private List<BlueprintBlock> positiveDifference(List<BlueprintBlock> blueprint, List<BlueprintBlock> filterBy) {
@@ -157,11 +151,9 @@ public class ComponentBlueprint {
     /**
      * Calculates the difference set between blueprint and filterBy. The
      * negative difference will always include attached blocks.
-     * 
-     * @param blueprint
-     *            The blueprint to start with
-     * @param filterBy
-     *            The blueprint to filter by
+     *
+     * @param blueprint The blueprint to start with
+     * @param filterBy  The blueprint to filter by
      * @return A new list
      */
     private List<BlueprintBlock> negativeDifference(List<BlueprintBlock> blueprint, List<BlueprintBlock> filterBy) {
@@ -172,26 +164,28 @@ public class ComponentBlueprint {
         }
         return result;
     }
-    
+
     /**
      * Returns the material for the core block of MachinaFactory components.
+     *
      * @return
      */
     public static final Material coreMaterial() {
         return coreMaterial;
     }
-    
+
     /**
      * Returns the material used for pipelines.
+     *
      * @return
      */
     public static final Material pipelineMaterial() {
         return pipelineMaterial;
     }
-    
+
     /**
      * Loads the given configuration.
-     * 
+     *
      * @param configuration
      */
     static void loadConfiguration(ConfigurationSection configuration) {
@@ -201,6 +195,6 @@ public class ComponentBlueprint {
         material = Material.getMaterial(configuration.getInt("pipeline-material", pipelineMaterial.getId()));
         if (material != null)
             pipelineMaterial = material;
-        
+
     }
 }

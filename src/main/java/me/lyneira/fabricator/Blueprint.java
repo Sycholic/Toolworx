@@ -6,7 +6,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import me.lyneira.machinacore.BlockLocation;
-import me.lyneira.machinacore.BlueprintBlock;
 import me.lyneira.machinacore.block.BlockRotation;
 import me.lyneira.machinacore.block.BlockVector;
 import me.lyneira.machinacore.machina.Machina;
@@ -16,9 +15,11 @@ import me.lyneira.machinafactory.ComponentBlueprint;
 import me.lyneira.machinafactory.ComponentDetectException;
 import me.lyneira.machinafactory.MachinaFactory;
 
+import net.boutopia.toolworx.mecharchitech.BlueprintBlock;
+
 /**
  * Blueprint for the {@link Fabricator}.
- * 
+ *
  * @author Lyneira
  */
 public class Blueprint implements MachinaBlueprint {
@@ -35,15 +36,15 @@ public class Blueprint implements MachinaBlueprint {
     public Blueprint(MachinaFactory plugin) {
         this.plugin = plugin;
         anchorMaterial = ComponentBlueprint.coreMaterial();
-        BlueprintBlock[] blueprintBase = { new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
+        BlueprintBlock[] blueprintBase = {new BlueprintBlock(new BlockVector(0, 0, 0), anchorMaterial, true), //
                 new BlueprintBlock(new BlockVector(1, 0, 0), Material.WORKBENCH, true), //
                 chest = new BlueprintBlock(new BlockVector(0, 1, 0), Material.CHEST, false), //
         };
-        BlueprintBlock[] blueprintInactive = { new BlueprintBlock(new BlockVector(2, 1, 0), Material.IRON_FENCE, false), //
+        BlueprintBlock[] blueprintInactive = {new BlueprintBlock(new BlockVector(2, 1, 0), Material.IRON_FENCE, false), //
                 new BlueprintBlock(new BlockVector(2, 0, 0), ComponentBlueprint.pipelineMaterial(), false), //
         };
 
-        BlueprintBlock[] blueprintActive = { new BlueprintBlock(new BlockVector(2, 0, 0), Material.IRON_FENCE, false), //
+        BlueprintBlock[] blueprintActive = {new BlueprintBlock(new BlockVector(2, 0, 0), Material.IRON_FENCE, false), //
                 sender = new BlueprintBlock(new BlockVector(3, 0, 0), ComponentBlueprint.pipelineMaterial(), false), //
         };
         blueprint = new ComponentBlueprint(blueprintBase, blueprintInactive, blueprintActive);

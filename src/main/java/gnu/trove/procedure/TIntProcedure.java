@@ -37,5 +37,5 @@ public interface TIntProcedure {
      * @return true if additional invocations of the procedure are
      * allowed.
      */
-    public boolean execute( int value );
+    public boolean execute(int value);
 }

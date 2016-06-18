@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * Interface extension to {@link Map} which adds Trove-specific features.
  */
-public interface TMap<K,V> extends Map<K,V> {
+public interface TMap<K, V> extends Map<K, V> {
 
     /**
      * Inserts a key/value pair into the map if the specified key is not already
@@ -37,7 +37,7 @@ public interface TMap<K,V> extends Map<K,V> {
      * @param key   an <code>Object</code> value
      * @param value an <code>Object</code> value
      * @return the previous value associated with <tt>key</tt>,
-     *         or {@code null} if none was found.
+     * or {@code null} if none was found.
      */
     public V putIfAbsent(K key, V value);
 
@@ -47,7 +47,7 @@ public interface TMap<K,V> extends Map<K,V> {
      *
      * @param procedure a <code>TObjectProcedure</code> value
      * @return false if the loop over the keys terminated because
-     *         the procedure returned false for some key.
+     * the procedure returned false for some key.
      */
     public boolean forEachKey(TObjectProcedure<? super K> procedure);
 
@@ -57,7 +57,7 @@ public interface TMap<K,V> extends Map<K,V> {
      *
      * @param procedure a <code>TObjectProcedure</code> value
      * @return false if the loop over the values terminated because
-     *         the procedure returned false for some value.
+     * the procedure returned false for some value.
      */
     public boolean forEachValue(TObjectProcedure<? super V> procedure);
 
@@ -68,7 +68,7 @@ public interface TMap<K,V> extends Map<K,V> {
      *
      * @param procedure a <code>TObjectObjectProcedure</code> value
      * @return false if the loop over the entries terminated because
-     *         the procedure returned false for some entry.
+     * the procedure returned false for some entry.
      */
     public boolean forEachEntry(TObjectObjectProcedure<? super K, ? super V> procedure);
 

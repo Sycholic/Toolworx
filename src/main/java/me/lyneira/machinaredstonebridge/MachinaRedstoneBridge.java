@@ -32,12 +32,12 @@ import org.bukkit.util.permissions.DefaultPermissions;
 /**
  * Plugin that attempts to activate a machina if a repeater powers an activator
  * block, and the block in front of the activator is a lever.
- * 
+ *
  * @author Lyneira
  */
 public class MachinaRedstoneBridge extends JavaPlugin implements Runnable {
     private final static Logger log = Logger.getLogger("Minecraft");
- //   private final static int leverType = Material.LEVER.getId();
+    //   private final static int leverType = Material.LEVER.getId();
 
     private final Set<Block> queuedBlocks = new LinkedHashSet<Block>();
 
@@ -77,7 +77,7 @@ public class MachinaRedstoneBridge extends JavaPlugin implements Runnable {
 
     /**
      * Queues a lever block for machina detection.
-     * 
+     *
      * @param block
      */
     void queueDetect(Block block) {
@@ -96,7 +96,7 @@ public class MachinaRedstoneBridge extends JavaPlugin implements Runnable {
     @Override
     public void run() {
         queueScheduled = false;
-        for (Iterator<Block> it = queuedBlocks.iterator(); it.hasNext();) {
+        for (Iterator<Block> it = queuedBlocks.iterator(); it.hasNext(); ) {
             Block block = it.next();
             it.remove();
 
@@ -136,7 +136,7 @@ public class MachinaRedstoneBridge extends JavaPlugin implements Runnable {
             ConfigurationManager config = new ConfigurationManager(MachinaRedstoneBridge.this);
             ConfigurationSection configuration = config.getAll();
 
-            RedstoneBridgeListener.bridgeBlock =  Material.getMaterial(configuration.getString("bridge-block"));
+            RedstoneBridgeListener.bridgeBlock = Material.getMaterial(configuration.getString("bridge-block"));
 
             List<String> permissionStrings = configuration.getStringList("permissions");
             if (permissionStrings == null) {

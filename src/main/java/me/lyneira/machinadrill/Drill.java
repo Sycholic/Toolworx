@@ -1,71 +1,71 @@
 package me.lyneira.MachinaDrill;
 
-<<<<<<< HEAD
+<<<<<<<HEAD
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+        import java.util.HashMap;
+        import java.util.List;
+        import java.util.Map;
 
-import me.lyneira.MachinaCore.BlockData;
-import me.lyneira.MachinaCore.BlockLocation;
-import me.lyneira.MachinaCore.BlockRotation;
-import me.lyneira.MachinaCore.BlockVector;
-import me.lyneira.MachinaCore.BlueprintBlock;
-import me.lyneira.MachinaCore.EventSimulator;
-import me.lyneira.MachinaCore.Fuel;
-import me.lyneira.MachinaCore.HeartBeatEvent;
-import me.lyneira.MachinaCore.Movable;
-import me.lyneira.MachinaCore.Tool;
-import me.lyneira.util.InventoryManager;
-import me.lyneira.util.InventoryTransaction;
+        import me.lyneira.MachinaCore.BlockData;
+        import me.lyneira.MachinaCore.BlockLocation;
+        import me.lyneira.MachinaCore.BlockRotation;
+        import me.lyneira.MachinaCore.BlockVector;
+        import me.lyneira.MachinaCore.BlueprintBlock;
+        import me.lyneira.MachinaCore.EventSimulator;
+        import me.lyneira.MachinaCore.Fuel;
+        import me.lyneira.MachinaCore.HeartBeatEvent;
+        import me.lyneira.MachinaCore.Movable;
+        import me.lyneira.MachinaCore.Tool;
+        import me.lyneira.util.InventoryManager;
+        import me.lyneira.util.InventoryTransaction;
 
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.Furnace;
-import org.bukkit.block.Sign;
-import org.bukkit.configuration.ConfigurationSection;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
+        import org.bukkit.Material;
+        import org.bukkit.block.Block;
+        import org.bukkit.block.BlockFace;
+        import org.bukkit.block.Furnace;
+        import org.bukkit.block.Sign;
+        import org.bukkit.configuration.ConfigurationSection;
+        import org.bukkit.entity.Player;
+        import org.bukkit.inventory.InventoryHolder;
+        import org.bukkit.inventory.ItemStack;
 
-import com.google.common.base.Predicate;
-=======
-import me.lyneira.MachinaCore.block.BlockRotation;
-import me.lyneira.MachinaCore.event.CreationEvent;
-import me.lyneira.MachinaCore.event.EventHandler;
-import me.lyneira.MachinaCore.event.HeartBeatEvent;
-import me.lyneira.MachinaCore.event.RemovalEvent;
-import me.lyneira.MachinaCore.event.StatusEvent;
-import me.lyneira.MachinaCore.event.VerifyEvent;
-import me.lyneira.MachinaCore.machina.Machina;
-import me.lyneira.MachinaCore.machina.MachinaController;
->>>>>>> origin/master
+        import com.google.common.base.Predicate;
+        =======
+        import me.lyneira.MachinaCore.block.BlockRotation;
+        import me.lyneira.MachinaCore.event.CreationEvent;
+        import me.lyneira.MachinaCore.event.EventHandler;
+        import me.lyneira.MachinaCore.event.HeartBeatEvent;
+        import me.lyneira.MachinaCore.event.RemovalEvent;
+        import me.lyneira.MachinaCore.event.StatusEvent;
+        import me.lyneira.MachinaCore.event.VerifyEvent;
+        import me.lyneira.MachinaCore.machina.Machina;
+        import me.lyneira.MachinaCore.machina.MachinaController;
+        >>>>>>>origin/master
 
 /**
  * A Machina that moves forward, drilling up blocks in its path.
- * 
+ *
  * @author Lyneira
  * @author 5phinX
  */
 class Drill implements MachinaController {
-    
+
     private final BlockRotation yaw;
     private Machina machina;
-    
+
     Drill(BlockRotation yaw) {
         this.yaw = yaw;
     }
 
-<<<<<<< HEAD
+    <<<<<<<HEAD
+
     /**
      * Attempts to drill the next block in the drill pattern, and drop the
      * resulting item.
-     * 
-     * @param anchor
-     *            The anchor of the machina
+     *
+     * @param anchor The anchor of the machina
      * @return False if there is no energy/fuel left to complete the drill. True
-     *         if the drill was successful or there was nothing to drill.
+     * if the drill was successful or there was nothing to drill.
      */
     private boolean doDrill(final BlockLocation anchor) {
         if (BlockData.isDrillable(nextTypeId)) {
@@ -75,13 +75,13 @@ class Drill implements MachinaController {
 
             if (!useEnergy(anchor, queuedDrillTime))
                 return false;
-            
+
             if (!useTool(anchor))
                 return false;
 
             if (!EventSimulator.blockBreak(queuedTarget, player))
                 return false;
-            
+
             // Initiate the transaction after useTool since the inventory may change because of it.
             InventoryTransaction transaction = new InventoryTransaction(InventoryManager.getSafeInventory(chestBlock));
             transaction.add(results);
@@ -93,50 +93,50 @@ class Drill implements MachinaController {
             queuedTarget.setEmpty();
         }
         return true;
-=======
-    @Override
-    public void initialize(Machina machina) {
-        this.machina = machina;
->>>>>>> origin/master
-    }
-    
-    @EventHandler
-    public void onCreate(CreationEvent event) {
-        MachinaDrill.plugin.logInfo("Successfully detected a drill creation event by player " + event.getPlayer().getName() + "!");
-        machina.setHeartBeat(60);
-    }
-    
-    @EventHandler
-    public void onHeartBeat(HeartBeatEvent event) {
-        // TODO Test movement
-        machina.model.move(yaw.getYawVector());
-        if (machina.update()) {
-            MachinaDrill.plugin.logInfo("Moved 1 block");
-        } else {
-            MachinaDrill.plugin.logInfo("Failed to move, something in the way");
-            return;
+        =======
+        @Override
+        public void initialize (Machina machina){
+            this.machina = machina;
+            >>>>>>>origin / master
         }
-        event.next(20);
-    }
-    
-    @EventHandler
-    public void onRemoval(RemovalEvent event) {
-        MachinaDrill.plugin.logInfo("BOOM! I'm dead.");
-    }
-    
-    @EventHandler
-    public void onVerify(VerifyEvent event) {
-        if (event.isDamaged()) {
-            MachinaDrill.plugin.logInfo("I'm damaged! Block damage is " + event.getDamage().size());
-        } else {
-            MachinaDrill.plugin.logInfo("Verify succeeded");
+
+        @EventHandler
+        public void onCreate (CreationEvent event){
+            MachinaDrill.plugin.logInfo("Successfully detected a drill creation event by player " + event.getPlayer().getName() + "!");
+            machina.setHeartBeat(60);
         }
-    }
-    
-    @EventHandler
-    public void onStatus(StatusEvent event) {
-        event.player.sendMessage("Hey this is Drill speaking, thanks for rightclicking on me!");
-    }
+
+        @EventHandler
+        public void onHeartBeat (HeartBeatEvent event){
+            // TODO Test movement
+            machina.model.move(yaw.getYawVector());
+            if (machina.update()) {
+                MachinaDrill.plugin.logInfo("Moved 1 block");
+            } else {
+                MachinaDrill.plugin.logInfo("Failed to move, something in the way");
+                return;
+            }
+            event.next(20);
+        }
+
+        @EventHandler
+        public void onRemoval (RemovalEvent event){
+            MachinaDrill.plugin.logInfo("BOOM! I'm dead.");
+        }
+
+        @EventHandler
+        public void onVerify (VerifyEvent event){
+            if (event.isDamaged()) {
+                MachinaDrill.plugin.logInfo("I'm damaged! Block damage is " + event.getDamage().size());
+            } else {
+                MachinaDrill.plugin.logInfo("Verify succeeded");
+            }
+        }
+
+        @EventHandler
+        public void onStatus (StatusEvent event){
+            event.player.sendMessage("Hey this is Drill speaking, thanks for rightclicking on me!");
+        }
 //    /**
 //     * The number of server ticks to wait for a move action.
 //     */
@@ -589,4 +589,4 @@ class Drill implements MachinaController {
 //        activeLimit = Math.max(configuration.getInt("active-limit", activeLimit), 0);
 //        Blueprint.activationDepthLimit = configuration.getInt("depth-limit", Blueprint.activationDepthLimit);
 //    }
-}
+    }

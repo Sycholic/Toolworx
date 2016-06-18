@@ -10,7 +10,7 @@ import org.bukkit.material.MaterialData;
 
 /**
  * Handles melons for the planter.
- * 
+ *
  * @author Lyneira
  */
 public class CropMelon implements CropHandler {
@@ -30,7 +30,7 @@ public class CropMelon implements CropHandler {
     public Material getPlantableItem() {
         return Material.MELON_SEEDS;
     }
-    
+
     @Override
     public boolean checkPlantableItemData(MaterialData data) {
         return true;

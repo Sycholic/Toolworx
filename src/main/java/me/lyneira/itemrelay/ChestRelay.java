@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 /**
  * Item Relay with a chest as container.
- * 
+ *
  * @author Lyneira
  */
 public class ChestRelay extends ItemRelay {

@@ -11,9 +11,8 @@ import org.bukkit.Material;
  * east.
  * <p>
  * x+ is forward, y+ is up, z+ is right
- * 
- * @author Lyneira
  *
+ * @author Lyneira
  */
 final class ModuleFactory {
 
@@ -26,9 +25,8 @@ final class ModuleFactory {
 
     /**
      * Adds the given Blueprint block to the blueprint storage.
-     * 
-     * @param block
-     *            The BlueprintBlock to add.
+     *
+     * @param block The BlueprintBlock to add.
      */
     private final void addBlock(BlueprintBlock block) {
         if (block.attached) {
@@ -57,12 +55,10 @@ final class ModuleFactory {
 
     /**
      * Adds a non-key block to the blueprint.
-     * 
-     * @param vector
-     *            {@link BlockVector} specifying where this block is located in
-     *            relation to the anchor
-     * @param type
-     *            {@link Material}
+     *
+     * @param vector {@link BlockVector} specifying where this block is located in
+     *               relation to the anchor
+     * @param type   {@link Material}
      */
     public final BlueprintBlock add(BlockVector vector, Material type) {
         if (!finalized) {
@@ -78,12 +74,10 @@ final class ModuleFactory {
     /**
      * Adds a key block to the blueprint. A key block will not be detected
      * automatically when a Movable machina is first activated.
-     * 
-     * @param vector
-     *            {@link BlockVector} specifying where this block is located in
-     *            relation to the anchor
-     * @param type
-     *            {@link Material}
+     *
+     * @param vector {@link BlockVector} specifying where this block is located in
+     *               relation to the anchor
+     * @param type   {@link Material}
      */
     public final BlueprintBlock addKey(BlockVector vector, Material type) {
         if (!finalized) {
@@ -100,7 +94,7 @@ final class ModuleFactory {
      * Returns the final list of BlueprintBlocks from this blueprint. After this
      * function has been called, adding new blocks to the blueprint is not
      * possible.
-     * 
+     *
      * @return A List of BlueprintBlocks.
      */
     final List<BlueprintBlock> getBlueprintFinal() {

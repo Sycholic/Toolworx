@@ -2,7 +2,7 @@ package me.lyneira.machinaplanter;
 
 /**
  * Thrown when the planter has no tool.
- * 
+ *
  * @author Lyneira
  */
 class NoToolException extends Exception {

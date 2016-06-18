@@ -5,10 +5,9 @@ import java.lang.ref.WeakReference;
 
 /**
  * Weak reference with an id for use by IntWeakObjectMap.
- * 
- * @author Lyneira
  *
  * @param <T>
+ * @author Lyneira
  */
 class WeakIdReference<T> extends WeakReference<T> {
     final int id;

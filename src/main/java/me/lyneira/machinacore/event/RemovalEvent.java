@@ -4,7 +4,7 @@ package me.lyneira.machinacore.event;
  * Called when a machina is removed from the universe. This is irrevocable, to
  * keep this from happening in some circumstances, see TODO . The machina is not
  * checked for integrity when this event is fired, it may not be fully intact.
- * 
+ *
  * @author Lyneira
  */
 public class RemovalEvent extends Event {

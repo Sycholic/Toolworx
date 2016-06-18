@@ -76,19 +76,19 @@ public class ItemSplitter extends InventoryProcessor {
         @Override
         public boolean run(InventoryManager manager) throws ProcessInventoryException {
             switch (sender.matchFilterWithPriority(manager, getOpposite())) {
-            case FOUND:
-                break;
-            case FILTERED_NOMATCH:
-                switchSender();
-                switch (sender.matchFilterWithPriority(manager, getOpposite())) {
                 case FOUND:
+                    break;
+                case FILTERED_NOMATCH:
+                    switchSender();
+                    switch (sender.matchFilterWithPriority(manager, getOpposite())) {
+                        case FOUND:
+                            break;
+                        default:
+                            return false;
+                    }
                     break;
                 default:
                     return false;
-                }
-                break;
-            default:
-                return false;
             }
             // We've found a match in one of the senders. Try to send the item.
             ItemStack item = manager.get();
@@ -166,9 +166,8 @@ public class ItemSplitter extends InventoryProcessor {
          * Returns true if the InventoryManager contains an item that matches
          * the filter of this sender. The InventoryManager's cursor will be set
          * to this item.
-         * 
-         * @param manager
-         *            The InventoryManager
+         *
+         * @param manager The InventoryManager
          * @return True if an item was found, false otherwise.
          */
         protected boolean matchFilter(InventoryManager manager) {
@@ -185,11 +184,9 @@ public class ItemSplitter extends InventoryProcessor {
          * Returns true if the InventoryManager contains an item that matches
          * the filter of this sender. The InventoryManager's cursor will be set
          * to this item. Prioritizes
-         * 
-         * @param manager
-         *            The InventoryManager
-         * @param sender
-         *            The opposite sender to exclude items from.
+         *
+         * @param manager The InventoryManager
+         * @param sender  The opposite sender to exclude items from.
          * @return True if an item was found, false otherwise.
          */
         protected SenderSearchResult matchFilterWithPriority(final InventoryManager manager, Sender opposite) {
@@ -221,11 +218,9 @@ public class ItemSplitter extends InventoryProcessor {
          * Matches an item in the given sample inventory to an item in the given
          * manager's inventory. If an item was matched, the manager's cursor
          * will be set to it.
-         * 
-         * @param inventory
-         *            The sample inventory
-         * @param manager
-         *            The manager to match against
+         *
+         * @param inventory The sample inventory
+         * @param manager   The manager to match against
          * @return True if an item was found, false otherwise.
          */
         private boolean match(Inventory inventory, InventoryManager manager) {
@@ -262,7 +257,9 @@ public class ItemSplitter extends InventoryProcessor {
             }
             return true;
         }
-    };
+    }
+
+    ;
 
     /**
      * Possible search results when searching the sender inventory with a
