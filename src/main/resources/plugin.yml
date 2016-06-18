@@ -1,0 +1,10 @@
+name: TwxCore
+main: net.boutopia.toolworx.twxcore.TwxCore
+version: 2.0-SNAPSHOT
+
+commands:
+   TW:
+      description: This is a demo command.
+      usage: /<command> [player]
+      permission: <plugin name>.TW
+      permission-message: You don't have <permission>

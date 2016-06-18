@@ -1,4 +1,4 @@
-package me.lyneira.MachinaPlanter;
+package me.lyneira.machinaplanter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 
-import me.lyneira.MachinaCore.BlockLocation;
-import me.lyneira.MachinaCore.block.BlockVector;
+import me.lyneira.machinacore.BlockLocation;
+import me.lyneira.machinacore.block.BlockVector;
 
 /**
  * Represents the moving rail of the planter.

@@ -1,4 +1,4 @@
-package me.lyneira.MachinaPlanter;
+package me.lyneira.machinaplanter;
 
 /**
  * Represents the result of a head move.

@@ -1,4 +1,4 @@
-package me.lyneira.MachinaPlanter;
+package me.lyneira.machinaplanter;
 
 import java.util.ArrayDeque;
 import java.util.Deque;

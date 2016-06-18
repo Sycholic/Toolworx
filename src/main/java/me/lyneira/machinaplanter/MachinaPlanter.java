@@ -1,9 +1,9 @@
-package me.lyneira.MachinaPlanter;
+package me.lyneira.machinaplanter;
 
 import java.util.logging.Logger;
 
-import me.lyneira.MachinaCore.ConfigurationManager;
-import me.lyneira.MachinaCore.MachinaCore;
+import me.lyneira.machinacore.ConfigurationManager;
+import me.lyneira.machinacore.MachinaCore;
 
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;

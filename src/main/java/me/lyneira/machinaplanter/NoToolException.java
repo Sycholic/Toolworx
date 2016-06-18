@@ -1,4 +1,4 @@
-package me.lyneira.MachinaPlanter;
+package me.lyneira.machinaplanter;
 
 /**
  * Thrown when the planter has no tool.

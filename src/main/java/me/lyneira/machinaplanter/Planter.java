@@ -1,25 +1,22 @@
-package me.lyneira.MachinaPlanter;
+package me.lyneira.machinaplanter;
 
 import java.util.Collection;
 import java.util.EnumMap;
 import java.util.Map;
-import me.lyneira.MachinaCore.BlockLocation;
-import me.lyneira.MachinaCore.Fuel;
-import me.lyneira.MachinaCore.HeartBeatEvent;
-import me.lyneira.MachinaCore.Tool;
-<<<<<<< HEAD
-import me.lyneira.MachinaPlanter.crop.CropCarrot;
-import me.lyneira.MachinaPlanter.crop.CropCocoa;
-import me.lyneira.MachinaPlanter.crop.CropHandler;
-import me.lyneira.MachinaPlanter.crop.CropMelon;
-import me.lyneira.MachinaPlanter.crop.CropNetherWart;
-import me.lyneira.MachinaPlanter.crop.CropPotato;
-import me.lyneira.MachinaPlanter.crop.CropPumpkin;
-import me.lyneira.MachinaPlanter.crop.CropWheat;
-=======
-import me.lyneira.MachinaCore.block.BlockRotation;
-import me.lyneira.MachinaCore.machina.Machina;
->>>>>>> origin/master
+import me.lyneira.machinacore.BlockLocation;
+import me.lyneira.machinacore.Fuel;
+import me.lyneira.machinacore.HeartBeatEvent;
+import me.lyneira.machinacore.Tool;
+import me.lyneira.machinaplanter.crop.CropCarrot;
+import me.lyneira.machinaplanter.crop.CropCocoa;
+import me.lyneira.machinaplanter.crop.CropHandler;
+import me.lyneira.machinaplanter.crop.CropMelon;
+import me.lyneira.machinaplanter.crop.CropNetherWart;
+import me.lyneira.machinaplanter.crop.CropPotato;
+import me.lyneira.machinaplanter.crop.CropPumpkin;
+import me.lyneira.machinaplanter.crop.CropWheat;
+import me.lyneira.machinacore.block.BlockRotation;
+import me.lyneira.machinacore.machina.Machina;
 import me.lyneira.util.InventoryManager;
 import me.lyneira.util.InventoryTransaction;
 

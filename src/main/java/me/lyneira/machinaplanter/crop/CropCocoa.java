@@ -1,8 +1,8 @@
-package me.lyneira.MachinaPlanter.crop;
+package me.lyneira.machinaplanter.crop;
 
 import java.util.Collection;
-import me.lyneira.MachinaCore.BlockLocation;
-import me.lyneira.MachinaCore.BlockRotation;
+import me.lyneira.machinacore.BlockLocation;
+import me.lyneira.machinacore.BlockRotation;
 import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.TreeSpecies;
