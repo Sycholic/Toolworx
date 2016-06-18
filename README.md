@@ -10,31 +10,14 @@ found at the [BukkitDev project page][project].
 
 [project]: http://dev.bukkit.org/server-mods/machinacraft
 
-Getting the Source
+Building
 ------------------
 
-You'll need some knowledge of how to create a bukkit plugin with Eclipse.
-If you're new to plugin writing, the Bukkit wiki has a [tutorial][] that's a
-good starting point.
+```
+git clone https://github.com/Sycholic/ToolworxReborn.git && mvn package
+```
 
-[tutorial]: http://wiki.bukkit.org/Plugin_Tutorial
-
-If you've downloaded the project as a zip, do the following:
-
-File -> Import... -> General -> Existing Projects into Workspace
-
-If you're getting the source from Github:
-
-File -> Import -> Git -> Projects from Git
-
-Once you've imported the project, create a new Java project and select the
-MachinaCore folder inside your project folder. Don't forget to add your
-bukkit.jar to the build path.
-
-Repeat this process for each plugin folder you want to work on, and also add
-the MachinaCore project to the build path for sub-plugins.
-
-Eclipse should automatically compile each plugin when it's imported.
+You will find the plugin in the /target folder.
 
 Building the Plugins
 --------------------
